@@ -4,7 +4,7 @@ import useLogoutUser from 'hooks/user/useLogout';
 
 const NavbarComponent = () => {
   const { user } = useAuth();
-  const mutation = useLogoutUser();
+  const { mutate, isLoading } = useLogoutUser();
 
   return (
     <Navbar
@@ -24,13 +24,13 @@ const NavbarComponent = () => {
             <Nav.Link href='/campgrounds/new'>New Campground</Nav.Link>
           </Nav>
           <div className='d-flex gap-2 align-items-center  ms-auto'>
-            {user ? (
+            {user || isLoading ? (
               <Nav.Link
                 className='btn btn-outline-primary outline-2 text-light px-2 py-1'
-                onClick={() => mutation.mutate()}
-                disabled={mutation.isLoading}
+                onClick={() => mutate()}
+                disabled={isLoading}
               >
-                {mutation.isLoading ? 'Logging out...' : 'Logout'}
+                {isLoading ? 'Logging out...' : 'Logout'}
               </Nav.Link>
             ) : (
               <>

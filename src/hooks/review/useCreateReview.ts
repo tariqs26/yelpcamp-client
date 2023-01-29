@@ -2,15 +2,25 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createReview } from 'api/reviewsAPI';
 import { dataFromInput, handleValidation } from '../../utils';
 import { useAlert } from 'contexts/AlertContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function useCreateReview(cId: string) {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { alert } = useAlert();
 
   const mutate = useMutation({
     mutationFn: createReview,
-    onError: (error: Error) => {
-      alert(`${error.name}: Failed to create review`, 'danger');
+    onError: ({ message }: Error) => {
+      if (!message.endsWith('401'))
+        alert(`${message}: Failed to create review`, 'danger');
+      else
+        navigate('/login', {
+          state: {
+            from: window.location.pathname,
+            message: 'Please login to create a review',
+          },
+        });
     },
     onSuccess: (data) => {
       queryClient.setQueryData(
@@ -25,9 +35,6 @@ export default function useCreateReview(cId: string) {
           }
         }
       );
-      queryClient.invalidateQueries({
-        queryKey: ['campgrounds', cId],
-      });
     },
   });
 
