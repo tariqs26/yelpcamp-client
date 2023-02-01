@@ -39,7 +39,7 @@ const AlertApi = ({ children }: { children: React.ReactNode }) => {
   return (
     <AlertContext.Provider value={{ alert }}>
       <Navbar />
-      <main className='container position-relative'>
+      <main className='container position-relative mb-5'>
         <Alert
           show={show}
           variant={variant}
