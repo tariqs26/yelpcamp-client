@@ -9,9 +9,6 @@ export default function useFetchCampground() {
   const query = useQuery({
     queryKey: ['campgrounds', id],
     queryFn: () => fetchCampgroundById(id),
-    staleTime: 1000 * 60 * 5,
-    retry: false,
-    refetchOnWindowFocus: false,
     initialData: () =>
       queryClient
         .getQueryData<Campground[] | undefined>(['campgrounds'])
