@@ -39,6 +39,7 @@ A high level overview of the tech stack used in this project.
 
 - RESTful API built with Express, with CRUD operations for campgrounds, reviews and users.
 - User authentication and authorization with Passport, managing user sessions with Express Sessions and storing user data in MongoDB, along with setting up a front-end Context API to manage the global state.
+- React Router for routing, with protected routes for authenticated users, and NavLinks which prevent the page from reloading, and maintain the active state.
 - Speedy initial page load times with React Suspense and Lazy loading components.
 - Great user experience with Flash messages for feedback,
   using a custom Context, form validation feedback and skeleton loading components using Bootstrap.
