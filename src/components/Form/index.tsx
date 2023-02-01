@@ -106,14 +106,10 @@ const FormComponent: React.FC<FormProps> = (props) => {
             ? `${prefix[1].slice(0, -1)}ing...`
             : `${prefix[1]} Campground`}
         </Button>
-        {leaveHandler ? (
+        {leaveHandler && (
           <Button variant='danger' onClick={leaveHandler}>
             Cancel
           </Button>
-        ) : (
-          <Link to='..' replace>
-            Back to Campgrounds
-          </Link>
         )}
       </Form>
     </Row>
