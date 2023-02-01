@@ -14,11 +14,11 @@ export default function useLogoutUser() {
     retry: false,
     onSuccess: () => {
       setUser(undefined);
-      alert('Successfully logged out', 'success');
+      alert('Successfully signed out', 'success');
       navigate('/campgrounds', { replace: true });
     },
     onError: (error: Error) => {
-      alert(`${error.message}: Failed to logout`, 'danger');
+      alert(`${error.message}: Failed to sign out`, 'danger');
     },
   });
 }

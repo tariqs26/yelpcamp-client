@@ -15,7 +15,7 @@ export default function useLoginUser() {
   useEffect(() => {
     if (state?.from)
       alert(
-        `${state?.message || 'Please login to access this page'}`,
+        `${state?.message || 'Please sign in to access this page'}`,
         'danger'
       );
   }, []);

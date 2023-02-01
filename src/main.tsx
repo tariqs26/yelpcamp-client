@@ -42,7 +42,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
                     path='new'
                     element={
                       <ProtectedRoute
-                        message='You must be logged in to create a new campground'
+                        message='You must be signed in to create a new campground'
                         element={<NewCampground />}
                       />
                     }

@@ -18,7 +18,7 @@ export default function useCreateReview(cId: string) {
         navigate('/login', {
           state: {
             from: window.location.pathname,
-            message: 'Please login to create a review',
+            message: 'Please sign in to create a review',
           },
         });
     },
