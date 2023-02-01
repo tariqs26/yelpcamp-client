@@ -8,7 +8,7 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
-const AuthApi = ({ children }: { children: React.ReactNode }) => {
+export default function AuthApi({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | undefined>();
   const [loadingInitial, setLoadingInitial] = useState(true);
 
@@ -32,8 +32,6 @@ const AuthApi = ({ children }: { children: React.ReactNode }) => {
       {!loadingInitial && children}
     </AuthContext.Provider>
   );
-};
+}
 
 export const useAuth = () => useContext(AuthContext);
-
-export default AuthApi;

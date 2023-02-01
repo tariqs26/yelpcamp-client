@@ -1,6 +1,6 @@
 import { Row, Col, Card, Placeholder } from 'react-bootstrap';
 
-const LoadingCard = () => {
+export default function LoadingCard() {
   return (
     <>
       <header className='d-flex justify-content-between align-items-center'>
@@ -16,9 +16,9 @@ const LoadingCard = () => {
         ))}
     </>
   );
-};
+}
 
-export const CardComponent = () => {
+const CardComponent = () => {
   return (
     <Card className='mt-4 overflow-hidden'>
       <Row>
@@ -52,5 +52,3 @@ export const CardComponent = () => {
     </Card>
   );
 };
-
-export default LoadingCard;

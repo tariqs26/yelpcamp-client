@@ -2,7 +2,7 @@ import useCreateReview from 'hooks/review/useCreateReview';
 import { Button, Form } from 'react-bootstrap';
 import { RatingInput } from 'components/Rating';
 
-const ReviewForm: React.FC<{ cId: string }> = ({ cId }) => {
+export default function ReviewForm({ cId }: { cId: string }) {
   const { handleSubmit, isLoading } = useCreateReview(cId);
   return (
     <>
@@ -29,6 +29,4 @@ const ReviewForm: React.FC<{ cId: string }> = ({ cId }) => {
       </Form>
     </>
   );
-};
-
-export default ReviewForm;
+}

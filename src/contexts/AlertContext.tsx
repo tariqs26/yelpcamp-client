@@ -13,7 +13,7 @@ const AlertContext = createContext({
   alert: (message: string, variant: 'success' | 'danger') => {},
 });
 
-const AlertApi = ({ children }: { children: React.ReactNode }) => {
+export default function AlertApi({ children }: { children: React.ReactNode }) {
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState('');
   const [variant, setVariant] = useState('success');
@@ -59,8 +59,6 @@ const AlertApi = ({ children }: { children: React.ReactNode }) => {
       </main>
     </AlertContext.Provider>
   );
-};
+}
 
 export const useAlert = () => useContext(AlertContext);
-
-export default AlertApi;

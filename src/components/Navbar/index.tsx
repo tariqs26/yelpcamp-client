@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 import useLogoutUser from 'hooks/user/useLogout';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
-const NavbarComponent = () => {
+export default function NavbarComponent() {
   const { user } = useAuth();
   const { mutate, isLoading } = useLogoutUser();
 
@@ -85,6 +85,4 @@ const NavbarComponent = () => {
       </Container>
     </Navbar>
   );
-};
-
-export default NavbarComponent;
+}
