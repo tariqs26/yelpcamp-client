@@ -5,8 +5,10 @@ export default function useFetchCampgrounds() {
   return useQuery({
     queryKey: ['campgrounds'],
     queryFn: fetchCampgrounds,
-    refetchOnWindowFocus: false,
-    retry: 1,
-    staleTime: 60000,
+    select: (data) =>
+      data.sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      ),
   });
 }
