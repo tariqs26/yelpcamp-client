@@ -1,5 +1,6 @@
 import useCreateReview from 'hooks/review/useCreateReview';
 import { Button, Form } from 'react-bootstrap';
+import { RatingInput } from 'components/Rating';
 
 const ReviewForm: React.FC<{ cId: string }> = ({ cId }) => {
   const { handleSubmit, isLoading } = useCreateReview(cId);
@@ -14,10 +15,7 @@ const ReviewForm: React.FC<{ cId: string }> = ({ cId }) => {
           target.classList.remove('was-validated');
         }}
       >
-        <Form.Group className='mb-3' controlId='review.rating'>
-          <Form.Label>Rating:</Form.Label>
-          <Form.Control type='range' name='rating' min='1' max='5' required />
-        </Form.Group>
+        <RatingInput />
         <Form.Group className='mb-3' controlId='review.body'>
           <Form.Label>Review:</Form.Label>
           <Form.Control as='textarea' name='body' rows={3} required />
