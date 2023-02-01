@@ -28,9 +28,11 @@ const NavbarComponent = () => {
             <NavLink end to='/campgrounds' className='nav-link'>
               Campgrounds
             </NavLink>
-            <NavLink to='/campgrounds/new' className='nav-link'>
-              New campground
-            </NavLink>
+            {user && (
+              <NavLink to='/campgrounds/new' className='nav-link'>
+                New campground
+              </NavLink>
+            )}
           </Nav>
           <div className='d-flex gap-2 align-items-center  ms-auto'>
             {user || isLoading ? (
@@ -39,7 +41,7 @@ const NavbarComponent = () => {
                 onClick={() => mutate()}
                 disabled={isLoading}
               >
-                {isLoading ? 'Logging out...' : 'Logout'}
+                Sign out
               </Nav.Link>
             ) : (
               <>
@@ -47,7 +49,7 @@ const NavbarComponent = () => {
                   to='/login'
                   className='btn btn-outline-primary outline-2 text-light px-2 py-1'
                 >
-                  Login
+                  Sign in
                 </NavLink>
                 <NavLink
                   className='btn btn-outline-primary outline-2 text-light px-2 py-1'
