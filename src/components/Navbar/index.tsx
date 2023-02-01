@@ -16,7 +16,9 @@ const NavbarComponent = () => {
       sticky='top'
     >
       <Container fluid>
-        <Navbar.Brand href='/'>YelpCamp</Navbar.Brand>
+        <NavLink to='/' className='navbar-brand'>
+          YelpCamp
+        </NavLink>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav>
