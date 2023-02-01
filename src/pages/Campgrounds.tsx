@@ -29,6 +29,7 @@ const Campgrounds = () => {
       ) : (
         data.map((props: Campground) => <Card key={props._id} {...props} />)
       )}
+      <div className='mt-5' />
     </>
   );
 };
