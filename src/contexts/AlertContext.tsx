@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { Alert } from 'react-bootstrap';
 import Navbar from 'components/Navbar';
+import './styles.css';
 
 const AlertContext = createContext({
   alert: (message: string, variant: 'success' | 'danger') => {},
