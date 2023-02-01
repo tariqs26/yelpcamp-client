@@ -19,7 +19,7 @@ export default function UserFormWrapper({
           variant='top'
           src={TentImg}
           style={{
-            height: '300px',
+            height: '250px',
             objectFit: 'cover',
           }}
         />
