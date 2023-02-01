@@ -6,6 +6,7 @@ import AlertApi from 'contexts/AlertContext';
 import AuthApi from 'contexts/AuthContext';
 
 import Fallback from 'components/Fallback';
+import Footer from 'components/Footer';
 const Register = lazy(() => import('pages/Register'));
 const Login = lazy(() => import('pages/Login'));
 const Campgrounds = lazy(() => import('pages/Campgrounds'));
