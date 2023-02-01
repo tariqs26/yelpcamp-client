@@ -9,7 +9,7 @@ export default function useCreateReview(cId: string) {
   const navigate = useNavigate();
   const { alert } = useAlert();
 
-  const mutate = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: createReview,
     onError: ({ message }: Error) => {
       if (!message.endsWith('401'))
@@ -40,13 +40,10 @@ export default function useCreateReview(cId: string) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (!handleValidation(e)) return;
-    mutate.mutate({ cId, review: dataFromInput(e.currentTarget) });
+    mutate({ cId, review: dataFromInput(e.currentTarget) });
     e.currentTarget.classList.remove('was-validated');
     e.currentTarget.reset();
   };
 
-  return {
-    handleSubmit,
-    loading: mutate.isLoading,
-  };
+  return { handleSubmit, isLoading };
 }

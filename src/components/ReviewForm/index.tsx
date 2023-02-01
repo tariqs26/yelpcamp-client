@@ -2,7 +2,7 @@ import useCreateReview from 'hooks/review/useCreateReview';
 import { Button, Form } from 'react-bootstrap';
 
 const ReviewForm: React.FC<{ cId: string }> = ({ cId }) => {
-  const { handleSubmit, loading } = useCreateReview(cId);
+  const { handleSubmit, isLoading } = useCreateReview(cId);
   return (
     <>
       <h3>Leave a Review</h3>
@@ -25,8 +25,8 @@ const ReviewForm: React.FC<{ cId: string }> = ({ cId }) => {
             Review cannot be empty
           </Form.Control.Feedback>
         </Form.Group>
-        <Button variant='success' type='submit' disabled={loading}>
-          {loading ? 'Creating...' : 'Create Review'}
+        <Button variant='success' type='submit' disabled={isLoading}>
+          Submit
         </Button>
       </Form>
     </>
