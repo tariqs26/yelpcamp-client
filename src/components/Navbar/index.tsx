@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import useLogoutUser from 'hooks/user/useLogout';
@@ -19,9 +20,17 @@ const NavbarComponent = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav>
-            <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='/campgrounds'>Campgrounds</Nav.Link>
-            <Nav.Link href='/campgrounds/new'>New Campground</Nav.Link>
+            <NavLink to='/' className='nav-link'>
+              Home
+            </NavLink>
+            <NavLink end to='/campgrounds' className='nav-link'>
+              Campgrounds
+            </NavLink>
+            {user && (
+              <NavLink to='/campgrounds/new' className='nav-link'>
+                Add campground
+              </NavLink>
+            )}
           </Nav>
           <div className='d-flex gap-2 align-items-center  ms-auto'>
             {user || isLoading ? (
