@@ -7,7 +7,6 @@ import {
 } from 'react';
 import { Alert } from 'react-bootstrap';
 import Navbar from 'components/Navbar';
-import Footer from 'components/Footer';
 
 const AlertContext = createContext({
   alert: (message: string, variant: 'success' | 'danger') => {},
@@ -39,19 +38,24 @@ const AlertApi = ({ children }: { children: React.ReactNode }) => {
   return (
     <AlertContext.Provider value={{ alert }}>
       <Navbar />
-      <main className='container'>
+      <main className='container position-relative'>
         <Alert
           show={show}
           variant={variant}
           onClose={() => setShow(false)}
-          className='mb-3'
+          className='mb-3 position-absolute'
           dismissible
+          style={{
+            zIndex: 1,
+            top: '-2.25rem',
+            right: '0.75rem',
+            animation: 'AlertDrop 200ms ease-in-out',
+          }}
         >
           {message}
         </Alert>
         {children}
       </main>
-      <Footer />
     </AlertContext.Provider>
   );
 };
