@@ -29,7 +29,7 @@ const EditCampground: React.FC<Props> = (componentProps) => {
           {...props}
           leaveHandler={closeModal}
           initialData={campground}
-          prefix={[null, 'Update']}
+          action='Update'
         />
       </Modal.Body>
     </Modal>

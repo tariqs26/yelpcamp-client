@@ -3,6 +3,5 @@ import Form from 'components/Form';
 
 export default function NewCampground() {
   const props = useCreateCampground();
-
-  return <Form {...props} prefix={['New', 'Create']} />;
+  return <Form {...props} action='Create' />;
 }
