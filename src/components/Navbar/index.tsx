@@ -7,6 +7,13 @@ const NavbarComponent = () => {
   const { user } = useAuth();
   const { mutate, isLoading } = useLogoutUser();
 
+  const handleNavClick = () => {
+    if (window.innerWidth < 992) {
+      const toggle = document.querySelector('.navbar-toggler') as HTMLElement;
+      toggle.click();
+    }
+  };
+
   return (
     <Navbar
       bg='dark'
@@ -16,20 +23,29 @@ const NavbarComponent = () => {
       sticky='top'
     >
       <Container fluid>
-        <NavLink to='/' className='navbar-brand'>
+        <NavLink to='/' className='navbar-brand' onClick={handleNavClick}>
           YelpCamp
         </NavLink>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav>
-            <NavLink to='/' className='nav-link'>
+            <NavLink to='/' className='nav-link' onClick={handleNavClick}>
               Home
             </NavLink>
-            <NavLink end to='/campgrounds' className='nav-link'>
+            <NavLink
+              end
+              to='/campgrounds'
+              className='nav-link'
+              onClick={handleNavClick}
+            >
               Campgrounds
             </NavLink>
             {user && (
-              <NavLink to='/campgrounds/new' className='nav-link'>
+              <NavLink
+                to='/campgrounds/new'
+                className='nav-link'
+                onClick={handleNavClick}
+              >
                 New campground
               </NavLink>
             )}
@@ -38,7 +54,10 @@ const NavbarComponent = () => {
             {user || isLoading ? (
               <Nav.Link
                 className='btn btn-outline-primary outline-2 text-light px-2 py-1'
-                onClick={() => mutate()}
+                onClick={() => {
+                  mutate();
+                  handleNavClick();
+                }}
                 disabled={isLoading}
               >
                 Sign out
@@ -48,12 +67,14 @@ const NavbarComponent = () => {
                 <NavLink
                   to='/login'
                   className='btn btn-outline-primary outline-2 text-light px-2 py-1'
+                  onClick={handleNavClick}
                 >
                   Sign in
                 </NavLink>
                 <NavLink
                   className='btn btn-outline-primary outline-2 text-light px-2 py-1'
                   to='/register'
+                  onClick={handleNavClick}
                 >
                   Register
                 </NavLink>
