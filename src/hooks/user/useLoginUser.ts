@@ -13,7 +13,11 @@ export default function useLoginUser() {
   const { state } = useLocation();
 
   useEffect(() => {
-    if (state?.from) alert(`Please login to continue`, 'danger');
+    if (state?.from)
+      alert(
+        `${state?.message || 'Please login to access this page'}`,
+        'danger'
+      );
   }, []);
 
   const { isLoading, mutate } = useMutation(loginUser, {
