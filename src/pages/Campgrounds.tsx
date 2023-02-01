@@ -18,9 +18,13 @@ const Campgrounds = () => {
     );
   return (
     <>
-      <header className='d-flex justify-content-between align-items-center'>
+      <header className='d-flex justify-content-between flex-column gap-3 align-items-sm-center flex-sm-row align-items-start'>
         <h1 className='mb-0'>All Campgrounds</h1>
-        <Link className='btn btn-success' to='/campgrounds/new'>
+        <Link
+          className='btn btn-success'
+          to='/campgrounds/new'
+          style={{ width: 'fit-content' }}
+        >
           Add campground
         </Link>
       </header>
@@ -29,7 +33,6 @@ const Campgrounds = () => {
       ) : (
         data.map((props: Campground) => <Card key={props._id} {...props} />)
       )}
-      <div className='mt-5' />
     </>
   );
 };
