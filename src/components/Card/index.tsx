@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Image } from 'react-bootstrap';
+import { fromDate } from '../../utils';
 
 const CardComponent: React.FC<Campground> = (props) => {
   const { _id, title, image, location, description } = props;
@@ -21,13 +22,16 @@ const CardComponent: React.FC<Campground> = (props) => {
           />
         </Col>
         <Col md={7}>
-          <Card.Body>
+          <Card.Body className='h-100 d-flex flex-column'>
             <Card.Title>{title}</Card.Title>
             <p className='text-muted'>{location}</p>
             <Card.Text>{description}</Card.Text>
-            <Link className='btn btn-primary' to={`/campgrounds/${_id}`}>
+            <Link className='btn btn-primary mb-3' to={`/campgrounds/${_id}`} style={{ width: 'fit-content'}}>
               View {title}
             </Link>
+            <Card.Subtitle className='mt-auto text-muted'>
+              Posted {fromDate(props.createdAt)}
+            </Card.Subtitle>
           </Card.Body>
         </Col>
       </Row>
