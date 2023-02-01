@@ -2,13 +2,14 @@ import { useState } from 'react';
 import useFetchCampground from 'hooks/campground/useFetchCampground';
 import useDeleteCampground from 'hooks/campground/useDeleteCampground';
 import useDeleteReview from 'hooks/review/useDeleteReview';
+import { useAuth } from 'contexts/AuthContext';
+import { fromDate, isAppError } from '../utils';
 
 import { Row, Card, ListGroup, Button, Badge } from 'react-bootstrap';
+import EditCampground from './EditCampground';
 import Error from 'components/Error';
 import ReviewForm from 'components/ReviewForm';
-import EditCampground from './EditCampground';
-import { fromDate, isAppError } from '../utils';
-import { useAuth } from 'contexts/AuthContext';
+import { Rating } from 'components/Rating';
 
 const Campground = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -80,13 +81,11 @@ const Campground = () => {
           return (
             <Card key={review._id} className='mt-3'>
               <Card.Body>
-                <Card.Title>Rating: {review.rating}</Card.Title>
-                <Card.Subtitle className='text-muted d-flex gap-2 align-items-center'>
-                  By {review.author.username}{' '}
-                  {review.author._id === data.author._id && (
-                    <Badge bg='primary'>Author</Badge>
-                  )}
-                </Card.Subtitle>
+                <Card.Title>{review.author.username}</Card.Title>
+                <Rating
+                  rating={review.rating}
+                  text={`Rated: ${review.rating}/5`}
+                />
                 <Card.Text>review: {review.body}</Card.Text>
                 {user && user._id === review.author._id && (
                   <Button
