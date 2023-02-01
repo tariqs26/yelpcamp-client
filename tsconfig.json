@@ -18,29 +18,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve", // most upto date
-    "paths": {
-      "pages/*": [
-        "./src/pages/*"
-      ],
-      "api/*": [
-        "./src/api/*"
-      ],
-      "styles/*": [
-        "./src/styles/*"
-      ],
-      "components/*": [
-        "./src/components/*"
-      ],
-      "hooks/*": [
-        "./src/hooks/*"
-      ],
-      "contexts/*": [
-        "./src/contexts/*"
-      ],
-      "routes/*": [
-        "./src/routes/*"
-      ],
-    }
+    "baseUrl": "src",
   },
   "include": [
     "src"
