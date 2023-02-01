@@ -1,9 +1,10 @@
-export const dataFromInput = <T>(form: HTMLFormElement): T =>
+import day from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+const dataFromInput = <T>(form: HTMLFormElement): T =>
   Object.fromEntries(new FormData(form)) as unknown as T;
 
-export const handleValidation = (
-  e: React.FormEvent<HTMLFormElement>
-): boolean => {
+const handleValidation = (e: React.FormEvent<HTMLFormElement>): boolean => {
   e.preventDefault();
   e.stopPropagation();
   if (!e.currentTarget.checkValidity()) {
@@ -13,6 +14,13 @@ export const handleValidation = (
   return true;
 };
 
-export const isAppError = (data: any): data is AppError => {
-  return 'message' in data && 'status' in data && 'details' in data;
+const isAppError = (data: any): data is AppError => {
+  return 'message' in data && 'details' in data;
 };
+
+const fromDate = (date: string) => {
+  day.extend(relativeTime);
+  return day(date).fromNow();
+};
+
+export { dataFromInput, handleValidation, isAppError, fromDate };
