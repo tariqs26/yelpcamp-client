@@ -7,7 +7,7 @@ import { Row, Card, ListGroup, Button, Badge } from 'react-bootstrap';
 import Error from 'components/Error';
 import ReviewForm from 'components/ReviewForm';
 import EditCampground from './EditCampground';
-import { isAppError } from '../utils';
+import { fromDate, isAppError } from '../utils';
 import { useAuth } from 'contexts/AuthContext';
 
 const Campground = () => {
@@ -65,7 +65,7 @@ const Campground = () => {
             </Card.Body>
           )}
           <Card.Footer className='text-muted'>
-            Last updated 2 days ago
+            Updated {fromDate(data.updatedAt)}
           </Card.Footer>
         </Card>
         <EditCampground
