@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { Navbar, Nav, Container } from 'react-bootstrap';
 import useLogoutUser from 'hooks/user/useLogout';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const NavbarComponent = () => {
   const { user } = useAuth();

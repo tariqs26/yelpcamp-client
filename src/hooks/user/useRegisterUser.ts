@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { registerUser } from 'api/usersAPI';
-import { dataFromInput, handleValidation } from '../../utils';
 import { useAlert } from 'contexts/AlertContext';
+import { dataFromInput, handleValidation } from '../../utils';
 
 export default function useRegisterUser() {
   const navigate = useNavigate();

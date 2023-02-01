@@ -1,8 +1,8 @@
+import { FormEvent } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateCampground } from 'api/campgroundsAPI';
-import { FormEventHandler, FormEvent } from 'react';
-import { dataFromInput, handleValidation } from '../../utils';
 import { useAlert } from 'contexts/AlertContext';
+import { dataFromInput, handleValidation } from '../../utils';
 
 export const useUpdateCampground = (
   campground: Campground,

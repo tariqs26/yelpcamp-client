@@ -1,8 +1,5 @@
 import axios, { isAxiosError } from 'axios';
-import axiosRetry from 'axios-retry';
 import { ErrorDetails } from '../@types/Error';
-
-axiosRetry(axios, { retries: 3 });
 
 const campgroundsAPI = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/campgrounds`,

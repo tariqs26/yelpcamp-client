@@ -1,5 +1,6 @@
 import { Card, Row } from 'react-bootstrap';
 import TentImg from 'assets/images/zach-betten-K9olx8OF36A-unsplash.jpg';
+
 export default function UserFormWrapper({
   children,
 }: {

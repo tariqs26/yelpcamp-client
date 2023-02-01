@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Form, Button, Row, Card } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import useRegisterUser from 'hooks/user/useRegisterUser';
 import UserFormWrapper from 'components/UserFormWrapper';
 
