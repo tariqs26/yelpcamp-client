@@ -7,6 +7,11 @@ type Campground = {
   price: number;
   reviews: Review[];
   description: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
-type CampgroundInput = Omit<Campground, '_id' | 'reviews' | 'author'>;
+type CampgroundInput = Pick<
+  Campground,
+  'title' | 'image' | 'location' | 'price' | 'description'
+>;
