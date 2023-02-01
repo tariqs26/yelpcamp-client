@@ -4,10 +4,10 @@ import { updateCampground } from 'api/campgroundsAPI';
 import { useAlert } from 'contexts/AlertContext';
 import { dataFromInput, handleValidation } from '../../utils';
 
-export const useUpdateCampground = (
+export default function useUpdateCampground(
   campground: Campground,
   close: () => void
-) => {
+) {
   const queryClient = useQueryClient();
   const { alert } = useAlert();
 
@@ -35,4 +35,4 @@ export const useUpdateCampground = (
   };
 
   return { handleSubmit, isLoading };
-};
+}

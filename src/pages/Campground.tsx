@@ -5,13 +5,13 @@ import useDeleteReview from 'hooks/review/useDeleteReview';
 import { useAuth } from 'contexts/AuthContext';
 import { fromDate, isAppError } from '../utils';
 
-import { Row, Card, ListGroup, Button, Badge } from 'react-bootstrap';
+import { Row, Card, ListGroup, Button } from 'react-bootstrap';
 import EditCampground from './EditCampground';
 import Error from 'components/Error';
 import ReviewForm from 'components/ReviewForm';
 import { Rating } from 'components/Rating';
 
-const Campground = () => {
+export default function Campground() {
   const [modalShow, setModalShow] = useState(false);
   const { data, isFetching, id } = useFetchCampground();
   const mutate = useDeleteCampground();
@@ -106,6 +106,4 @@ const Campground = () => {
       </div>
     </Row>
   );
-};
-
-export default Campground;
+}

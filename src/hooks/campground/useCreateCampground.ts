@@ -4,7 +4,7 @@ import { createCampground } from 'api/campgroundsAPI';
 import { useAlert } from 'contexts/AlertContext';
 import { dataFromInput, handleValidation } from '../../utils';
 
-export const useCreateCampground = () => {
+export default function useCreateCampground() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { alert } = useAlert();
@@ -28,4 +28,4 @@ export const useCreateCampground = () => {
   };
 
   return { handleSubmit, isLoading };
-};
+}

@@ -1,6 +1,6 @@
-import { useUpdateCampground } from '../../hooks/campground/useUpdateCampground';
-import Form from 'components/Form';
+import useUpdateCampground from '../../hooks/campground/useUpdateCampground';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'components/Form';
 import './EditCampground.css';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
   showModal: boolean;
   closeModal: () => void;
 };
-const EditCampground: React.FC<Props> = (componentProps) => {
+export default function EditCampground(componentProps: Props) {
   const { campground, showModal, closeModal } = componentProps;
   const props = useUpdateCampground(campground, closeModal);
   return (
@@ -34,6 +34,4 @@ const EditCampground: React.FC<Props> = (componentProps) => {
       </Modal.Body>
     </Modal>
   );
-};
-
-export default EditCampground;
+}

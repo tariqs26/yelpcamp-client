@@ -5,7 +5,7 @@ import Card from 'components/Card';
 import LoadingCard from 'components/LoadingCard';
 import { ErrorDetails } from '../@types/Error';
 
-const Campgrounds = () => {
+export default function Campgrounds() {
   const { data, status, error } = useFetchCampgrounds();
 
   if (status === 'loading') return <LoadingCard />;
@@ -35,6 +35,4 @@ const Campgrounds = () => {
       )}
     </>
   );
-};
-
-export default Campgrounds;
+}
