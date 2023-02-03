@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import useRegisterUser from 'hooks/user/useRegisterUser';
 import UserFormWrapper from 'components/UserFormWrapper';
+import Loader from 'components/SubmitLoader';
 
 export default function Register() {
   const { handleSubmit, isLoading } = useRegisterUser();
@@ -54,7 +55,7 @@ export default function Register() {
           variant='success'
           className='w-100'
         >
-          Create account
+          <Loader text='Create account' isLoading={isLoading} />
         </Button>
         <div className='d-flex justify-content-center gap-1 align-items-center mt-3'>
           <span>Have an account?</span>{' '}

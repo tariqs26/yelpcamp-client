@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import useLoginUser from 'hooks/user/useLoginUser';
 import UserFormWrapper from 'components/UserFormWrapper';
+import Loader from 'components/SubmitLoader';
 
 export default function Login() {
   const { handleSubmit, isLoading } = useLoginUser();
@@ -37,7 +38,7 @@ export default function Login() {
           disabled={isLoading}
           className='w-100'
         >
-          Sign in
+          <Loader text='Sign in' isLoading={isLoading} />
         </Button>
         <div className='d-flex justify-content-center gap-1 align-items-center mt-3'>
           <span>Don't have an account?</span>{' '}
