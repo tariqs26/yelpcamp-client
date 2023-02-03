@@ -44,7 +44,7 @@ export default function AlertApi({ children }: { children: React.ReactNode }) {
         className='position-fixed'
         dismissible
         style={{
-          zIndex: 1,
+          zIndex: 999,
           top: '4.5rem',
           right: '1rem',
           animation: 'AlertDrop 200ms ease-in-out',
