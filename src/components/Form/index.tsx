@@ -1,6 +1,7 @@
 import { FormEventHandler } from 'react';
 import { Form, Button, Row, InputGroup, Card } from 'react-bootstrap';
 import ConditionalWrapper from '../ConditionalWrapper';
+import Loader from 'components/SubmitLoader';
 
 type FormProps = {
   handleSubmit: FormEventHandler;
@@ -95,14 +96,13 @@ const FormComponent: React.FC<FormProps> = (props) => {
               Description cannot be empty
             </Form.Control.Feedback>
           </Form.Group>
-
           <Button
             type='submit'
             variant='success'
             disabled={isLoading}
             className='me-2'
           >
-            {action + ' Campground'}
+            <Loader text={`${action} campground`} isLoading={isLoading} />
           </Button>
           {leaveHandler && (
             <Button variant='danger' onClick={leaveHandler}>
