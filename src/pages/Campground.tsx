@@ -79,17 +79,27 @@ export default function Campground() {
           closeModal={() => setModalShow(false)}
         />
       </div>
-      <div className='col-6'>
+      <div className='col-12 col-md-6'>
+        <Map
+          coordinates={{
+            longitude: data.geometry.coordinates[0],
+            latitude: data.geometry.coordinates[1],
+          }}
+          title={data.title}
+          location={data.location}
+        />
         <ReviewForm cId={id} />
         {data.reviews.map((review: Review) => {
           return (
             <Card key={review._id} className='mt-3'>
               <Card.Body>
-                <Card.Title>{review.author.username}</Card.Title>
-                <Rating
-                  rating={review.rating}
-                  text={`Rated: ${review.rating}/5`}
-                />
+                <div className='d-flex justify-content-between'>
+                  <Card.Title>{review.author.username}</Card.Title>
+                  <Rating
+                    rating={review.rating}
+                    text={`Rated: ${review.rating}/5`}
+                  />
+                </div>
                 <Card.Text>review: {review.body}</Card.Text>
                 {user && user._id === review.author._id && (
                   <Button
