@@ -11,6 +11,10 @@ const CardComponent: React.FC<Campground> = (props) => {
           <Image
             src={image}
             alt={`${title} campground image`}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = 'https://via.placeholder.com/640x360';
+            }}
             fluid
             style={{
               height: '100%',
@@ -26,7 +30,11 @@ const CardComponent: React.FC<Campground> = (props) => {
             <Card.Title>{title}</Card.Title>
             <p className='text-muted'>{location}</p>
             <Card.Text>{description}</Card.Text>
-            <Link className='btn btn-primary mb-3' to={`/campgrounds/${_id}`} style={{ width: 'fit-content'}}>
+            <Link
+              className='btn btn-primary mb-3'
+              to={`/campgrounds/${_id}`}
+              style={{ width: 'fit-content' }}
+            >
               View {title}
             </Link>
             <Card.Subtitle className='mt-auto text-muted'>

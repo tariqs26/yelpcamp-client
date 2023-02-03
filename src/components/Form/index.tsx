@@ -46,7 +46,7 @@ const FormComponent: React.FC<FormProps> = (props) => {
               name='location'
               minLength={5}
               maxLength={50}
-              placeholder='1234 Main St.'
+              placeholder='1280 Main St W, Hamilton, ON'
               defaultValue={initialData?.location}
               required
             />
