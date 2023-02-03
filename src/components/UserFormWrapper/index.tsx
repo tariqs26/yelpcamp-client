@@ -11,7 +11,7 @@ export default function UserFormWrapper({
       <Card
         className='border shadow'
         style={{
-          width: 'min(100%, 500px)',
+          width: 'min(100%, 450px)',
           margin: 'auto',
           padding: '0',
         }}
