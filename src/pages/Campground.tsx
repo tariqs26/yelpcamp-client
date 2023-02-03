@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import useFetchCampground from 'hooks/campground/useFetchCampground';
 import useDeleteCampground from 'hooks/campground/useDeleteCampground';
-import useDeleteReview from 'hooks/review/useDeleteReview';
 import { useAuth } from 'contexts/AuthContext';
 import { fromDate, isAppError } from '../utils';
+
 import { Row, Card, ListGroup, Button } from 'react-bootstrap';
 import EditCampground from './EditCampground';
 import Error from 'components/Error';
-import ReviewForm from 'components/ReviewForm';
-import { Rating } from 'components/Rating';
+import Loader from 'components/SubmitLoader';
 import Map from 'components/Map';
+import ReviewForm from 'components/ReviewForm';
+import ReviewCard from 'components/ReviewCard';
 
 export default function Campground() {
   const [modalShow, setModalShow] = useState(false);
   const { data, isFetching, id } = useFetchCampground();
   const mutate = useDeleteCampground();
-  const reviewMutate = useDeleteReview(id);
   const { user } = useAuth();
 
   if (isFetching) return <div>Loading...</div>;
@@ -65,7 +65,7 @@ export default function Campground() {
                 disabled={mutate.isLoading}
                 onClick={() => mutate.mutate(data._id)}
               >
-                {mutate.isLoading ? 'Deleting...' : 'Delete'}
+                <Loader text='Delete' isLoading={mutate.isLoading} />
               </Button>
             </Card.Body>
           )}
@@ -89,34 +89,9 @@ export default function Campground() {
           location={data.location}
         />
         <ReviewForm cId={id} />
-        {data.reviews.map((review: Review) => {
-          return (
-            <Card key={review._id} className='mt-3'>
-              <Card.Body>
-                <div className='d-flex justify-content-between'>
-                  <Card.Title>{review.author.username}</Card.Title>
-                  <Rating
-                    rating={review.rating}
-                    text={`Rated: ${review.rating}/5`}
-                  />
-                </div>
-                <Card.Text>review: {review.body}</Card.Text>
-                {user && user._id === review.author._id && (
-                  <Button
-                    variant='danger'
-                    size='sm'
-                    disabled={reviewMutate.isLoading}
-                    onClick={() =>
-                      reviewMutate.mutate({ id, reviewId: review._id })
-                    }
-                  >
-                    {reviewMutate.isLoading ? 'Deleting...' : 'Delete'}
-                  </Button>
-                )}
-              </Card.Body>
-            </Card>
-          );
-        })}
+        {data.reviews.map((review: Review) => (
+          <ReviewCard key={review._id} cId={id} review={review} user={user} />
+        ))}
       </div>
     </Row>
   );
