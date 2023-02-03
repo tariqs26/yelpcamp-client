@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useFetchCampground from 'hooks/campground/useFetchCampground';
 import useDeleteCampground from 'hooks/campground/useDeleteCampground';
 import useDeleteReview from 'hooks/review/useDeleteReview';
 import { useAuth } from 'contexts/AuthContext';
 import { fromDate, isAppError } from '../utils';
-
 import { Row, Card, ListGroup, Button } from 'react-bootstrap';
 import EditCampground from './EditCampground';
 import Error from 'components/Error';
 import ReviewForm from 'components/ReviewForm';
 import { Rating } from 'components/Rating';
+import Map from 'components/Map';
 
 export default function Campground() {
   const [modalShow, setModalShow] = useState(false);
@@ -32,7 +32,7 @@ export default function Campground() {
 
   return (
     <Row>
-      <div className='col-6'>
+      <div className='col-12 col-md-6 mb-3'>
         <Card>
           <Card.Img
             src={data.image}
