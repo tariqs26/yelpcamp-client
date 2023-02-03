@@ -3,6 +3,7 @@ import useFetchCampgrounds from 'hooks/campground/useFetchCampgrounds';
 import Error from 'components/Error';
 import Card from 'components/Card';
 import LoadingCard from 'components/LoadingCard';
+import ClusterMap from 'components/Map/cluster';
 import { ErrorDetails } from '../@types/Error';
 
 export default function Campgrounds() {
@@ -18,6 +19,14 @@ export default function Campgrounds() {
     );
   return (
     <>
+      <ClusterMap
+        campgrounds={{
+          features: data.map(({ geometry }) => ({
+            type: 'Feature',
+            geometry,
+          })),
+        }}
+      />
       <header className='d-flex justify-content-between flex-column gap-3 align-items-sm-center flex-sm-row align-items-start'>
         <h1 className='mb-0'>All Campgrounds</h1>
         <Link
