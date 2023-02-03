@@ -22,13 +22,12 @@ A high level overview of the tech stack used in this project.
 - [Mongoose](https://mongoosejs.com/) for modeling the data, and for interacting with the MongoDB database.
 - [Joi](https://joi.dev/) used for validating the data sent to the backend.
 - [Passport](http://www.passportjs.org/) for managing user authentication and authorization.
-- [Cloudinary](https://cloudinary.com/) for storing images.
 - [Mapbox](https://www.mapbox.com/) for displaying maps.
 
 ### Security
 
 - [Helmet](https://helmetjs.github.io/) used for securing HTTP headers.
-- [Express Sanitizer](https://www.npmjs.com/package/express-sanitizer) used for sanitizing user-supplied data to prevent XSS.
+- [Express Mongo Sanitize](https://www.npmjs.com/package/express-mongo-sanitize) used for sanitizing user-supplied data to prevent MongoDB Operator Injection.
 - [Dotenv](https://www.npmjs.com/package/dotenv) used for storing environment variables.
 
 ### Deployment
