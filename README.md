@@ -2,7 +2,7 @@
 
 ![home](./project-images/home.png)
 
-A full stack web application, where users can create, edit, delete and view and review campgrounds locations The app is built with the MERN stack.
+A full stack web application, where users can create, edit, delete and view and review campgrounds locations built with the MERN stack.
 
 ## Tech Stack
 
