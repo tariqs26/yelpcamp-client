@@ -33,8 +33,20 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <AuthApi>
         <BrowserRouter>
           <AlertApi>
-            <Suspense fallback={<Fallback />}>
-              <Routes>
+            <Navbar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route
+                element={
+                  <>
+                    <main className='container position-relative mb-5 mt-5'>
+                      <Suspense fallback={<Fallback />}>
+                        <Outlet />
+                      </Suspense>
+                    </main>
+                  </>
+                }
+              >
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/campgrounds'>
@@ -44,15 +56,15 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
                     path='new'
                     element={
                       <ProtectedRoute
-                        message='You must be signed in to create a new campground'
+                        message='Please sign in to create a new campground'
                         element={<NewCampground />}
                       />
                     }
                   />
                 </Route>
                 <Route path='*' element={<NotFound />} />
-              </Routes>
-            </Suspense>
+              </Route>
+            </Routes>
           </AlertApi>
         </BrowserRouter>
       </AuthApi>
