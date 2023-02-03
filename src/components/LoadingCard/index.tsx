@@ -3,7 +3,7 @@ import { Row, Col, Card, Placeholder } from 'react-bootstrap';
 export default function LoadingCard() {
   return (
     <>
-      <header className='d-flex justify-content-between align-items-center'>
+      <header className='d-flex justify-content-between flex-column gap-3 align-items-sm-center flex-sm-row align-items-start'>
         <h1 className='mb-0'>All Campgrounds</h1>
         <Placeholder.Button variant='success'>
           Add campground
