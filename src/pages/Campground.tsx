@@ -41,6 +41,10 @@ export default function Campground() {
               backgroundColor: 'rgba(0,0,0,0.5)',
               aspectRatio: '16/9',
             }}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = 'https://via.placeholder.com/640x360';
+            }}
           />
           <Card.Body>
             <Card.Title>{data.title}</Card.Title>
