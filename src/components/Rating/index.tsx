@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const Rating = ({ rating, text }: Props) => (
-  <p className='starability-result' data-rating={rating}>
+  <p className='starability-result mb-0' data-rating={rating}>
     {text}
   </p>
 );
