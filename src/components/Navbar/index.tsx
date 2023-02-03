@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import useLogoutUser from 'hooks/user/useLogout';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import './Navbar.css';
 
 export default function NavbarComponent() {
   const { user } = useAuth();
@@ -40,17 +41,15 @@ export default function NavbarComponent() {
             >
               Campgrounds
             </NavLink>
-            {user && (
-              <NavLink
-                to='/campgrounds/new'
-                className='nav-link'
-                onClick={handleNavClick}
-              >
-                New campground
-              </NavLink>
-            )}
+            <NavLink
+              to='/campgrounds/new'
+              className='nav-link'
+              onClick={handleNavClick}
+            >
+              New campground
+            </NavLink>
           </Nav>
-          <div className='d-flex gap-2 align-items-center  ms-auto'>
+          <div className='nav-btns d-flex gap-2 align-items-center  ms-auto'>
             {user || isLoading ? (
               <Nav.Link
                 className='btn btn-outline-primary outline-2 text-light px-2 py-1'
