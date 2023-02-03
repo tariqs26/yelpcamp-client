@@ -9,6 +9,10 @@ type Campground = {
   description: string;
   createdAt: string;
   updatedAt: string;
+  geometry: {
+    type: 'Point';
+    coordinates: [number, number];
+  };
 };
 
 type CampgroundInput = Pick<
