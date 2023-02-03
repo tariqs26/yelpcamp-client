@@ -1,6 +1,6 @@
 # YelpCamp
 
-A full stack web application, where users can create, edit, delete and view and review campgrounds locations The app is built with the MERN stack, and is deployed on Vercel.
+A full stack web application, where users can create, edit, delete and view and review campgrounds locations The app is built with the MERN stack.
 
 ## Tech Stack
 
@@ -30,19 +30,14 @@ A high level overview of the tech stack used in this project.
 - [Express Mongo Sanitize](https://www.npmjs.com/package/express-mongo-sanitize) used for sanitizing user-supplied data to prevent MongoDB Operator Injection.
 - [Dotenv](https://www.npmjs.com/package/dotenv) used for storing environment variables.
 
-### Deployment
-
-- [Vercel](https://vercel.com/) used for deploying both the frontend and backend.
-
 ## Notable Features
 
+- Speedy initial page load times with React Suspense and Lazy loading components.
+- React Router for routing, with protected routes for authenticated users, and NavLinks which prevent the page from reloading, and maintain the active state.
+- Performant and Robust data fetching with React Query, with the ability to cache data and refetch it when needed.
+- Great user experience with Flash messages for feedback, using a custom Context, form validation feedback and skeleton loading components using Bootstrap.
 - RESTful API built with Express, with CRUD operations for campgrounds, reviews and users.
 - User authentication and authorization with Passport, managing user sessions with Express Sessions and storing user data in MongoDB, along with setting up a front-end Context API to manage the global state.
-- React Router for routing, with protected routes for authenticated users, and NavLinks which prevent the page from reloading, and maintain the active state.
-- Speedy initial page load times with React Suspense and Lazy loading components.
-- Great user experience with Flash messages for feedback,
-  using a custom Context, form validation feedback and skeleton loading components using Bootstrap.
-- Performant and Robust data fetching with React Query, with the ability to cache data and refetch it when needed.
 
 ## Features to be implemented
 
