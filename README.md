@@ -17,6 +17,7 @@ A high level overview of the tech stack used in this project.
 - [Vite](https://vitejs.dev/) for the frontend build tool.
 
 ### Backend
+[Backend Repository](https://github.com/tariqs26/yelpcamp-server) 
 
 - [Node.js](https://nodejs.org/en/) with [TypeScript](https://www.typescriptlang.org/) as the primary backend framework.
 - [Express](https://expressjs.com/) for creating the RESTful API, managing middleware and routing.
