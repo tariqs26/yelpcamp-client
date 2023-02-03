@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 type Props = {
@@ -24,6 +24,7 @@ export default function Map({ coordinates, title, location }: Props) {
       mapStyle='mapbox://styles/mapbox/streets-v11'
       mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
     >
+      <NavigationControl/>
       <Marker
         {...coordinates}
         anchor='bottom'
