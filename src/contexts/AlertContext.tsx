@@ -6,7 +6,6 @@ import {
   useCallback,
 } from 'react';
 import { Alert } from 'react-bootstrap';
-import Navbar from 'components/Navbar';
 import './styles.css';
 
 const AlertContext = createContext({
@@ -38,25 +37,22 @@ export default function AlertApi({ children }: { children: React.ReactNode }) {
 
   return (
     <AlertContext.Provider value={{ alert }}>
-      <Navbar />
-      <main className='container position-relative mb-5'>
-        <Alert
-          show={show}
-          variant={variant}
-          onClose={() => setShow(false)}
-          className='mb-3 position-absolute'
-          dismissible
-          style={{
-            zIndex: 1,
-            top: '-2.25rem',
-            right: '0.75rem',
-            animation: 'AlertDrop 200ms ease-in-out',
-          }}
-        >
-          {message}
-        </Alert>
-        {children}
-      </main>
+      <Alert
+        show={show}
+        variant={variant}
+        onClose={() => setShow(false)}
+        className='position-absolute'
+        dismissible
+        style={{
+          zIndex: 1,
+          top: '4.5rem',
+          right: '1rem',
+          animation: 'AlertDrop 200ms ease-in-out',
+        }}
+      >
+        {message}
+      </Alert>
+      {children}
     </AlertContext.Provider>
   );
 }
