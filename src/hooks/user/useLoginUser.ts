@@ -26,7 +26,7 @@ export default function useLoginUser() {
       setUser(data);
       if (state?.from) navigate(state.from, { replace: true });
       else navigate('/campgrounds', { replace: true });
-      alert('Successfully logged in!', 'success');
+      alert('Successfully signed in in!', 'success');
     },
   });
 
