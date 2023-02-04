@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
-import bgImage from '../../assets/images/jeffrey-keenan-jNL9ooegmUE-unsplash.jpg';
+import bgImage from '../../assets/images/jeffrey-keenan-jNL9ooegmUE-unsplash.webp';
 
 import './Home.css';
 
