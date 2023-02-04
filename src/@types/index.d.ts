@@ -11,3 +11,9 @@ type AppError = {
     text: string;
   };
 };
+
+type MutationError = Error & {
+  response?: {
+    data: string;
+  };
+};
