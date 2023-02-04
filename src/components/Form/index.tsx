@@ -101,6 +101,9 @@ const FormComponent: React.FC<FormProps> = (props) => {
             variant='success'
             disabled={isLoading}
             className='me-2'
+            style={{
+              minWidth: '11rem',
+            }}
           >
             <Loader text={`${action} campground`} isLoading={isLoading} />
           </Button>

@@ -24,7 +24,7 @@ export default function ReviewCard({ cId, review, user }: Props) {
             variant='danger'
             size='sm'
             disabled={isLoading}
-            style={{ minWidth: '4rem' }}
+            style={{ minWidth: '3.5rem' }}
             onClick={() => mutate({ id: cId, reviewId: review._id })}
           >
             <Loader text='delete' isLoading={isLoading} />

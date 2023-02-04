@@ -25,7 +25,9 @@ export default function ReviewForm({ cId }: { cId: string }) {
               Review cannot be empty
             </Form.Control.Feedback>
           </Form.Group>
-          <Button variant='success' type='submit' disabled={isLoading}>
+          <Button variant='success' type='submit' 
+            style={{minWidth: '4.75rem'}}
+          disabled={isLoading}>
             <Loader text='submit' isLoading={isLoading} />
           </Button>
         </Form>

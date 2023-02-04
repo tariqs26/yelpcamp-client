@@ -64,6 +64,7 @@ export default function Campground() {
               <Button
                 variant='danger'
                 disabled={mutate.isLoading}
+                style={{ minWidth: '4.5rem' }}
                 onClick={() => mutate.mutate(data._id)}
               >
                 <Loader text='Delete' isLoading={mutate.isLoading} />
