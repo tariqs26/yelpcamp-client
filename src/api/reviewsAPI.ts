@@ -11,9 +11,8 @@ export const createReview = async ({
 }: {
   cId: string;
   review: ReviewInput;
-}): Promise<Review> => {
-  return (await reviewsAPI.post(`/campgrounds/${cId}/reviews`, review)).data;
-};
+}): Promise<Review> =>
+  (await reviewsAPI.post(`/campgrounds/${cId}/reviews`, review)).data;
 
 export const deleteReview = async ({
   id,
