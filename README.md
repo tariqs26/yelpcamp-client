@@ -1,6 +1,6 @@
 # YelpCamp
 
-![home](./project-images/home.png)
+![home](./project-images/home-page.png)
 
 A full stack web application, where users can create, edit, delete and view and review campgrounds locations built with the MERN stack.
 
