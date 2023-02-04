@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import useLogoutUser from 'hooks/user/useLogout';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import Loader from 'components/SubmitLoader';
 import './Navbar.css';
 
 export default function NavbarComponent() {
@@ -59,7 +60,7 @@ export default function NavbarComponent() {
                 }}
                 disabled={isLoading}
               >
-                Sign out
+                <Loader text='Sign out' isLoading={isLoading} />
               </Nav.Link>
             ) : (
               <>
