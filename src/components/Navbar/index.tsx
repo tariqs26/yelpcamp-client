@@ -54,6 +54,9 @@ export default function NavbarComponent() {
             {user || isLoading ? (
               <Nav.Link
                 className='btn btn-outline-primary outline-2 text-light px-2 py-1'
+                style={{
+                  minWidth: '4.7rem',
+                }}
                 onClick={() => {
                   mutate();
                   handleNavClick();
