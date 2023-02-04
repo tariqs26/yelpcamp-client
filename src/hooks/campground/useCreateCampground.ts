@@ -11,8 +11,11 @@ export default function useCreateCampground() {
 
   const { mutate, isLoading } = useMutation({
     mutationFn: createCampground,
-    onError: (err: Error) => {
-      alert(`${err.message}: Failed to create campground`, 'danger');
+    onError: (err: MutationError) => {
+      alert(
+        `${err.response?.data || err.message}: Failed to create campground`,
+        'danger'
+      );
     },
     onSuccess: (data) => {
       queryClient.setQueryData(['campgrounds', data._id], data);

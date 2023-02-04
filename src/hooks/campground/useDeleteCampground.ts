@@ -10,8 +10,8 @@ export default function useDeleteCampground() {
 
   return useMutation({
     mutationFn: deleteCampground,
-    onError: (err: Error) => {
-      alert(`${err.message}: Failed to delete campground`, 'danger');
+    onError: (err: MutationError) => {
+      alert(`${err.response?.data || err.message}: Failed to delete campground`, 'danger');
     },
     onSuccess: (_, campgroundId) => {
       queryClient.setQueryData(

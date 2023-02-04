@@ -13,9 +13,12 @@ export default function useUpdateCampground(
 
   const { mutate, isLoading } = useMutation({
     mutationFn: updateCampground,
-    onError: (err: Error) => {
+    onError: (err: MutationError) => {
       close();
-      alert(`${err.message}: Failed to update campground`, 'danger');
+      alert(
+        `${err.response?.data || err.message}: Failed to update campground`,
+        'danger'
+      );
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
