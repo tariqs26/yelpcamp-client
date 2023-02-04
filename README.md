@@ -4,35 +4,6 @@
 
 A full stack web application, where users can create, edit, delete and view and review campgrounds locations built with the MERN stack.
 
-## Tech Stack
-
-A high level overview of the tech stack used in this project.
-
-### Frontend
-
-- [React](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/) as the primary frontend framework.
-- [React Router](https://reactrouter.com/) for routing.
-- [React Query](https://react-query.tanstack.com/) for data fetching and caching, and for managing the global state.
-- [Bootstrap](https://getbootstrap.com/) used to create a standardized, aesthetic and responsive UI.
-- [Vite](https://vitejs.dev/) for the frontend build tool.
-
-### Backend
-[Backend Repository](https://github.com/tariqs26/yelpcamp-server) 
-
-- [Node.js](https://nodejs.org/en/) with [TypeScript](https://www.typescriptlang.org/) as the primary backend framework.
-- [Express](https://expressjs.com/) for creating the RESTful API, managing middleware and routing.
-- [MongoDB](https://www.mongodb.com/) database used for storing all campgrounds, reviews and users data.
-- [Mongoose](https://mongoosejs.com/) for modeling the data, and for interacting with the MongoDB database.
-- [Joi](https://joi.dev/) used for validating the data sent to the backend.
-- [Passport](http://www.passportjs.org/) for managing user authentication and authorization.
-- [Mapbox](https://www.mapbox.com/) for displaying maps.
-
-### Security
-
-- [Helmet](https://helmetjs.github.io/) used for securing HTTP headers.
-- [Express Mongo Sanitize](https://www.npmjs.com/package/express-mongo-sanitize) used for sanitizing user-supplied data to prevent MongoDB Operator Injection.
-- [Dotenv](https://www.npmjs.com/package/dotenv) used for storing environment variables.
-
 ## Notable Features
 
 - Speedy initial page load times with React Suspense and Lazy loading components.
@@ -46,6 +17,28 @@ A high level overview of the tech stack used in this project.
 
 - Pagination for the campgrounds index page, using React Query to fetch the data.
 - Search functionality for the campgrounds index page, using React Query to fetch the data.
+
+## Tech Stack
+
+A high level overview of the tech stack used in this project.
+
+### Frontend
+
+- [React](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/) as the primary frontend framework.
+- [React Router](https://reactrouter.com/) for routing.
+- [React Query](https://react-query.tanstack.com/) for data fetching and caching, and for managing the global state.
+- [Bootstrap](https://getbootstrap.com/) used to create a standardized, aesthetic and responsive UI.
+- [Vite](https://vitejs.dev/) for the frontend build tool.
+
+### [Backend](https://github.com/tariqs26/yelpcamp-server)
+
+- [Node.js](https://nodejs.org/en/) with [TypeScript](https://www.typescriptlang.org/) as the primary backend framework.
+- [Express](https://expressjs.com/) for creating the RESTful API, managing middleware and routing.
+- [MongoDB](https://www.mongodb.com/) database used for storing all campgrounds, reviews and users data.
+- [Mongoose](https://mongoosejs.com/) for modeling the data, and for interacting with the MongoDB database.
+- [Joi](https://joi.dev/) used for validating the data sent to the backend.
+- [Passport](http://www.passportjs.org/) for managing user authentication and authorization.
+- [Express Sessions](https://www.npmjs.com/package/express-session) for managing user sessions.
 
 ## Installation
 
