@@ -1,6 +1,7 @@
 import { Button, Card } from 'react-bootstrap';
 import useDeleteReview from 'hooks/review/useDeleteReview';
 import { Rating } from 'components/Rating';
+import Loader from 'components/SubmitLoader';
 
 type Props = {
   cId: string;
@@ -9,7 +10,7 @@ type Props = {
 };
 
 export default function ReviewCard({ cId, review, user }: Props) {
-  const reviewMutate = useDeleteReview(cId);
+  const { mutate, isLoading } = useDeleteReview(cId);
   return (
     <Card className='mt-3'>
       <Card.Body>
@@ -22,12 +23,10 @@ export default function ReviewCard({ cId, review, user }: Props) {
           <Button
             variant='danger'
             size='sm'
-            disabled={reviewMutate.isLoading}
-            onClick={() =>
-              reviewMutate.mutate({ id: cId, reviewId: review._id })
-            }
+            disabled={isLoading}
+            onClick={() => mutate({ id: cId, reviewId: review._id })}
           >
-            Delete
+            <Loader text='delete' isLoading={isLoading} />
           </Button>
         )}
       </Card.Body>

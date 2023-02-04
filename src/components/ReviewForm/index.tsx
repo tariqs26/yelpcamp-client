@@ -1,6 +1,7 @@
 import useCreateReview from 'hooks/review/useCreateReview';
 import { Button, Form, Card } from 'react-bootstrap';
 import { RatingInput } from 'components/Rating';
+import Loader from 'components/SubmitLoader';
 
 export default function ReviewForm({ cId }: { cId: string }) {
   const { handleSubmit, isLoading } = useCreateReview(cId);
@@ -25,7 +26,7 @@ export default function ReviewForm({ cId }: { cId: string }) {
             </Form.Control.Feedback>
           </Form.Group>
           <Button variant='success' type='submit' disabled={isLoading}>
-            Submit
+            <Loader text='submit' isLoading={isLoading} />
           </Button>
         </Form>
       </Card.Body>
