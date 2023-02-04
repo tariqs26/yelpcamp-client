@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
+import bgImage from '../../assets/images/jeffrey-keenan-jNL9ooegmUE-unsplash.jpg';
+
 import './Home.css';
 
 export default function Home() {
@@ -8,8 +10,7 @@ export default function Home() {
     <div
       className='cover-container d-flex flex-grow-1 flex-column w-100 p-sm-3 bg-dark text-white justify-content-center align-items-center'
       style={{
-        backgroundImage:
-          'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(./src/assets/images/jeffrey-keenan-jNL9ooegmUE-unsplash.jpg)',
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${bgImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
