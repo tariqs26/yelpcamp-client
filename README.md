@@ -49,3 +49,8 @@ A high level overview of the tech stack used in this project.
 - `npm run dev` - runs the app in the development mode
 - `npm run build` - builds the app for production to the `dist` folder
 - `npm run serve` - serves the app in production mode
+
+## Environment Variables
+
+- `VITE_API_URL` - the URL of the backend API
+- `VITE_MAPBOX_TOKEN` - the Mapbox API token
