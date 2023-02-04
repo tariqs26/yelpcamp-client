@@ -16,7 +16,6 @@ const NewCampground = lazy(() => import('pages/NewCampground'));
 const ProtectedRoute = lazy(() => import('routes/ProtectedRoute'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -38,13 +37,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
               <Route path='/' element={<Home />} />
               <Route
                 element={
-                  <>
-                    <main className='container position-relative mb-5 mt-5'>
-                      <Suspense fallback={<Fallback />}>
-                        <Outlet />
-                      </Suspense>
-                    </main>
-                  </>
+                  <main className='container position-relative mb-5 mt-5'>
+                    <Suspense fallback={<Fallback />}>
+                      <Outlet />
+                    </Suspense>
+                  </main>
                 }
               >
                 <Route path='/register' element={<Register />} />

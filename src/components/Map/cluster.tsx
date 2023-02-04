@@ -52,9 +52,14 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
       interactiveLayerIds={[clusterLayer.id as unknown as string]}
       onClick={onClick}
       ref={mapRef}
-      style={{ height: '400px', width: '100%', marginBottom: '1rem' }}
+      style={{
+        height: '400px',
+        width: '100%',
+        marginBottom: '1rem',
+        borderRadius: 'calc(0.375rem - 1px)',
+      }}
     >
-        <NavigationControl />
+      <NavigationControl />
       <Source
         id='campgrounds'
         type='geojson'
