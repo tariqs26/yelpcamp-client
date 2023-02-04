@@ -17,7 +17,7 @@ export default function Home() {
         backgroundAttachment: 'fixed',
       }}
     >
-      <main className='main px-3'>
+      <main className='main px-3 my-4'>
         <div>
           <h1>Welcome to YelpCamp!</h1>
           <p className='lead'>
