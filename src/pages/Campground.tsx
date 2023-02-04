@@ -11,6 +11,7 @@ import Loader from 'components/SubmitLoader';
 import Map from 'components/Map';
 import ReviewForm from 'components/ReviewForm';
 import ReviewCard from 'components/ReviewCard';
+import Fallback from 'components/Fallback';
 
 export default function Campground() {
   const [modalShow, setModalShow] = useState(false);
@@ -18,7 +19,7 @@ export default function Campground() {
   const mutate = useDeleteCampground();
   const { user } = useAuth();
 
-  if (isFetching) return <Loader text='Loading' isLoading={isFetching} />;
+  if (isFetching) return <Fallback />;
   if (!data) return <div>Not found</div>;
   if (isAppError(data)) {
     return (
