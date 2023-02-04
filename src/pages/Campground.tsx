@@ -18,7 +18,7 @@ export default function Campground() {
   const mutate = useDeleteCampground();
   const { user } = useAuth();
 
-  if (isFetching) return <div>Loading...</div>;
+  if (isFetching) return <Loader text='Loading' isLoading={isFetching} />;
   if (!data) return <div>Not found</div>;
   if (isAppError(data)) {
     return (
