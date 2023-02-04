@@ -6,7 +6,7 @@ const usersAPI = axios.create({
   withCredentials: true,
 });
 
-export const registerUser = async (user: UserInput): Promise<User | string> => {
+export const registerUser = async (user: UserInput): Promise<AppUser | string> => {
   try {
     const res = await usersAPI.post('/register', user);
     return res.data;
@@ -17,7 +17,7 @@ export const registerUser = async (user: UserInput): Promise<User | string> => {
   }
 };
 
-export const loginUser = async (user: UserInput): Promise<User | string> => {
+export const loginUser = async (user: UserInput): Promise<AppUser | string> => {
   try {
     const res = await usersAPI.post('/login', user);
     return res.data;
@@ -32,7 +32,7 @@ export const logoutUser = async (): Promise<void> => {
   await usersAPI.get('/logout');
 };
 
-export const fetchUser = async (): Promise<User> =>
+export const fetchUser = async (): Promise<AppUser> =>
   (await usersAPI.get('/getUser')).data;
 
 export default usersAPI;

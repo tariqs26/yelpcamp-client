@@ -1,6 +1,6 @@
 type Review = {
   _id: string;
-  author: User;
+  author: AppUser;
   rating: number;
   body: string;
 };

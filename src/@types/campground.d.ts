@@ -1,6 +1,6 @@
 type Campground = {
   _id: string;
-  author: User;
+  author: AppUser;
   title: string;
   image: string;
   location: string;

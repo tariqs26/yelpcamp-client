@@ -6,3 +6,4 @@ type User = {
 };
 
 type UserInput = Omit<User, '_id'>;
+type AppUser = Omit<User, 'password'>;

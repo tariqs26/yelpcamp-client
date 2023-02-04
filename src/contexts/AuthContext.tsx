@@ -2,14 +2,14 @@ import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { fetchUser } from 'api/usersAPI';
 
 type AuthContextType = {
-  user: User | undefined;
-  setUser: (user: User | undefined) => void;
+  user: AppUser | undefined;
+  setUser: (user: AppUser | undefined) => void;
 };
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export default function AuthApi({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | undefined>();
+  const [user, setUser] = useState<AppUser | undefined>();
   const [loadingInitial, setLoadingInitial] = useState(true);
 
   useEffect(() => {

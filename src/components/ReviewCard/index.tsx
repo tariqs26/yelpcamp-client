@@ -5,7 +5,7 @@ import { Rating } from 'components/Rating';
 type Props = {
   cId: string;
   review: Review;
-  user: User | undefined;
+  user: AppUser | undefined;
 };
 
 export default function ReviewCard({ cId, review, user }: Props) {
