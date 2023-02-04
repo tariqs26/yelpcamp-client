@@ -5,6 +5,7 @@ import {
   Layer,
   MapLayerMouseEvent,
   NavigationControl,
+  MapboxGeoJSONFeature,
 } from 'react-map-gl';
 import type { MapRef, GeoJSONSource } from 'react-map-gl';
 
@@ -18,12 +19,21 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
+type Feature = MapboxGeoJSONFeature & {
+  properties?: {
+    cluster_id: number;
+  };
+  geometry: {
+    coordinates: [number, number];
+  };
+};
+
 export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
   const mapRef = useRef<MapRef>(null);
 
   const onClick = (e: MapLayerMouseEvent) => {
     if (!e.features) return;
-    const feature = e.features[0];
+    const feature = e.features[0] as Feature;
     if (!feature.properties) return;
     const clusterId = feature.properties.cluster_id;
     if (!mapRef.current) return;
