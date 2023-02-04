@@ -2,6 +2,7 @@
   padding-inline: 0 !important;
   padding-bottom: 0.1rem;
   border-bottom: 2px solid transparent;
+  border-radius: 1px;
   font-weight: 600;
 }
 
