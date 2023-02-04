@@ -19,14 +19,11 @@ export default function Home() {
       <main className='main px-3'>
         <div>
           <h1>Welcome to YelpCamp!</h1>
-          <p
-            className='lead'
-            style={{
-              maxWidth: '40rem',
-            }}
-          >
-            Your one-stop shop for finding the best campgrounds in the world, no
-            matter where you are.
+          <p className='lead'>
+            Jump right in and explore our many campgrounds.
+            <br />
+            Feel free to share some of your own and review the ones you have
+            visited.
           </p>
           <p className='lead'>
             <NavLink
