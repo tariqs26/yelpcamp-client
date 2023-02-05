@@ -3,6 +3,15 @@ import { Row, Col, Card, Placeholder } from 'react-bootstrap';
 export default function LoadingCard() {
   return (
     <>
+      <Placeholder
+        style={{
+          height: '400px',
+          width: '100%',
+          marginBottom: '1rem',
+          borderRadius: 'calc(0.375rem - 1px)',
+          animation: 'placeholder-glow 2s ease-in-out infinite',
+        }}
+      />
       <header className='d-flex justify-content-between flex-column gap-3 align-items-sm-center flex-sm-row align-items-start'>
         <h1 className='mb-0'>All Campgrounds</h1>
         <Placeholder.Button variant='success'>
