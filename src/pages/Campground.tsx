@@ -90,6 +90,7 @@ export default function Campground() {
           title={data.title}
           location={data.location}
         />
+        <h4 className='mt-3'>Reviews</h4>
         <ReviewForm cId={id} />
         {data.reviews.map((review: Review) => (
           <ReviewCard key={review._id} cId={id} review={review} user={user} />

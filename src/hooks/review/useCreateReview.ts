@@ -4,7 +4,7 @@ import { createReview } from 'api/reviewsAPI';
 import { useAlert } from 'contexts/AlertContext';
 import { dataFromInput, handleValidation } from '../../utils';
 
-export default function useCreateReview(cId: string) {
+export default function useCreateReview(cId: string, close: () => void) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { alert } = useAlert();
@@ -23,6 +23,7 @@ export default function useCreateReview(cId: string) {
         });
     },
     onSuccess: (data) => {
+      close();
       queryClient.setQueryData(
         ['campgrounds', cId],
         (oldData: Campground | undefined) => {

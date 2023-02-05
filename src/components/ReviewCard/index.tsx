@@ -18,7 +18,7 @@ export default function ReviewCard({ cId, review, user }: Props) {
           <Card.Title>{review.author.username}</Card.Title>
           <Rating rating={review.rating} text={`Rated: ${review.rating}/5`} />
         </div>
-        <Card.Text>review: {review.body}</Card.Text>
+        <Card.Text>{review.body}</Card.Text>
         {user && user._id === review.author._id && (
           <Button
             variant='danger'
