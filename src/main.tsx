@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
               <Route path='/' element={<Home />} />
               <Route
                 element={
-                  <main className='container position-relative mb-5 mt-5'>
+                  <main className='container position-relative my-4'>
                     <Suspense fallback={<Fallback />}>
                       <Outlet />
                     </Suspense>
