@@ -63,7 +63,7 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
       onClick={onClick}
       ref={mapRef}
       style={{
-        height: '400px',
+        height: 'min(50vh, 400px)',
         width: '100%',
         marginBottom: '1rem',
         borderRadius: 'calc(0.375rem - 1px)',

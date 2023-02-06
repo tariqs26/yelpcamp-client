@@ -5,7 +5,7 @@ export default function LoadingCard() {
     <>
       <Placeholder
         style={{
-          height: '400px',
+          height: 'min(50vh, 400px)',
           width: '100%',
           marginBottom: '1rem',
           borderRadius: 'calc(0.375rem - 1px)',
