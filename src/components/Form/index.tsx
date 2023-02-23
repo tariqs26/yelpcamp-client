@@ -1,4 +1,4 @@
-import { FormEventHandler } from 'react';
+import { FormEventHandler, useState } from 'react';
 import { Form, Button, Row, InputGroup, Card } from 'react-bootstrap';
 import ConditionalWrapper from '../ConditionalWrapper';
 import Loader from 'components/SubmitLoader';
@@ -13,6 +13,9 @@ type FormProps = {
 
 const FormComponent: React.FC<FormProps> = (props) => {
   const { handleSubmit, leaveHandler, initialData, action, isLoading } = props;
+  const [descChars, setDescChars] = useState(
+    initialData?.description?.length || 0
+  );
   return (
     <Row>
       <ConditionalWrapper
@@ -88,13 +91,17 @@ const FormComponent: React.FC<FormProps> = (props) => {
               name='description'
               placeholder='A beautiful campground with a creek running through it.'
               defaultValue={initialData?.description}
-              maxLength={200}
-              rows={3}
+              maxLength={300}
+              onChange={(e) => setDescChars(e.target.value.length)}
+              rows={4}
               required
             />
             <Form.Control.Feedback type='invalid'>
               Description cannot be empty
             </Form.Control.Feedback>
+            <Form.Text className='text-muted'>
+              {descChars}/300 characters
+            </Form.Text>
           </Form.Group>
           <Button
             type='submit'
