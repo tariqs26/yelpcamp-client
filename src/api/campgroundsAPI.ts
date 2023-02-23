@@ -4,6 +4,7 @@ import { ErrorDetails } from '../@types/Error';
 const campgroundsAPI = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/campgrounds`,
   withCredentials: true,
+  timeout: 10000, // 10 seconds
 });
 
 export const fetchCampgrounds = async (): Promise<Campground[]> =>
