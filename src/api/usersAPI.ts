@@ -4,9 +4,12 @@ import { ErrorDetails } from '../@types/Error';
 const usersAPI = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
+  timeout: 10000, // 10 seconds
 });
 
-export const registerUser = async (user: UserInput): Promise<AppUser | string> => {
+export const registerUser = async (
+  user: UserInput
+): Promise<AppUser | string> => {
   try {
     const res = await usersAPI.post('/register', user);
     return res.data;
