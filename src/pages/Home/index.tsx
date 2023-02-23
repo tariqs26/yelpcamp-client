@@ -10,14 +10,15 @@ export default function Home() {
     <div
       className='cover-container d-flex flex-grow-1 flex-column w-100 p-sm-3 bg-dark text-white justify-content-center align-items-center'
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${bgImage})`,
+        backgroundImage: `url(${bgImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed',
       }}
     >
-      <main className='main px-3 my-4'>
+      <main className='main'>
+        <div />
         <div>
           <h1>Welcome to YelpCamp!</h1>
           <p className='lead'>
