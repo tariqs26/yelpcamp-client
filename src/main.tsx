@@ -49,16 +49,16 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
                 <Route path='/campgrounds'>
                   <Route index element={<Campgrounds />} />
                   <Route path=':id' element={<Campground />} />
-                  <Route
-                    path='new'
-                    element={
-                      <ProtectedRoute
-                        message='Please sign in to create a new campground'
-                        element={<NewCampground />}
-                      />
-                    }
-                  />
                 </Route>
+                <Route
+                  path='new-campground'
+                  element={
+                    <ProtectedRoute
+                      message='Please sign in to create a new campground'
+                      element={<NewCampground />}
+                    />
+                  }
+                />
                 <Route path='*' element={<NotFound />} />
               </Route>
             </Routes>

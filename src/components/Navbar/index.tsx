@@ -35,7 +35,6 @@ export default function NavbarComponent() {
               Home
             </NavLink>
             <NavLink
-              end
               to='/campgrounds'
               className='nav-link'
               onClick={handleNavClick}
@@ -43,7 +42,7 @@ export default function NavbarComponent() {
               Campgrounds
             </NavLink>
             <NavLink
-              to='/campgrounds/new'
+              to='/new-campground'
               className='nav-link'
               onClick={handleNavClick}
             >

@@ -31,7 +31,7 @@ export default function Campgrounds() {
         <h1 className='mb-0'>All Campgrounds</h1>
         <Link
           className='btn btn-success'
-          to='/campgrounds/new'
+          to='/new-campground'
           style={{ width: 'fit-content' }}
         >
           Add campground
