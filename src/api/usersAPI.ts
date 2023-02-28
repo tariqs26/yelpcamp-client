@@ -4,7 +4,7 @@ import { ErrorDetails } from '../@types/Error';
 const usersAPI = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
-  timeout: 10000, // 10 seconds
+  timeout: 5000, // 5 seconds
 });
 
 export const registerUser = async (
