@@ -6,3 +6,9 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 500px) {
+  .alert-modal {
+    left: 1rem;
+  }
+}

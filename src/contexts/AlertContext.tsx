@@ -41,7 +41,7 @@ export default function AlertApi({ children }: { children: React.ReactNode }) {
         show={show}
         variant={variant}
         onClose={() => setShow(false)}
-        className='position-fixed'
+        className='position-fixed alert-modal'
         dismissible
         style={{
           zIndex: 999,
