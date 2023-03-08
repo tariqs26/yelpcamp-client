@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { Card, Row, Col, Image } from 'react-bootstrap';
 import { fromDate } from '../../utils';
 
-const CardComponent: React.FC<Campground> = (props) => {
+const CardComponent: React.FC<Campground & { pageIdx?: number }> = (props) => {
   const { _id, title, image, location, description } = props;
   return (
     <Card className='mt-4 overflow-hidden'>
       <Row>
-        <Col md={5}>
+        <Col md={4}>
           <Image
             src={image}
             alt={`${title} campground image`}
@@ -25,7 +25,7 @@ const CardComponent: React.FC<Campground> = (props) => {
             }}
           />
         </Col>
-        <Col md={7}>
+        <Col md={8}>
           <Card.Body className='h-100 d-flex flex-column'>
             <Card.Title>{title}</Card.Title>
             <p className='text-muted'>{location}</p>

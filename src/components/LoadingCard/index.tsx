@@ -18,7 +18,7 @@ export default function LoadingCard() {
           Add campground
         </Placeholder.Button>
       </header>
-      {Array(10)
+      {Array(5)
         .fill(0)
         .map((_, i) => (
           <CardComponent key={i} />
@@ -27,11 +27,11 @@ export default function LoadingCard() {
   );
 }
 
-const CardComponent = () => {
+export const CardComponent = () => {
   return (
     <Card className='mt-4 overflow-hidden'>
       <Row>
-        <Col md={5}>
+        <Col md={4}>
           <Placeholder
             style={{
               height: '100%',
@@ -41,7 +41,7 @@ const CardComponent = () => {
             }}
           />
         </Col>
-        <Col md={7}>
+        <Col md={8}>
           <Card.Body>
             <Placeholder as={Card.Title} animation='glow'>
               <Placeholder xs={6} className='rounded' />
