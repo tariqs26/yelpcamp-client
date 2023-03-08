@@ -49,10 +49,10 @@ export default function NavbarComponent() {
               New campground
             </NavLink>
           </Nav>
-          <div className='nav-btns d-flex gap-2 align-items-center  ms-auto'>
+          <div className='nav-btns d-flex gap-3 align-items-center ms-auto mb-2 mb-lg-0 mt-3 mt-lg-0'>
             {user || isLoading ? (
               <Nav.Link
-                className='btn btn-outline-primary outline-2 text-light px-2 py-1'
+                className='btn btn-outline-secondary text-light px-2 py-1'
                 style={{
                   minWidth: '4.7rem',
                 }}
@@ -68,13 +68,13 @@ export default function NavbarComponent() {
               <>
                 <NavLink
                   to='/login'
-                  className='btn btn-outline-primary outline-2 text-light px-2 py-1'
+                  className='btn btn-outline-secondary text-light px-2 py-1'
                   onClick={handleNavClick}
                 >
                   Sign in
                 </NavLink>
                 <NavLink
-                  className='btn btn-outline-primary outline-2 text-light px-2 py-1'
+                  className='btn btn-primary text-light px-2 py-1'
                   to='/register'
                   onClick={handleNavClick}
                 >
