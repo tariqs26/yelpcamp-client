@@ -33,7 +33,7 @@ export default function Campground() {
 
   return (
     <Row>
-      <div className='col-12 col-md-6 mb-3'>
+      <div className='col-12 col-md-8 offset-md-2 col-lg-6 mb-3 offset-lg-0'>
         <Card>
           <Card.Img
             src={data.image}
@@ -83,7 +83,7 @@ export default function Campground() {
           closeModal={() => setModalShow(false)}
         />
       </div>
-      <div className='col-12 col-md-6'>
+      <div className='col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-0'>
         <Map
           coordinates={{
             longitude: data.geometry.coordinates[0],
