@@ -7,6 +7,7 @@ import AuthApi from 'contexts/AuthContext';
 import Home from 'pages/Home';
 import Fallback from 'components/Fallback';
 import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
 
 const Register = lazy(() => import('pages/Register'));
 const Login = lazy(() => import('pages/Login'));
@@ -62,6 +63,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
                 <Route path='*' element={<NotFound />} />
               </Route>
             </Routes>
+            <Footer />
           </AlertApi>
         </BrowserRouter>
       </AuthApi>
