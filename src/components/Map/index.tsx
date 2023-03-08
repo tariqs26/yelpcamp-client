@@ -21,7 +21,7 @@ export default function Map({ coordinates, title, location }: Props) {
         zoom: 9,
       }}
       style={{
-        height: '360px',
+        height: 'min(40vh, 350px)',
         borderRadius: 'calc(0.375rem - 1px)',
       }}
       mapStyle='mapbox://styles/mapbox/streets-v11'
