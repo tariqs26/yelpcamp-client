@@ -40,7 +40,9 @@ export default function Campground() {
             variant='top'
             style={{
               backgroundColor: 'rgba(0,0,0,0.5)',
-              aspectRatio: '16/9',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              height: '360px',
             }}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
