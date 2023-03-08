@@ -19,3 +19,10 @@ type CampgroundInput = Pick<
   Campground,
   'title' | 'image' | 'location' | 'price' | 'description'
 >;
+
+type CampgroundsData =
+  | {
+      pageParams?: unknown[];
+      pages?: { campgrounds: Pick<Campground, '_id'>[]; totalPages: number }[];
+    }
+  | undefined;
