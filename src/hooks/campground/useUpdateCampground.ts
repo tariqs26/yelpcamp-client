@@ -20,10 +20,26 @@ export default function useUpdateCampground(
         'danger'
       );
     },
-    onSuccess: () => {
+    onSuccess: (_, { id, campground: updatedCampground }) => {
       queryClient.invalidateQueries({
-        queryKey: ['campgrounds'],
+        queryKey: ['campgrounds', id],
       });
+      queryClient.setQueryData(['campgrounds'], (old: CampgroundsData) => {
+        return {
+          ...old,
+          pages: old?.pages?.map((page) => {
+            return {
+              ...page,
+              campgrounds: page.campgrounds.map((campground) =>
+                campground._id !== id
+                  ? campground
+                  : { ...campground, ...updatedCampground }
+              ),
+            };
+          }),
+        };
+      });
+
       close();
       alert('Campground updated successfully', 'success');
     },

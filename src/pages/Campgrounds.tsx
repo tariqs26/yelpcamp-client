@@ -2,14 +2,24 @@ import { Link } from 'react-router-dom';
 import useFetchCampgrounds from 'hooks/campground/useFetchCampgrounds';
 import Error from 'components/Error';
 import Card from 'components/Card';
-import LoadingCard from 'components/LoadingCard';
+import LoadingCard, { CardComponent } from 'components/LoadingCard';
 import ClusterMap from 'components/Map/cluster';
+import { Button } from 'react-bootstrap';
+import Loader from 'components/SubmitLoader';
 import { ErrorDetails } from '../@types/Error';
 
 export default function Campgrounds() {
-  const { data, status, error } = useFetchCampgrounds();
+  const {
+    data,
+    status,
+    error,
+    hasNextPage,
+    isFetchingNextPage,
+    isRefetching,
+    fetchNextPage,
+  } = useFetchCampgrounds();
 
-  if (status === 'loading') return <LoadingCard />;
+  if (status === 'loading' || isRefetching) return <LoadingCard />;
   if (status === 'error' || !data)
     return (
       <Error
@@ -21,10 +31,12 @@ export default function Campgrounds() {
     <>
       <ClusterMap
         campgrounds={{
-          features: data.map(({ geometry }) => ({
-            type: 'Feature',
-            geometry,
-          })),
+          features: data.pages
+            .flatMap(({ campgrounds }) => campgrounds)
+            .map(({ geometry }) => ({
+              type: 'Feature',
+              geometry,
+            })),
         }}
       />
       <header className='d-flex justify-content-between flex-column gap-3 align-items-sm-center flex-sm-row align-items-start'>
@@ -37,10 +49,26 @@ export default function Campgrounds() {
           Add campground
         </Link>
       </header>
-      {!data.length ? (
+      {!data.pages.length ? (
         <h4 className='text-muted mt-4'>No campgrounds available</h4>
       ) : (
-        data.map((props: Campground) => <Card key={props._id} {...props} />)
+        data.pages
+          .flatMap(({ campgrounds }) => campgrounds)
+          .map((props: Campground) => <Card key={props._id} {...props} />)
+      )}
+      {isFetchingNextPage &&
+        Array(5)
+          .fill(0)
+          .map((_, i) => <CardComponent key={i} />)}
+      {hasNextPage && (
+        <Button
+          variant='secondary mt-4'
+          style={{ minWidth: '6.4rem' }}
+          disabled={isFetchingNextPage}
+          onClick={() => fetchNextPage()}
+        >
+          <Loader text='Load more' isLoading={isFetchingNextPage} />
+        </Button>
       )}
     </>
   );

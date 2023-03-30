@@ -4,11 +4,18 @@ import { ErrorDetails } from '../@types/Error';
 const campgroundsAPI = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/campgrounds`,
   withCredentials: true,
-  timeout: 10000, // 10 seconds
+  timeout: 5000, // 5 seconds
 });
 
-export const fetchCampgrounds = async (): Promise<Campground[]> =>
-  (await campgroundsAPI.get('/')).data;
+export const fetchCampgrounds = async ({
+  pageParam: page = 1,
+}): Promise<{
+  campgrounds: Campground[];
+  totalPages: number;
+}> => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return (await campgroundsAPI.get('/', { params: { page } })).data;
+}
 
 export const fetchCampgroundById = async (
   id: string

@@ -1,14 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCampgrounds } from 'api/campgroundsAPI';
 
 export default function useFetchCampgrounds() {
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ['campgrounds'],
     queryFn: fetchCampgrounds,
-    select: (data) =>
-      data.sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      ),
+    getNextPageParam: (_, pages) => {
+      if (pages.length < pages[0].totalPages) return pages.length + 1;
+      return undefined;
+    },
   });
 }
