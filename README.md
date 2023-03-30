@@ -6,21 +6,24 @@ A full stack web application, where users can create, edit, delete and view and 
 
 ## Notable Features
 
+### Frontend
+
 - Speedy initial page load times with React Suspense and Lazy loading components.
-- React Router for routing, with protected routes for authenticated users, and NavLinks which prevent the page from reloading, and maintain the active state.
-- Performant and Robust data fetching with React Query, with the ability to cache data and refetch it when needed.
-- Great user experience with Flash messages for feedback, using a custom Context, form validation feedback and skeleton loading components using Bootstrap.
+- React Router for routing, with protected routes for authenticated users, and NavLinks which prevent the page from reloading, and maintain the user state.
+- Performant and Robust data fetching, caching and mutation with React Query.
+  - Dynamic loading of data on button press using the Infinite Query feature.
+- Great user experience with flash messages for feedback using a custom Context, form validation feedback and skeleton loading components using Bootstrap.
+
+### [Backend](https://github.com/tariqs26/yelpcamp-server)
+
 - RESTful API built with Express, with CRUD operations for campgrounds, reviews and users.
 - User authentication and authorization with Passport, managing user sessions with Express Sessions and storing user data in MongoDB, along with setting up a front-end Context API to manage the global state.
 
-## Features to be implemented
+## Future Improvements
 
-- Pagination for the campgrounds index page, using React Query to fetch the data.
 - Search functionality for the campgrounds index page, using React Query to fetch the data.
 
 ## Tech Stack
-
-A high level overview of the tech stack used in this project.
 
 ### Frontend
 
