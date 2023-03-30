@@ -6,7 +6,7 @@ type Props = {
   message?: string;
 };
 
-export default function ProtectedRoute({ element, message }: Props) {
+export default function Protected({ element, message }: Props) {
   const { user } = useAuth();
 
   if (user) return element;
