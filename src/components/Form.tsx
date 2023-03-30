@@ -1,7 +1,7 @@
 import { FormEventHandler, useState } from 'react';
 import { Form, Button, Row, InputGroup, Card } from 'react-bootstrap';
 import ConditionalWrapper from './ConditionalWrapper';
-import Loader from 'components/SubmitLoader';
+import Loader from './SubmitLoader';
 
 type FormProps = {
   handleSubmit: FormEventHandler;

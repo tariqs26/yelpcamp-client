@@ -1,6 +1,6 @@
 import { Button, Card } from 'react-bootstrap';
-import useDeleteReview from 'pages/Campground/ReviewCard/useDeleteReview';
-import { Rating } from 'pages/Campground/Rating';
+import useDeleteReview from './useDeleteReview';
+import { Rating } from '../Rating';
 import Loader from 'components/SubmitLoader';
 
 type Props = {

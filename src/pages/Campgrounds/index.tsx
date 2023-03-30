@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import useFetchCampgrounds from './useFetchCampgrounds';
 import Error from 'components/Error';
 import Card from './Card';
-import LoadingCard, { CardComponent } from 'pages/Campgrounds/LoadingCard';
+import LoadingCard, { CardComponent } from 'components/LoadingCard';
 import ClusterMap from 'components/Map/cluster';
 import { Button } from 'react-bootstrap';
 import Loader from 'components/SubmitLoader';

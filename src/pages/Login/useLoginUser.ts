@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { loginUser } from 'api/usersAPI';
 import { useAlert } from 'contexts/AlertContext';
 import { useAuth } from 'contexts/AuthContext';
-import { dataFromInput, handleValidation } from '../../utils';
+import { dataFromInput, handleValidation } from 'utils';
 
 export default function useLoginUser() {
   const navigate = useNavigate();

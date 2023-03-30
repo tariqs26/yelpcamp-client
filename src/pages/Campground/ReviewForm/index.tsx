@@ -1,9 +1,8 @@
-import useCreateReview from 'pages/Campground/ReviewForm/useCreateReview';
+import useCreateReview from './useCreateReview';
 import { Button, Form, Accordion } from 'react-bootstrap';
-import { RatingInput } from 'pages/Campground/Rating';
+import { RatingInput } from '../Rating';
 import Loader from 'components/SubmitLoader';
-
-import './ReviewForm.css';
+import './index.css';
 
 export default function ReviewForm({ cId }: { cId: string }) {
   const { handleSubmit, isLoading } = useCreateReview(cId, () => {
