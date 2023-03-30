@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import useFetchCampground from 'hooks/campground/useFetchCampground';
-import useDeleteCampground from 'hooks/campground/useDeleteCampground';
+import useFetchCampground from './useFetchCampground';
+import useDeleteCampground from './useDeleteCampground';
 import { useAuth } from 'contexts/AuthContext';
-import { fromDate, isAppError } from '../utils';
+import { fromDate, isAppError } from '../../utils';
 
 import { Row, Card, ListGroup, Button } from 'react-bootstrap';
-import EditCampground from './EditCampground';
+import EditCampground from '../EditCampground';
 import Error from 'components/Error';
 import Loader from 'components/SubmitLoader';
 import Map from 'components/Map';
-import ReviewForm from 'components/ReviewForm';
-import ReviewCard from 'components/ReviewCard';
+import ReviewForm from 'pages/Campground/ReviewForm';
+import ReviewCard from 'pages/Campground/ReviewCard';
 import Fallback from 'components/Fallback';
 
 export default function Campground() {

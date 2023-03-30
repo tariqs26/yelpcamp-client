@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 
 import bgImage from '../../assets/images/jeffrey-keenan-jNL9ooegmUE-unsplash.webp';
 
-import './Home.css';
+import './index.css';
 
 export default function Home() {
   return (

@@ -1,26 +1,39 @@
 import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-import useLoginUser from 'hooks/user/useLoginUser';
+import useRegisterUser from './useRegisterUser';
 import UserFormWrapper from 'components/UserFormWrapper';
 import Loader from 'components/SubmitLoader';
 
-export default function Login() {
-  const { handleSubmit, isLoading } = useLoginUser();
-
+export default function Register() {
+  const { handleSubmit, isLoading } = useRegisterUser();
   return (
     <UserFormWrapper>
-      <div className='mb-3 card-title h3'>Sign in </div>
+      <div className='mb-3 card-title h3'>Create an account</div>
       <Form noValidate onSubmit={handleSubmit}>
+        <Form.Group className='mb-3' controlId='email'>
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            autoFocus
+            name='email'
+            placeholder='johndoe123@gmail.com'
+            required
+            type='email'
+          />
+          <Form.Control.Feedback type='invalid'>
+            Enter a valid email address.
+          </Form.Control.Feedback>
+        </Form.Group>
         <Form.Group className='mb-3' controlId='username'>
           <Form.Label>Username</Form.Label>
           <Form.Control
             name='username'
+            minLength={4}
+            maxLength={50}
             placeholder='JohnDoe123'
             required
-            autoFocus
           />
           <Form.Control.Feedback type='invalid'>
-            Enter a valid username.
+            Username must be between 4 and 50 characters.
           </Form.Control.Feedback>
         </Form.Group>
         <Form.Group className='mb-3' controlId='password'>
@@ -30,20 +43,24 @@ export default function Login() {
             placeholder='••••••••'
             required
             type='password'
+            minLength={8}
           />
+          <Form.Control.Feedback type='invalid'>
+            Password must be at least 8 characters.
+          </Form.Control.Feedback>
         </Form.Group>
         <Button
           type='submit'
-          variant='success'
           disabled={isLoading}
+          variant='success'
           className='w-100'
         >
-          <Loader text='Sign in' isLoading={isLoading} />
+          <Loader text='Create account' isLoading={isLoading} />
         </Button>
         <div className='d-flex justify-content-center gap-1 align-items-center mt-3'>
-          <span>Don't have an account?</span>{' '}
-          <Link to='/register' className='text-decoration-none'>
-            Sign up
+          <span>Have an account?</span>{' '}
+          <Link to='/login' className='text-decoration-none'>
+            Sign in
           </Link>
         </div>
       </Form>

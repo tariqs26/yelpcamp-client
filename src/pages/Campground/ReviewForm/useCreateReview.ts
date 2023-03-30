@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createReview } from 'api/reviewsAPI';
 import { useAlert } from 'contexts/AlertContext';
-import { dataFromInput, handleValidation } from '../../utils';
+import { dataFromInput, handleValidation } from '../../../utils';
 
 export default function useCreateReview(cId: string, close: () => void) {
   const queryClient = useQueryClient();

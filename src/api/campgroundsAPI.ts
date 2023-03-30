@@ -1,5 +1,5 @@
 import axios, { isAxiosError } from 'axios';
-import { ErrorDetails } from '../@types/Error';
+import { ErrorDetails } from 'types/Error';
 
 const campgroundsAPI = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/campgrounds`,
@@ -15,7 +15,7 @@ export const fetchCampgrounds = async ({
 }> => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return (await campgroundsAPI.get('/', { params: { page } })).data;
-}
+};
 
 export const fetchCampgroundById = async (
   id: string

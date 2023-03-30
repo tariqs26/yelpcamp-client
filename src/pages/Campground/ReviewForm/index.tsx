@@ -1,6 +1,6 @@
-import useCreateReview from 'hooks/review/useCreateReview';
+import useCreateReview from 'pages/Campground/ReviewForm/useCreateReview';
 import { Button, Form, Accordion } from 'react-bootstrap';
-import { RatingInput } from 'components/Rating';
+import { RatingInput } from 'pages/Campground/Rating';
 import Loader from 'components/SubmitLoader';
 
 import './ReviewForm.css';

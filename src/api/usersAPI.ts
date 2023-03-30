@@ -1,5 +1,5 @@
 import axios, { isAxiosError } from 'axios';
-import { ErrorDetails } from '../@types/Error';
+import { ErrorDetails } from 'types/Error';
 
 const usersAPI = axios.create({
   baseURL: import.meta.env.VITE_API_URL,

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
-import useLogoutUser from 'hooks/user/useLogout';
+import useLogoutUser from 'components/Navbar/useLogout';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import Loader from 'components/SubmitLoader';
 import './Navbar.css';

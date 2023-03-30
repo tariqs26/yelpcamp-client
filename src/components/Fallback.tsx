@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import LoadingCard from 'components/LoadingCard';
+import LoadingCard from 'pages/Campgrounds/LoadingCard';
 
 export default function Fallback() {
   const { pathname } = useLocation();
