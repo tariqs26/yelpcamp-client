@@ -2,6 +2,10 @@
 
 ![home](./project-images/home-page.png)
 
+![main](./project-images/campgrounds-page.png)
+
+![show](./project-images/show-page.png)
+
 A full stack web application, where users can create, edit, delete and view and review campgrounds locations built with the MERN stack.
 
 ## Notable Features
