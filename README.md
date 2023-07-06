@@ -50,8 +50,8 @@ npm i
 ### Configure environment variables:
 
 ```bash
-VITE_API_URL      # the URL of the backend API
-VITE_MAPBOX_TOKEN # the Mapbox API token
+VITE_API_URL=      # Backend API URL
+VITE_MAPBOX_TOKEN= # Mapbox API token
 ```
 
 ## Available Scripts
