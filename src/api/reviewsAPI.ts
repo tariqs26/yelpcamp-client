@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const reviewsAPI = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -13,7 +13,12 @@ export const createReview = async ({
   cId: string;
   review: ReviewInput;
 }): Promise<Review> =>
-  (await reviewsAPI.post(`/campgrounds/${cId}/reviews`, review)).data;
+  (
+    await reviewsAPI.post(`/campgrounds/${cId}/reviews`, {
+      ...review,
+      rating: Number(review.rating),
+    })
+  ).data;
 
 export const deleteReview = async ({
   id,
