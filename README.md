@@ -6,58 +6,58 @@
 
 ![show](./project-images/show-page.png)
 
-A full stack web application, where users can create, edit, delete and view and review campgrounds locations built with the MERN stack.
+Full-stack application, where users can create, edit, delete and view and review campgrounds locations built with the [MERN](https://www.mongodb.com/mern-stack) stack.
 
-## Notable Features
-
-### Frontend
-
-- Speedy initial page load times with React Suspense and Lazy loading components.
-- React Router for routing, with protected routes for authenticated users, and NavLinks which prevent the page from reloading, and maintain the user state.
-- Performant and Robust data fetching, caching and mutation with React Query.
-  - Dynamic loading of data on button press using the Infinite Query feature.
-- Great user experience with flash messages for feedback using a custom Context, form validation feedback and skeleton loading components using Bootstrap.
-
-### [Backend](https://github.com/tariqs26/yelpcamp-server)
-
-- RESTful API built with Express, with CRUD operations for campgrounds, reviews and users.
-- User authentication and authorization with Passport, managing user sessions with Express Sessions and storing user data in MongoDB, along with setting up a front-end Context API to manage the global state.
-
-## Future Improvements
-
-- Search functionality for the campgrounds index page, using React Query to fetch the data.
-
-## Tech Stack
+## Technologies
 
 ### Frontend
 
-- [React](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/) as the primary frontend framework.
-- [React Router](https://reactrouter.com/) for routing.
-- [React Query](https://react-query.tanstack.com/) for data fetching and caching, and for managing the global state.
-- [Bootstrap](https://getbootstrap.com/) used to create a standardized, aesthetic and responsive UI.
-- [Vite](https://vitejs.dev/) for the frontend build tool.
+| Technology                                            | Purpose                                         |
+| ----------------------------------------------------- | ----------------------------------------------- |
+| [React](https://reactjs.org/)                         | Frontend framework for building user interfaces |
+| [React Router](https://reactrouter.com/)              | Routing                                         |
+| [React Query](https://react-query.tanstack.com/)      | Data fetching and caching                       |
+| [React-Bootstrap](https://react-bootstrap.github.io/) | UI components and styling                       |
+| [TypeScript](https://www.typescriptlang.org/)         | Primary language for the frontend               |
+| [Mapbox](https://www.mapbox.com/)                     | Map API                                         |
+| [Vite](https://vitejs.dev/)                           | Frontend build tool                             |
 
 ### [Backend](https://github.com/tariqs26/yelpcamp-server)
 
-- [Node.js](https://nodejs.org/en/) with [TypeScript](https://www.typescriptlang.org/) as the primary backend framework.
-- [Express](https://expressjs.com/) for creating the RESTful API, managing middleware and routing.
-- [MongoDB](https://www.mongodb.com/) database used for storing all campgrounds, reviews and users data.
-- [Mongoose](https://mongoosejs.com/) for modeling the data, and for interacting with the MongoDB database.
-- [Joi](https://joi.dev/) used for validating the data sent to the backend.
-- [Passport](http://www.passportjs.org/) for managing user authentication and authorization.
-- [Express Sessions](https://www.npmjs.com/package/express-session) for managing user sessions.
+| Technology                                                                     | Purpose                               |
+| ------------------------------------------------------------------------------ | ------------------------------------- |
+| [Express](http://expressjs.com/)                                               | Web framework                         |
+| [Cors](https://npmjs.com/package/cors)                                         | Cross-origin resource sharing         |
+| [Nodemon](https://npmjs.com/package/nodemon)                                   | Development server                    |
+| [MongoDB](https://mongodb.com/)                                                | Database                              |
+| [Mongoose](https://mongoosejs.com/)                                            | ODM                                   |
+| [Zod](https://zod.dev/)                                                        | Validation Library                    |
+| [Dotenv](https://npmjs.com/package/dotenv)                                     | Environment variables                 |
+| [Passport](http://passportjs.org/)                                             | Authentication                        |
+| [Express-Session](https://npmjs.com/package/express-session)                   | Session management                    |
+| [Helmet](https://helmetjs.github.io/)                                          | Setting security-related HTTP headers |
+| [Express-Mongo-Sanitize](https://www.npmjs.com/package/express-mongo-sanitize) | Preventing NoSQL injections           |
+| [Express-Rate-Limit](https://www.npmjs.com/package/express-rate-limit)         | Rate limiting                         |
 
 ## Installation
 
-- `npm install` - install all the dependencies
+### Install dependencies:
+
+```bash
+npm i
+```
+
+### Configure environment variables:
+
+```bash
+VITE_API_URL      # the URL of the backend API
+VITE_MAPBOX_TOKEN # the Mapbox API token
+```
 
 ## Available Scripts
 
-- `npm run dev` - runs the app in the development mode
-- `npm run build` - builds the app for production to the `dist` folder
-- `npm run preview` - preview the production build locally
-
-## Environment Variables
-
-- `VITE_API_URL` - the URL of the backend API
-- `VITE_MAPBOX_TOKEN` - the Mapbox API token
+| Script            | Description                                                 |
+| ----------------- | ----------------------------------------------------------- |
+| `npm run dev`     | Run the app in the development mode (http://localhost:3001) |
+| `npm run build`   | Build the app for production                                |
+| `npm run preview` | Preview the production build                                |
