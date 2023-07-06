@@ -1,50 +1,50 @@
-import { Link } from 'react-router-dom';
-import { Card, Row, Col, Image } from 'react-bootstrap';
-import { fromDate } from 'utils';
+import { Link } from "react-router-dom"
+import { Card, Row, Col, Image } from "react-bootstrap"
+import { fromDate } from "utils"
 
 const CardComponent: React.FC<Campground & { pageIdx?: number }> = (props) => {
-  const { _id, title, image, location, description } = props;
+  const { _id, title, image, location, description } = props
   return (
-    <Card className='mt-4 overflow-hidden'>
+    <Card className="mt-4 overflow-hidden">
       <Row>
         <Col md={4}>
           <Image
             src={image}
             alt={`${title} campground image`}
             onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = 'https://via.placeholder.com/640x360';
+              const target = e.target as HTMLImageElement
+              target.src = "https://via.placeholder.com/640x360"
             }}
             fluid
             style={{
-              height: '100%',
-              width: '100%',
-              objectFit: 'cover',
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              aspectRatio: '16/9',
+              height: "100%",
+              width: "100%",
+              objectFit: "cover",
+              backgroundColor: "rgba(0,0,0,0.5)",
+              aspectRatio: "16/9",
             }}
           />
         </Col>
         <Col md={8}>
-          <Card.Body className='h-100 d-flex flex-column'>
+          <Card.Body className="h-100 d-flex flex-column">
             <Card.Title>{title}</Card.Title>
-            <p className='text-muted'>{location}</p>
+            <p className="text-muted">{location}</p>
             <Card.Text>{description}</Card.Text>
             <Link
-              className='btn btn-primary mb-3'
+              className="btn btn-primary mb-3"
               to={`/campgrounds/${_id}`}
-              style={{ width: 'fit-content' }}
+              style={{ width: "fit-content" }}
             >
               View {title}
             </Link>
-            <Card.Subtitle className='mt-auto text-muted'>
+            <Card.Subtitle className="mt-auto text-muted">
               Posted {fromDate(props.createdAt)}
             </Card.Subtitle>
           </Card.Body>
         </Col>
       </Row>
     </Card>
-  );
-};
+  )
+}
 
-export default CardComponent;
+export default CardComponent

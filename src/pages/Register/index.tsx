@@ -1,69 +1,69 @@
-import { Link } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
-import useRegisterUser from './useRegisterUser';
-import UserFormWrapper from 'components/UserFormWrapper';
-import Loader from 'components/SubmitLoader';
+import { Link } from "react-router-dom"
+import { Form, Button } from "react-bootstrap"
+import useRegisterUser from "./useRegisterUser"
+import UserFormWrapper from "components/UserFormWrapper"
+import Loader from "components/SubmitLoader"
 
 export default function Register() {
-  const { handleSubmit, isLoading } = useRegisterUser();
+  const { handleSubmit, isLoading } = useRegisterUser()
   return (
     <UserFormWrapper>
-      <div className='mb-3 card-title h3'>Create an account</div>
+      <div className="mb-3 card-title h3">Create an account</div>
       <Form noValidate onSubmit={handleSubmit}>
-        <Form.Group className='mb-3' controlId='email'>
+        <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
           <Form.Control
             autoFocus
-            name='email'
-            placeholder='johndoe123@gmail.com'
+            name="email"
+            placeholder="johndoe123@gmail.com"
             required
-            type='email'
+            type="email"
           />
-          <Form.Control.Feedback type='invalid'>
+          <Form.Control.Feedback type="invalid">
             Enter a valid email address.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className='mb-3' controlId='username'>
+        <Form.Group className="mb-3" controlId="username">
           <Form.Label>Username</Form.Label>
           <Form.Control
-            name='username'
+            name="username"
             minLength={4}
             maxLength={50}
-            placeholder='JohnDoe123'
+            placeholder="JohnDoe123"
             required
           />
-          <Form.Control.Feedback type='invalid'>
+          <Form.Control.Feedback type="invalid">
             Username must be between 4 and 50 characters.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className='mb-3' controlId='password'>
+        <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            name='password'
-            placeholder='••••••••'
+            name="password"
+            placeholder="••••••••"
             required
-            type='password'
+            type="password"
             minLength={8}
           />
-          <Form.Control.Feedback type='invalid'>
+          <Form.Control.Feedback type="invalid">
             Password must be at least 8 characters.
           </Form.Control.Feedback>
         </Form.Group>
         <Button
-          type='submit'
+          type="submit"
           disabled={isLoading}
-          variant='success'
-          className='w-100'
+          variant="success"
+          className="w-100"
         >
-          <Loader text='Create account' isLoading={isLoading} />
+          <Loader text="Create account" isLoading={isLoading} />
         </Button>
-        <div className='d-flex justify-content-center gap-1 align-items-center mt-3'>
-          <span>Have an account?</span>{' '}
-          <Link to='/login' className='text-decoration-none'>
+        <div className="d-flex justify-content-center gap-1 align-items-center mt-3">
+          <span>Have an account?</span>{" "}
+          <Link to="/login" className="text-decoration-none">
             Sign in
           </Link>
         </div>
       </Form>
     </UserFormWrapper>
-  );
+  )
 }

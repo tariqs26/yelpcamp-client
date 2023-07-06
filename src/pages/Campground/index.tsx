@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import useFetchCampground from './useFetchCampground';
-import useDeleteCampground from './useDeleteCampground';
-import { useAuth } from 'contexts/AuthContext';
-import { fromDate, isAppError } from '../../utils';
+import { useState } from "react"
+import useFetchCampground from "./useFetchCampground"
+import useDeleteCampground from "./useDeleteCampground"
+import { useAuth } from "contexts/AuthContext"
+import { fromDate, isAppError } from "../../utils"
 
-import { Row, Card, ListGroup, Button } from 'react-bootstrap';
-import EditCampground from '../EditCampground';
-import Error from 'components/Error';
-import Loader from 'components/SubmitLoader';
-import Map from 'components/Map';
-import ReviewForm from 'pages/Campground/ReviewForm';
-import ReviewCard from 'pages/Campground/ReviewCard';
-import Fallback from 'components/Fallback';
+import { Row, Card, ListGroup, Button } from "react-bootstrap"
+import EditCampground from "../EditCampground"
+import Error from "components/Error"
+import Loader from "components/SubmitLoader"
+import Map from "components/Map"
+import ReviewForm from "pages/Campground/ReviewForm"
+import ReviewCard from "pages/Campground/ReviewCard"
+import Fallback from "components/Fallback"
 
 export default function Campground() {
-  const [modalShow, setModalShow] = useState(false);
-  const { data, isFetching, id } = useFetchCampground();
-  const mutate = useDeleteCampground();
-  const { user } = useAuth();
+  const [modalShow, setModalShow] = useState(false)
+  const { data, isFetching, id } = useFetchCampground()
+  const mutate = useDeleteCampground()
+  const { user } = useAuth()
 
-  if (isFetching) return <Fallback />;
-  if (!data) return <div>Not found</div>;
+  if (isFetching) return <Fallback />
+  if (!data) return <div>Not found</div>
   if (isAppError(data)) {
     return (
       <Error
@@ -28,52 +28,52 @@ export default function Campground() {
         message={data.details}
         link={data.link ?? undefined}
       />
-    );
+    )
   }
 
   return (
     <Row>
-      <div className='col-12 col-md-8 offset-md-2 col-lg-6 mb-3 offset-lg-0'>
+      <div className="col-12 col-md-8 offset-md-2 col-lg-6 mb-3 offset-lg-0">
         <Card>
           <Card.Img
             src={data.image}
-            variant='top'
+            variant="top"
             style={{
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              height: 'min(40vh, 350px)',
+              backgroundColor: "rgba(0,0,0,0.5)",
+              objectFit: "cover",
+              objectPosition: "center",
+              height: "min(40vh, 350px)",
             }}
             onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = 'https://via.placeholder.com/640x360';
+              const target = e.target as HTMLImageElement
+              target.src = "https://via.placeholder.com/640x360"
             }}
           />
           <Card.Body>
             <Card.Title>{data.title}</Card.Title>
-            <Card.Text className='text-muted'>{data.location}</Card.Text>
+            <Card.Text className="text-muted">{data.location}</Card.Text>
             <Card.Text>{data.description}</Card.Text>
           </Card.Body>
-          <ListGroup variant='flush'>
+          <ListGroup variant="flush">
             <ListGroup.Item>${data.price.toFixed(2)}/night</ListGroup.Item>
             <ListGroup.Item>Submitted by {data.author.username}</ListGroup.Item>
           </ListGroup>
           {user && (user._id === data.author._id || user.isAdmin) && (
-            <Card.Body className='d-flex gap-2'>
-              <Button variant='warning' onClick={() => setModalShow(true)}>
+            <Card.Body className="d-flex gap-2">
+              <Button variant="warning" onClick={() => setModalShow(true)}>
                 Edit
               </Button>
               <Button
-                variant='danger'
+                variant="danger"
                 disabled={mutate.isLoading}
-                style={{ minWidth: '4.5rem' }}
+                style={{ minWidth: "4.5rem" }}
                 onClick={() => mutate.mutate(data._id)}
               >
-                <Loader text='Delete' isLoading={mutate.isLoading} />
+                <Loader text="Delete" isLoading={mutate.isLoading} />
               </Button>
             </Card.Body>
           )}
-          <Card.Footer className='text-muted'>
+          <Card.Footer className="text-muted">
             Updated {fromDate(data.updatedAt)}
           </Card.Footer>
         </Card>
@@ -83,7 +83,7 @@ export default function Campground() {
           closeModal={() => setModalShow(false)}
         />
       </div>
-      <div className='col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-0'>
+      <div className="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-0">
         <Map
           coordinates={{
             longitude: data.geometry.coordinates[0],
@@ -92,12 +92,12 @@ export default function Campground() {
           title={data.title}
           location={data.location}
         />
-        <h4 className='mt-3'>Reviews</h4>
+        <h4 className="mt-3">Reviews</h4>
         <ReviewForm cId={id} />
         {data.reviews.map((review: Review) => (
           <ReviewCard key={review._id} cId={id} review={review} user={user} />
         ))}
       </div>
     </Row>
-  );
+  )
 }

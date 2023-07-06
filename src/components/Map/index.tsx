@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import ReactMapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import { useState } from "react"
+import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl"
+import "mapbox-gl/dist/mapbox-gl.css"
 
 type Props = {
   coordinates: {
-    longitude: number;
-    latitude: number;
-  };
-  title: string;
-  location: string;
-};
+    longitude: number
+    latitude: number
+  }
+  title: string
+  location: string
+}
 
 export default function Map({ coordinates, title, location }: Props) {
-  const [showPopup, setShowPopup] = useState(true);
+  const [showPopup, setShowPopup] = useState(true)
   return (
     <ReactMapGL
       initialViewState={{
@@ -21,16 +21,16 @@ export default function Map({ coordinates, title, location }: Props) {
         zoom: 9,
       }}
       style={{
-        height: 'min(40vh, 350px)',
-        borderRadius: 'calc(0.375rem - 1px)',
+        height: "min(40vh, 350px)",
+        borderRadius: "calc(0.375rem - 1px)",
       }}
-      mapStyle='mapbox://styles/mapbox/streets-v11'
+      mapStyle="mapbox://styles/mapbox/streets-v11"
       mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
     >
       <NavigationControl />
       <Marker
         {...coordinates}
-        anchor='bottom'
+        anchor="bottom"
         onClick={() => setShowPopup(true)}
       />
       {showPopup && (
@@ -42,5 +42,5 @@ export default function Map({ coordinates, title, location }: Props) {
         </Popup>
       )}
     </ReactMapGL>
-  );
+  )
 }

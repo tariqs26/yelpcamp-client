@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react"
 import {
   Map,
   Source,
@@ -6,49 +6,49 @@ import {
   MapLayerMouseEvent,
   NavigationControl,
   MapboxGeoJSONFeature,
-} from 'react-map-gl';
-import type { MapRef, GeoJSONSource } from 'react-map-gl';
+} from "react-map-gl"
+import type { MapRef, GeoJSONSource } from "react-map-gl"
 
 import {
   clusterLayer,
   clusterCountLayer,
   unclusteredPointLayer,
-} from './layers';
+} from "./layers"
 
-import 'mapbox-gl/dist/mapbox-gl.css';
+import "mapbox-gl/dist/mapbox-gl.css"
 
-const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN
 
 type Feature = MapboxGeoJSONFeature & {
   properties?: {
-    cluster_id: number;
-  };
+    cluster_id: number
+  }
   geometry: {
-    coordinates: [number, number];
-  };
-};
+    coordinates: [number, number]
+  }
+}
 
 export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
-  const mapRef = useRef<MapRef>(null);
+  const mapRef = useRef<MapRef>(null)
 
   const onClick = (e: MapLayerMouseEvent) => {
-    if (!e.features) return;
-    const feature = e.features[0] as Feature;
-    if (!feature.properties) return;
-    const clusterId = feature.properties.cluster_id;
-    if (!mapRef.current) return;
+    if (!e.features) return
+    const feature = e.features[0] as Feature
+    if (!feature.properties) return
+    const clusterId = feature.properties.cluster_id
+    if (!mapRef.current) return
     const mapboxSource = mapRef.current.getSource(
-      'campgrounds'
-    ) as GeoJSONSource;
+      "campgrounds",
+    ) as GeoJSONSource
     mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
-      if (err || !mapRef.current) return;
+      if (err || !mapRef.current) return
       mapRef.current.easeTo({
         center: feature.geometry.coordinates,
         zoom,
         duration: 500,
-      });
-    });
-  };
+      })
+    })
+  }
 
   return (
     <Map
@@ -57,22 +57,22 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
         longitude: -93.59,
         zoom: 3,
       }}
-      mapStyle='mapbox://styles/mapbox/dark-v9'
+      mapStyle="mapbox://styles/mapbox/dark-v9"
       mapboxAccessToken={MAPBOX_TOKEN}
       interactiveLayerIds={[clusterLayer.id as unknown as string]}
       onClick={onClick}
       ref={mapRef}
       style={{
-        height: 'min(50vh, 400px)',
-        width: '100%',
-        marginBottom: '1rem',
-        borderRadius: 'calc(0.375rem - 1px)',
+        height: "min(50vh, 400px)",
+        width: "100%",
+        marginBottom: "1rem",
+        borderRadius: "calc(0.375rem - 1px)",
       }}
     >
       <NavigationControl />
       <Source
-        id='campgrounds'
-        type='geojson'
+        id="campgrounds"
+        type="geojson"
         data={campgrounds}
         cluster={true}
         clusterMaxZoom={14}
@@ -83,5 +83,5 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
         <Layer {...unclusteredPointLayer} />
       </Source>
     </Map>
-  );
+  )
 }
