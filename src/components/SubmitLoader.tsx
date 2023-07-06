@@ -1,24 +1,24 @@
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from "react-bootstrap"
 
 type Props = {
-  text: string;
-  isLoading: boolean;
-};
+  text: string
+  isLoading: boolean
+}
 
 export default function Loader({ text, isLoading }: Props) {
   return (
     <>
       {isLoading ? (
         <Spinner
-          as='span'
-          animation='border'
-          size='sm'
-          role='status'
-          aria-hidden='true'
+          as="span"
+          animation="border"
+          size="sm"
+          role="status"
+          aria-hidden="true"
         />
       ) : (
         text
       )}
     </>
-  );
+  )
 }

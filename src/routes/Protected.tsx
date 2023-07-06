@@ -1,23 +1,23 @@
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { Navigate } from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
 
 type Props = {
-  element: JSX.Element;
-  message?: string;
-};
+  element: JSX.Element
+  message?: string
+}
 
 export default function Protected({ element, message }: Props) {
-  const { user } = useAuth();
+  const { user } = useAuth()
 
-  if (user) return element;
+  if (user) return element
   return (
     <Navigate
-      to='/login'
+      to="/login"
       replace
       state={{
         from: window.location.pathname,
         message,
       }}
     />
-  );
+  )
 }
