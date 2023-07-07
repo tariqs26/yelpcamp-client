@@ -41,13 +41,13 @@ Full-stack application, where users can create, edit, delete and view and review
 
 ## Installation
 
-### Install dependencies:
+### Install dependencies
 
 ```bash
 npm i
 ```
 
-### Configure environment variables:
+### Configure environment variables
 
 ```bash
 VITE_API_URL=      # Backend API URL
