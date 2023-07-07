@@ -8,7 +8,7 @@
 
 Full-stack application, where users can create, edit, delete and view and review campgrounds locations built with the [MERN](https://www.mongodb.com/mern-stack) stack.
 
-## Technologies
+## Technologies Used
 
 ### Frontend
 
