@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import { useRef } from "react"
 import {
   Map,
   Source,
@@ -6,8 +6,9 @@ import {
   MapLayerMouseEvent,
   NavigationControl,
   MapboxGeoJSONFeature,
+  type MapRef,
+  type GeoJSONSource,
 } from "react-map-gl"
-import type { MapRef, GeoJSONSource } from "react-map-gl"
 
 import {
   clusterLayer,
@@ -38,7 +39,7 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
     const clusterId = feature.properties.cluster_id
     if (!mapRef.current) return
     const mapboxSource = mapRef.current.getSource(
-      "campgrounds",
+      "campgrounds"
     ) as GeoJSONSource
     mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
       if (err || !mapRef.current) return
