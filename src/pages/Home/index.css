@@ -12,10 +12,6 @@
   inset: 0;
 }
 
-.main > :first-child {
-  animation: drop-in 0.5s ease-in-out;
-}
-
 .cover-container .cards {
   margin-top: 2rem;
   display: flex;
@@ -26,16 +22,6 @@
 
 .cover-container .card {
   width: 300px;
-  opacity: 0;
-  animation: slide-in 0.5s 0.5s ease-in-out forwards;
-}
-
-.cover-container .card:nth-child(2) {
-  animation-delay: 0.7s;
-}
-
-.cover-container .card:last-child {
-  animation-delay: 0.9s;
 }
 
 @media (max-width: 1000px) {
@@ -57,7 +43,7 @@
 
 .cover-container .card .card-title::before {
   background-image: linear-gradient(to right, #f12711, #f5af19);
-  content: '';
+  content: "";
   display: block;
   height: 2px;
   width: 20%;
@@ -71,26 +57,4 @@
 .cover-btn:hover {
   background-color: rgb(215, 203, 203) !important;
   border-color: rgb(215, 203, 203) !important;
-}
-
-@keyframes drop-in {
-  0% {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-in {
-  0% {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
