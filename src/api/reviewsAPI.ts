@@ -1,10 +1,6 @@
-import axios from "axios"
+import { axios } from "lib/axios"
 
-const reviewsAPI = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/campgrounds`,
-  withCredentials: true,
-  timeout: 5000, // 5 seconds
-})
+const reviewsAPI = axios("/campgrounds")
 
 export const createReview = async ({
   cId,

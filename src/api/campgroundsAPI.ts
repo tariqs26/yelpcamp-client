@@ -1,11 +1,8 @@
-import axios, { isAxiosError } from "axios"
+import { isAxiosError } from "axios"
+import { axios } from "lib/axios"
 import { ErrorDetails } from "types/Error"
 
-const campgroundsAPI = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/campgrounds`,
-  withCredentials: true,
-  timeout: 5000, // 5 seconds
-})
+const campgroundsAPI = axios("/campgrounds")
 
 export const fetchCampgrounds = async ({
   pageParam: page = 1,
@@ -18,7 +15,7 @@ export const fetchCampgrounds = async ({
 }
 
 export const fetchCampgroundById = async (
-  id: string,
+  id: string
 ): Promise<Campground | AppError> => {
   try {
     return (await campgroundsAPI.get(`/${id}`)).data
@@ -39,7 +36,7 @@ export const fetchCampgroundById = async (
   }
 }
 export const createCampground = async (
-  campground: CampgroundInput,
+  campground: CampgroundInput
 ): Promise<Campground> => (await campgroundsAPI.post("/", campground)).data
 
 export const updateCampground = async ({

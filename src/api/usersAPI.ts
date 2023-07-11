@@ -1,17 +1,12 @@
-import axios, { isAxiosError } from "axios"
+import { isAxiosError } from "axios"
+import axios from "lib/axios"
 import { ErrorDetails } from "types/Error"
 
-const usersAPI = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-  withCredentials: true,
-  timeout: 5000, // 5 seconds
-})
-
 export const registerUser = async (
-  user: UserInput,
+  user: UserInput
 ): Promise<AppUser | string> => {
   try {
-    const res = await usersAPI.post("/register", user)
+    const res = await axios.post("/register", user)
     return res.data
   } catch (error) {
     return isAxiosError(error) && error.code !== "ERR_NETWORK"
@@ -22,7 +17,7 @@ export const registerUser = async (
 
 export const loginUser = async (user: UserInput): Promise<AppUser | string> => {
   try {
-    const res = await usersAPI.post("/login", user)
+    const res = await axios.post("/login", user)
     return res.data
   } catch (error) {
     return isAxiosError(error) && error.code !== "ERR_NETWORK"
@@ -31,11 +26,9 @@ export const loginUser = async (user: UserInput): Promise<AppUser | string> => {
   }
 }
 
-export const logoutUser = async (): Promise<void> => {
-  await usersAPI.get("/logout")
+export const logoutUser = async () => {
+  await axios.get("/logout")
 }
 
 export const fetchUser = async (): Promise<AppUser> =>
-  (await usersAPI.get("/getUser")).data
-
-export default usersAPI
+  (await axios.get("/getUser")).data
