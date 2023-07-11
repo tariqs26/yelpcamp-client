@@ -1,11 +1,8 @@
+import { Outlet } from "react-router-dom"
 import { Card, Row } from "react-bootstrap"
 import TentImg from "assets/images/zach-betten-K9olx8OF36A-unsplash.jpg"
 
-export default function UserFormWrapper({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function AuthLayout() {
   return (
     <Row className="px-3">
       <Card
@@ -24,7 +21,9 @@ export default function UserFormWrapper({
             objectFit: "cover",
           }}
         />
-        <Card.Body>{children}</Card.Body>
+        <Card.Body>
+            <Outlet />
+        </Card.Body>
       </Card>
     </Row>
   )

@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom"
 import useRegisterUser from "./useRegisterUser"
 import Form from "react-bootstrap/Form"
-import UserFormWrapper from "components/user-form-wrapper"
 import Button from "components/submit-button"
 
 export default function Register() {
   const { handleSubmit, isLoading } = useRegisterUser()
   return (
-    <UserFormWrapper>
+    <>
       <div className="mb-3 card-title h3">Create an account</div>
       <Form noValidate onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="email">
@@ -59,6 +58,6 @@ export default function Register() {
           </Link>
         </div>
       </Form>
-    </UserFormWrapper>
+    </>
   )
 }

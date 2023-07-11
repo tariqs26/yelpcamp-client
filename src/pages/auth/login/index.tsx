@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom"
 import useLoginUser from "./useLoginUser"
 import Form from "react-bootstrap/Form"
-import UserFormWrapper from "components/user-form-wrapper"
 import Button from "components/submit-button"
 
 export default function Login() {
   const { handleSubmit, isLoading } = useLoginUser()
 
   return (
-    <UserFormWrapper>
+    <>
       <div className="mb-3 card-title h3">Sign in </div>
       <Form noValidate onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="username">
@@ -40,6 +39,6 @@ export default function Login() {
           </Link>
         </div>
       </Form>
-    </UserFormWrapper>
+    </>
   )
 }

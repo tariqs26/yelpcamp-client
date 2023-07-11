@@ -8,6 +8,7 @@ import Home from "pages/home"
 import Fallback from "components/fallback"
 import Navbar from "components/navbar"
 import Footer from "components/footer"
+import AuthLayout from "components/layouts/auth-layout"
 
 const Register = lazy(() => import("pages/auth/register"))
 const Login = lazy(() => import("pages/auth/login"))
@@ -45,8 +46,10 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                   </main>
                 }
               >
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<AuthLayout />}>
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                </Route>
                 <Route path="/campgrounds">
                   <Route index element={<Campgrounds />} />
                   <Route path=":id" element={<Campground />} />
