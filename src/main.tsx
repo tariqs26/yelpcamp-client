@@ -14,7 +14,7 @@ const Login = lazy(() => import("pages/Login"))
 const Campgrounds = lazy(() => import("pages/Campgrounds"))
 const Campground = lazy(() => import("pages/Campground"))
 const NewCampground = lazy(() => import("pages/NewCampground"))
-const ProtectedRoute = lazy(() => import("routes/Protected"))
+const ProtectedRoute = lazy(() => import("components/Protected"))
 const NotFound = lazy(() => import("pages/NotFound"))
 
 const queryClient = new QueryClient({
