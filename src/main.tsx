@@ -34,39 +34,41 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
       <AuthApi>
         <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              element={
-                <main className="container position-relative my-4">
-                  <Suspense fallback={<Fallback />}>
-                    <Outlet />
-                  </Suspense>
-                </main>
-              }
-            >
-              <Route path="/" element={<AuthLayout />}>
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-              </Route>
-              <Route path="/campgrounds">
-                <Route index element={<Campgrounds />} />
-                <Route path=":id" element={<Campground />} />
-              </Route>
+          <main className="d-flex flex-column min-vh-100 h-100">
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
               <Route
-                path="new-campground"
                 element={
-                  <ProtectedRoute
-                    message="Please sign in to create a new campground"
-                    element={<NewCampground />}
-                  />
+                  <main className="container position-relative my-4">
+                    <Suspense fallback={<Fallback />}>
+                      <Outlet />
+                    </Suspense>
+                  </main>
                 }
-              />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-          <Footer />
+              >
+                <Route path="/" element={<AuthLayout />}>
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                </Route>
+                <Route path="/campgrounds">
+                  <Route index element={<Campgrounds />} />
+                  <Route path=":id" element={<Campground />} />
+                </Route>
+                <Route
+                  path="new-campground"
+                  element={
+                    <ProtectedRoute
+                      message="Please sign in to create a new campground"
+                      element={<NewCampground />}
+                    />
+                  }
+                />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+            <Footer />
+          </main>
         </BrowserRouter>
       </AuthApi>
     </QueryClientProvider>
