@@ -2,8 +2,20 @@ import day from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 import { type ClassValue, clsx } from "clsx"
 
-const dataFromInput = <T>(form: HTMLFormElement): T =>
-  Object.fromEntries(new FormData(form)) as unknown as T
+const dataFromInput = <T>(form: HTMLFormElement): T => {
+  const numberFields = form.querySelectorAll(
+    "input[type=number]"
+  ) as NodeListOf<HTMLInputElement>
+
+  return {
+    ...Object.fromEntries(new FormData(form)),
+    ...Object.fromEntries(
+      Array.from(numberFields).map((field) => {
+        return [field.name, field.valueAsNumber]
+      })
+    ),
+  } as T
+}
 
 const handleValidation = (e: React.FormEvent<HTMLFormElement>): boolean => {
   e.preventDefault()
