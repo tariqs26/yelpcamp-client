@@ -14,7 +14,9 @@ type CampgroundFormProps = FormProps &
 
 const CampgroundForm: React.FC<CampgroundFormProps> = (props) => {
   const { handleSubmit, initialData, isLoading, leaveHandler } = props
-  const [descChars, setDescChars] = useState(initialData?.description.length)
+  const [descChars, setDescChars] = useState(
+    initialData?.description.length ?? 0
+  )
   const action = initialData ? "Update" : "Create"
 
   return (
@@ -106,6 +108,7 @@ const CampgroundForm: React.FC<CampgroundFormProps> = (props) => {
           </Form.Group>
           <SubmitButton
             disabled={isLoading}
+            notForm
           >{`${action} campground`}</SubmitButton>
           {initialData && (
             <Button variant="danger" onClick={leaveHandler}>

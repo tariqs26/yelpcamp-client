@@ -67,6 +67,7 @@ export default function Campground() {
                 variant="danger"
                 disabled={mutate.isLoading}
                 onClick={() => mutate.mutate(data._id)}
+                notForm
               >
                 Delete
               </SubmitButton>
@@ -92,7 +93,7 @@ export default function Campground() {
           location={data.location}
         />
         <h4 className="mt-3">Reviews</h4>
-        <ReviewForm cId={id} />
+        <ReviewForm cId={id} user={user} />
         {data.reviews.map((review: Review) => (
           <ReviewCard key={review._id} cId={id} review={review} user={user} />
         ))}
