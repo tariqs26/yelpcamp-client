@@ -6,7 +6,7 @@ import Button from "components/submit-button"
 type Props = {
   cId: string
   review: Review
-  user?: AppUser
+  user: AppUser | null
 }
 
 export default function ReviewCard({ cId, review, user }: Props) {
