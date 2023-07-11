@@ -2,11 +2,11 @@ import { FormEvent } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { updateCampground } from "api/campgroundsAPI"
 import { useAlert } from "contexts/AlertContext"
-import { dataFromInput, handleValidation } from "utils"
+import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useUpdateCampground(
   campground: Campground,
-  close: () => void,
+  close: () => void
 ) {
   const queryClient = useQueryClient()
   const { alert } = useAlert()
@@ -17,7 +17,7 @@ export default function useUpdateCampground(
       close()
       alert(
         `${err.response?.data || err.message}: Failed to update campground`,
-        "danger",
+        "danger"
       )
     },
     onSuccess: (_, { id, campground: updatedCampground }) => {
@@ -33,7 +33,7 @@ export default function useUpdateCampground(
               campgrounds: page.campgrounds.map((campground) =>
                 campground._id !== id
                   ? campground
-                  : { ...campground, ...updatedCampground },
+                  : { ...campground, ...updatedCampground }
               ),
             }
           }),

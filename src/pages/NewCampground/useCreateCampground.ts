@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { createCampground } from "api/campgroundsAPI"
 import { useAlert } from "contexts/AlertContext"
-import { dataFromInput, handleValidation } from "utils"
+import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useCreateCampground() {
   const queryClient = useQueryClient()
@@ -14,7 +14,7 @@ export default function useCreateCampground() {
     onError: (err: MutationError) => {
       alert(
         `${err.response?.data || err.message}: Failed to create campground`,
-        "danger",
+        "danger"
       )
     },
     onSuccess: (data) => {

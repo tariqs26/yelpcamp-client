@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { Card, Row, Col, Image } from "react-bootstrap"
-import { fromDate } from "utils"
+import { fromDate } from "lib/utils"
 
 const CardComponent: React.FC<Campground & { pageIdx?: number }> = (props) => {
   const { _id, title, image, location, description } = props

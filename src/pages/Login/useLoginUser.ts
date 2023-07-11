@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query"
 import { loginUser } from "api/usersAPI"
 import { useAlert } from "contexts/AlertContext"
 import { useAuth } from "contexts/AuthContext"
-import { dataFromInput, handleValidation } from "utils"
+import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useLoginUser() {
   const navigate = useNavigate()
@@ -16,7 +16,7 @@ export default function useLoginUser() {
     if (state?.from)
       alert(
         `${state?.message || "Please sign in to access this page"}`,
-        "danger",
+        "danger"
       )
   }, [])
 

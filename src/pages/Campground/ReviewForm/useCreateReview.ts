@@ -1,50 +1,50 @@
-import { useNavigate } from 'react-router-dom';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createReview } from 'api/reviewsAPI';
-import { useAlert } from 'contexts/AlertContext';
-import { dataFromInput, handleValidation } from 'utils';
+import { useNavigate } from "react-router-dom"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { createReview } from "api/reviewsAPI"
+import { useAlert } from "contexts/AlertContext"
+import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useCreateReview(cId: string, close: () => void) {
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
-  const { alert } = useAlert();
+  const queryClient = useQueryClient()
+  const navigate = useNavigate()
+  const { alert } = useAlert()
 
   const { mutate, isLoading } = useMutation({
     mutationFn: createReview,
     onError: ({ message }: Error) => {
-      if (!message.endsWith('401'))
-        alert(`${message}: Failed to create review`, 'danger');
+      if (!message.endsWith("401"))
+        alert(`${message}: Failed to create review`, "danger")
       else
-        navigate('/login', {
+        navigate("/login", {
           state: {
             from: window.location.pathname,
-            message: 'Please sign in to create a review',
+            message: "Please sign in to create a review",
           },
-        });
+        })
     },
     onSuccess: (data) => {
-      close();
+      close()
       queryClient.setQueryData(
-        ['campgrounds', cId],
+        ["campgrounds", cId],
         (oldData: Campground | undefined) => {
           if (oldData) {
-            alert('Review created successfully', 'success');
+            alert("Review created successfully", "success")
             return {
               ...oldData,
               reviews: [...oldData.reviews, data],
-            };
+            }
           }
         }
-      );
+      )
     },
-  });
+  })
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (!handleValidation(e)) return;
-    mutate({ cId, review: dataFromInput(e.currentTarget) });
-    e.currentTarget.classList.remove('was-validated');
-    e.currentTarget.reset();
-  };
+    if (!handleValidation(e)) return
+    mutate({ cId, review: dataFromInput(e.currentTarget) })
+    e.currentTarget.classList.remove("was-validated")
+    e.currentTarget.reset()
+  }
 
-  return { handleSubmit, isLoading };
+  return { handleSubmit, isLoading }
 }

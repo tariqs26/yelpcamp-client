@@ -1,6 +1,6 @@
 import Spinner from "react-bootstrap/Spinner"
 import Button, { type ButtonProps } from "react-bootstrap/Button"
-import { cn } from "utils"
+import { cn } from "lib/utils"
 
 type Props = ButtonProps & {
   children: React.ReactNode
