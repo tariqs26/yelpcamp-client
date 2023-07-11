@@ -1,9 +1,15 @@
+import { Link } from "react-router-dom"
 import useCreateReview from "./useCreateReview"
 import { Accordion } from "react-bootstrap"
 import ReviewForm from "components/forms/review-form"
 import "./index.css"
 
-export default function CreateReview({ cId }: { cId: string }) {
+type Props = {
+  cId: string
+  user?: AppUser
+}
+
+export default function CreateReview({ cId, user }: Props) {
   const formProps = useCreateReview(cId, () => {
     const accordionBtn = document.querySelector(
       ".accordion-button"
@@ -18,6 +24,11 @@ export default function CreateReview({ cId }: { cId: string }) {
           <h5 className="mb-0">Write a review</h5>
         </Accordion.Header>
         <Accordion.Body>
+          {!user && (
+            <p className="text-muted">
+              Please <Link to="/login">sign in</Link> to write a review
+            </p>
+          )}
           <ReviewForm {...formProps} />
         </Accordion.Body>
       </Accordion.Item>
