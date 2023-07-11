@@ -3,7 +3,7 @@ import useFetchCampgrounds from "./useFetchCampgrounds"
 import Error from "components/error"
 import Card from "./Card"
 import LoadingCard, { CardComponent } from "components/loading-card"
-import ClusterMap from "components/map/cluster"
+import ClusterMap from "components/Map/cluster"
 import Button from "components/submit-button"
 import { ErrorDetails } from "types/errors"
 
