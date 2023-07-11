@@ -27,7 +27,7 @@ export const loginUser = async (user: UserInput): Promise<AppUser | string> => {
 }
 
 export const logoutUser = async () => {
-  await axios.get("/logout")
+  await axios.post("/logout")
 }
 
 export const fetchUser = async (): Promise<AppUser> =>
