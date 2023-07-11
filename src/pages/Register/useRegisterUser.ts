@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
-import { registerUser } from "api/usersAPI"
+import { registerUser } from "api/users"
 import { useAlert } from "contexts/AlertContext"
 import { dataFromInput, handleValidation } from "lib/utils"
 

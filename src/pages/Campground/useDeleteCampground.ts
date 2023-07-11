@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { deleteCampground } from "api/campgroundsAPI"
+import { deleteCampground } from "api/campgrounds"
 import { useAlert } from "contexts/AlertContext"
 
 export default function useDeleteCampground() {
@@ -13,7 +13,7 @@ export default function useDeleteCampground() {
     onError: (err: MutationError) => {
       alert(
         `${err.response?.data || err.message}: Failed to delete campground`,
-        "danger",
+        "danger"
       )
     },
     onSuccess: (_, campgroundId) => {
@@ -24,7 +24,7 @@ export default function useDeleteCampground() {
             return {
               ...page,
               campgrounds: page.campgrounds.filter(
-                (campground) => campground._id !== campgroundId,
+                (campground) => campground._id !== campgroundId
               ),
             }
           }),

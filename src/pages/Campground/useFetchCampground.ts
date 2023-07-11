@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
-import { fetchCampgroundById } from "api/campgroundsAPI"
+import { fetchCampgroundById } from "api/campgrounds"
 
 export default function useFetchCampground() {
   const { id } = useParams() as { id: string }

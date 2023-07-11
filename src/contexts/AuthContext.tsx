@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useMemo } from "react"
-import { fetchUser } from "api/usersAPI"
+import { fetchUser } from "api/users"
 
 type AuthContext = {
   user: AppUser | undefined

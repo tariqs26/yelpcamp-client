@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { fetchCampgrounds } from "api/campgroundsAPI"
+import { fetchCampgrounds } from "api/campgrounds"
 
 export default function useFetchCampgrounds() {
   return useInfiniteQuery({

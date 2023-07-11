@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { createCampground } from "api/campgroundsAPI"
+import { createCampground } from "api/campgrounds"
 import { useAlert } from "contexts/AlertContext"
 import { dataFromInput, handleValidation } from "lib/utils"
 

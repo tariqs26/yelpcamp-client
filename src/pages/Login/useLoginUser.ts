@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
-import { loginUser } from "api/usersAPI"
+import { loginUser } from "api/users"
 import { useAlert } from "contexts/AlertContext"
 import { useAuth } from "contexts/AuthContext"
 import { dataFromInput, handleValidation } from "lib/utils"
