@@ -3,14 +3,15 @@ import Modal from "react-bootstrap/Modal"
 import Form from "components/Form"
 import "./index.css"
 
-type Props = {
+type EditCampgroundProps = {
   campground: Campground
   showModal: boolean
   closeModal: () => void
 }
-export default function EditCampground(componentProps: Props) {
-  const { campground, showModal, closeModal } = componentProps
-  const props = useUpdateCampground(campground, closeModal)
+
+const CampgroundEdit = (props: EditCampgroundProps) => {
+  const { campground, showModal, closeModal } = props
+  const formProps = useUpdateCampground(campground, closeModal)
   return (
     <Modal
       show={showModal}
@@ -26,12 +27,13 @@ export default function EditCampground(componentProps: Props) {
       </Modal.Header>
       <Modal.Body>
         <Form
-          {...props}
+          {...formProps}
           leaveHandler={closeModal}
           initialData={campground}
-          action="Update"
         />
       </Modal.Body>
     </Modal>
   )
 }
+
+export default CampgroundEdit

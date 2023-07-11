@@ -6,20 +6,23 @@ import SubmitButton from "./SubmitButton"
 type FormProps = {
   handleSubmit: FormEventHandler
   isLoading: boolean
-  action: "Create" | "Update"
-  leaveHandler?: () => void
-  initialData?: Campground
-}
+} & (
+  | {
+      initialData: Campground
+      leaveHandler: () => void
+    }
+  | { initialData?: undefined; leaveHandler?: undefined }
+)
 
 const FormComponent: React.FC<FormProps> = (props) => {
-  const { handleSubmit, leaveHandler, initialData, action, isLoading } = props
-  const [descChars, setDescChars] = useState(
-    initialData?.description?.length || 0
-  )
+  const { handleSubmit, initialData, isLoading, leaveHandler } = props
+  const [descChars, setDescChars] = useState(initialData?.description.length)
+  const action = initialData ? "Update" : "Create"
+
   return (
     <Row>
       <ConditionalWrapper
-        condition={!leaveHandler}
+        condition={!initialData}
         wrapper={(children) => (
           <Card className="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 border shadow p-3">
             <Card.Body>
@@ -106,7 +109,7 @@ const FormComponent: React.FC<FormProps> = (props) => {
           <SubmitButton
             disabled={isLoading}
           >{`${action} campground`}</SubmitButton>
-          {leaveHandler && (
+          {initialData && (
             <Button variant="danger" onClick={leaveHandler}>
               Cancel
             </Button>

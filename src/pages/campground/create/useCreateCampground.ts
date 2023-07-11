@@ -25,10 +25,11 @@ export default function useCreateCampground() {
     },
   })
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (!handleValidation(e)) return
-    mutate(dataFromInput(e.currentTarget))
+  return {
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => {
+      if (!handleValidation(e)) return
+      mutate(dataFromInput(e.currentTarget))
+    },
+    isLoading,
   }
-
-  return { handleSubmit, isLoading }
 }
