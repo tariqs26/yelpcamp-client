@@ -1,5 +1,5 @@
 import Form from "react-bootstrap/Form"
-import Button from "components/SubmitButton"
+import Button from "components/submit-button"
 import { RatingInput } from "components/rating"
 
 export default function ReviewForm({ handleSubmit, isLoading }: FormProps) {

@@ -20,7 +20,7 @@ export default function useLoginUser() {
       )
   }, [])
 
-  const { isLoading, mutate } = useMutation(loginUser, {
+  const mutation = useMutation(loginUser, {
     onSuccess: (data) => {
       if (typeof data === "string") return alert(data, "danger")
       setUser(data)
@@ -30,10 +30,11 @@ export default function useLoginUser() {
     },
   })
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (!handleValidation(e)) return
-    mutate(dataFromInput(e.currentTarget))
+  return {
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => {
+      if (!handleValidation(e)) return
+      mutation.mutate(dataFromInput(e.currentTarget))
+    },
+    isLoading: mutation.isLoading,
   }
-
-  return { handleSubmit, isLoading }
 }

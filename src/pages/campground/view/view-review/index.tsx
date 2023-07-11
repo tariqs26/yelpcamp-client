@@ -1,7 +1,7 @@
 import Card from "react-bootstrap/Card"
 import useDeleteReview from "./useDeleteReview"
 import { Rating } from "components/rating"
-import Button from "components/SubmitButton"
+import Button from "components/submit-button"
 
 type Props = {
   cId: string

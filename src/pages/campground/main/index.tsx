@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import useFetchCampgrounds from "./useFetchCampgrounds"
-import Error from "components/Error"
+import Error from "components/error"
 import Card from "./Card"
-import LoadingCard, { CardComponent } from "components/LoadingCard"
+import LoadingCard, { CardComponent } from "components/loading-card"
 import ClusterMap from "components/map/cluster"
-import Button from "components/SubmitButton"
+import Button from "components/submit-button"
 import { ErrorDetails } from "types/errors"
 
 export default function Campgrounds() {

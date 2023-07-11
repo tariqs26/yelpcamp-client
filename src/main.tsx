@@ -5,17 +5,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import AlertApi from "contexts/AlertContext"
 import AuthApi from "contexts/AuthContext"
 import Home from "pages/home"
-import Fallback from "components/Fallback"
+import Fallback from "components/fallback"
 import Navbar from "components/navbar"
-import Footer from "components/Footer"
+import Footer from "components/footer"
 
 const Register = lazy(() => import("pages/auth/register"))
 const Login = lazy(() => import("pages/auth/login"))
 const Campgrounds = lazy(() => import("pages/campground/main"))
 const Campground = lazy(() => import("pages/campground/view"))
 const NewCampground = lazy(() => import("pages/campground/create"))
-const ProtectedRoute = lazy(() => import("components/Protected"))
-const NotFound = lazy(() => import("components/NotFound"))
+const ProtectedRoute = lazy(() => import("components/protected"))
+const NotFound = lazy(() => import("components/not-found"))
 
 const queryClient = new QueryClient({
   defaultOptions: {

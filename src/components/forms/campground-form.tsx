@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Form, Button, Row, InputGroup, Card } from "react-bootstrap"
-import ConditionalWrapper from "components/ConditionalWrapper"
-import SubmitButton from "components/SubmitButton"
+import ConditionalWrapper from "components/conditional-wrapper"
+import SubmitButton from "components/submit-button"
 
 type CampgroundFormProps = FormProps &
   (

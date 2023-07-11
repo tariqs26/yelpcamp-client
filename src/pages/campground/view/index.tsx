@@ -6,12 +6,12 @@ import { fromDate, isAppError } from "../../../lib/utils"
 
 import { Row, Card, ListGroup, Button } from "react-bootstrap"
 import EditCampground from "../edit"
-import Error from "components/Error"
-import SubmitButton from "components/SubmitButton"
+import Error from "components/error"
+import SubmitButton from "components/submit-button"
 import Map from "components/map"
 import ReviewForm from "pages/campground/view/create-review"
 import ReviewCard from "pages/campground/view/view-review"
-import Fallback from "components/Fallback"
+import Fallback from "components/fallback"
 
 export default function Campground() {
   const [modalShow, setModalShow] = useState(false)

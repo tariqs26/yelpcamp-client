@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useAuth } from "contexts/AuthContext"
 import useLogoutUser from "./useLogout"
 import { Navbar, Nav, Container } from "react-bootstrap"
-import Button from "../SubmitButton"
+import Button from "../submit-button"
 import "./index.css"
 
 export default function NavbarComponent() {
