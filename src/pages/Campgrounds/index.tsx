@@ -5,7 +5,7 @@ import Card from "./Card"
 import LoadingCard, { CardComponent } from "components/LoadingCard"
 import ClusterMap from "components/Map/cluster"
 import Button from "components/SubmitButton"
-import { ErrorDetails } from "types/Error"
+import { ErrorDetails } from "types/errors"
 
 export default function Campgrounds() {
   const {

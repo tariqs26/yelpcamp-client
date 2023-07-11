@@ -5,7 +5,7 @@ type Alert = {
 
 type AppError = {
   message: string
-  details: ErrorDetails
+  details: string
   link?: {
     url: string
     text: string
