@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { Card } from "react-bootstrap"
-import bgImage from "assets/images/jeffrey-keenan-jNL9ooegmUE-unsplash.webp"
+import bgImage from "assets/images/home-image.webp"
 import "./index.css"
 
 export default function Home() {
