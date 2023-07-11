@@ -8,9 +8,9 @@ import { Row, Card, ListGroup, Button } from "react-bootstrap"
 import EditCampground from "../edit"
 import Error from "components/Error"
 import SubmitButton from "components/SubmitButton"
-import Map from "components/Map"
-import ReviewForm from "pages/campground/view/ReviewForm"
-import ReviewCard from "pages/campground/view/ReviewCard"
+import Map from "components/map"
+import ReviewForm from "pages/campground/view/create-review"
+import ReviewCard from "pages/campground/view/view-review"
 import Fallback from "components/Fallback"
 
 export default function Campground() {

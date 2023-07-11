@@ -18,6 +18,11 @@ type MutationError = Error & {
   }
 }
 
+type FormProps = {
+  handleSubmit: React.FormEventHandler
+  isLoading: boolean
+}
+
 type Campground = {
   _id: string
   author: AppUser

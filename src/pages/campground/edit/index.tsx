@@ -1,6 +1,6 @@
 import useUpdateCampground from "./useUpdateCampground"
 import Modal from "react-bootstrap/Modal"
-import Form from "components/Form"
+import Form from "components/forms/campground-form"
 import "./index.css"
 
 type EditCampgroundProps = {

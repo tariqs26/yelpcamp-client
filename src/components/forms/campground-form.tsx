@@ -1,20 +1,18 @@
-import { FormEventHandler, useState } from "react"
+import { useState } from "react"
 import { Form, Button, Row, InputGroup, Card } from "react-bootstrap"
-import ConditionalWrapper from "./ConditionalWrapper"
-import SubmitButton from "./SubmitButton"
+import ConditionalWrapper from "components/ConditionalWrapper"
+import SubmitButton from "components/SubmitButton"
 
-type FormProps = {
-  handleSubmit: FormEventHandler
-  isLoading: boolean
-} & (
-  | {
-      initialData: Campground
-      leaveHandler: () => void
-    }
-  | { initialData?: undefined; leaveHandler?: undefined }
-)
+type CampgroundFormProps = FormProps &
+  (
+    | {
+        initialData: Campground
+        leaveHandler: () => void
+      }
+    | { initialData?: undefined; leaveHandler?: undefined }
+  )
 
-const FormComponent: React.FC<FormProps> = (props) => {
+const CampgroundForm: React.FC<CampgroundFormProps> = (props) => {
   const { handleSubmit, initialData, isLoading, leaveHandler } = props
   const [descChars, setDescChars] = useState(initialData?.description.length)
   const action = initialData ? "Update" : "Create"
@@ -120,4 +118,4 @@ const FormComponent: React.FC<FormProps> = (props) => {
   )
 }
 
-export default FormComponent
+export default CampgroundForm

@@ -1,12 +1,12 @@
 import Card from "react-bootstrap/Card"
 import useDeleteReview from "./useDeleteReview"
-import { Rating } from "../Rating"
+import { Rating } from "components/rating"
 import Button from "components/SubmitButton"
 
 type Props = {
   cId: string
   review: Review
-  user: AppUser | undefined
+  user?: AppUser
 }
 
 export default function ReviewCard({ cId, review, user }: Props) {

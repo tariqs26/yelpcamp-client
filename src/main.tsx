@@ -6,7 +6,7 @@ import AlertApi from "contexts/AlertContext"
 import AuthApi from "contexts/AuthContext"
 import Home from "pages/home"
 import Fallback from "components/Fallback"
-import Navbar from "components/Navbar"
+import Navbar from "components/navbar"
 import Footer from "components/Footer"
 
 const Register = lazy(() => import("pages/auth/register"))
