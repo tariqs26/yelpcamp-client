@@ -6,7 +6,7 @@ import "./index.css"
 
 type Props = {
   cId: string
-  user?: AppUser
+  user: AppUser | null
 }
 
 export default function CreateReview({ cId, user }: Props) {
