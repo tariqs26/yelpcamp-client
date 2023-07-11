@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const reviewsAPI = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: `${import.meta.env.VITE_API_URL}/campgrounds`,
   withCredentials: true,
   timeout: 5000, // 5 seconds
 })
@@ -14,7 +14,7 @@ export const createReview = async ({
   review: ReviewInput
 }): Promise<Review> =>
   (
-    await reviewsAPI.post(`/campgrounds/${cId}/reviews`, {
+    await reviewsAPI.post(`/${cId}/reviews`, {
       ...review,
       rating: Number(review.rating),
     })
@@ -26,6 +26,6 @@ export const deleteReview = async ({
 }: {
   id: string
   reviewId: string
-}) => await reviewsAPI.delete(`/campgrounds/${id}/reviews/${reviewId}`)
+}) => await reviewsAPI.delete(`/${id}/reviews/${reviewId}`)
 
 export default reviewsAPI
