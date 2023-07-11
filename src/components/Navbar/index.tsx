@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useAuth } from "contexts/AuthContext"
 import useLogoutUser from "./useLogout"
 import { Navbar, Nav, Container } from "react-bootstrap"
-import Loader from "../SubmitLoader"
+import Button from "../SubmitButton"
 import "./index.css"
 
 export default function NavbarComponent() {
@@ -51,19 +51,17 @@ export default function NavbarComponent() {
           </Nav>
           <div className="nav-btns d-flex gap-3 align-items-center ms-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
             {user || isLoading ? (
-              <Nav.Link
-                className="btn btn-outline-secondary text-light px-2 py-1"
-                style={{
-                  minWidth: "4.7rem",
-                }}
+              <Button
+                className="text-light"
                 onClick={() => {
                   mutate()
                   handleNavClick()
                 }}
+                variant="outline-secondary"
                 disabled={isLoading}
               >
-                <Loader text="Sign out" isLoading={isLoading} />
-              </Nav.Link>
+                Sign out
+              </Button>
             ) : (
               <>
                 <NavLink

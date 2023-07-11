@@ -4,8 +4,7 @@ import Error from "components/Error"
 import Card from "./Card"
 import LoadingCard, { CardComponent } from "components/LoadingCard"
 import ClusterMap from "components/Map/cluster"
-import { Button } from "react-bootstrap"
-import Loader from "components/SubmitLoader"
+import Button from "components/SubmitButton"
 import { ErrorDetails } from "types/Error"
 
 export default function Campgrounds() {
@@ -63,11 +62,11 @@ export default function Campgrounds() {
       {hasNextPage && (
         <Button
           variant="secondary mt-4"
-          style={{ minWidth: "6.4rem" }}
           disabled={isFetchingNextPage}
           onClick={() => fetchNextPage()}
+          notForm
         >
-          <Loader text="Load more" isLoading={isFetchingNextPage} />
+          Load more
         </Button>
       )}
     </>

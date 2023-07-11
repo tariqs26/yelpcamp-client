@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import { Form, Button } from "react-bootstrap"
 import useRegisterUser from "./useRegisterUser"
+import Form from "react-bootstrap/Form"
 import UserFormWrapper from "components/UserFormWrapper"
-import Loader from "components/SubmitLoader"
+import Button from "components/SubmitButton"
 
 export default function Register() {
   const { handleSubmit, isLoading } = useRegisterUser()
@@ -49,13 +49,8 @@ export default function Register() {
             Password must be at least 8 characters.
           </Form.Control.Feedback>
         </Form.Group>
-        <Button
-          type="submit"
-          disabled={isLoading}
-          variant="success"
-          className="w-100"
-        >
-          <Loader text="Create account" isLoading={isLoading} />
+        <Button disabled={isLoading} variant="success">
+          Sign up
         </Button>
         <div className="d-flex justify-content-center gap-1 align-items-center mt-3">
           <span>Have an account?</span>{" "}

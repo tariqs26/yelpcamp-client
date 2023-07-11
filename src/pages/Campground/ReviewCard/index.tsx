@@ -1,36 +1,35 @@
-import { Button, Card } from 'react-bootstrap';
-import useDeleteReview from './useDeleteReview';
-import { Rating } from '../Rating';
-import Loader from 'components/SubmitLoader';
+import Card from "react-bootstrap/Card"
+import useDeleteReview from "./useDeleteReview"
+import { Rating } from "../Rating"
+import Button from "components/SubmitButton"
 
 type Props = {
-  cId: string;
-  review: Review;
-  user: AppUser | undefined;
-};
+  cId: string
+  review: Review
+  user: AppUser | undefined
+}
 
 export default function ReviewCard({ cId, review, user }: Props) {
-  const { mutate, isLoading } = useDeleteReview(cId);
+  const { mutate, isLoading } = useDeleteReview(cId)
   return (
-    <Card className='mt-3'>
+    <Card className="mt-3">
       <Card.Body>
-        <div className='d-flex justify-content-between align-items-center'>
-          <Card.Title className='mb-0'>{review.author.username}</Card.Title>
+        <div className="d-flex justify-content-between align-items-center">
+          <Card.Title className="mb-0">{review.author.username}</Card.Title>
           <Rating rating={review.rating} text={`Rated: ${review.rating}/5`} />
         </div>
         <Card.Text>{review.body}</Card.Text>
         {user && user._id === review.author._id && (
           <Button
-            variant='danger'
-            size='sm'
+            variant="danger"
+            size="sm"
             disabled={isLoading}
-            style={{ minWidth: '3.5rem' }}
             onClick={() => mutate({ id: cId, reviewId: review._id })}
           >
-            <Loader text='delete' isLoading={isLoading} />
+            Delete
           </Button>
         )}
       </Card.Body>
     </Card>
-  );
+  )
 }

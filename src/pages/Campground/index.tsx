@@ -7,7 +7,7 @@ import { fromDate, isAppError } from "../../utils"
 import { Row, Card, ListGroup, Button } from "react-bootstrap"
 import EditCampground from "../EditCampground"
 import Error from "components/Error"
-import Loader from "components/SubmitLoader"
+import SubmitButton from "components/SubmitButton"
 import Map from "components/Map"
 import ReviewForm from "pages/Campground/ReviewForm"
 import ReviewCard from "pages/Campground/ReviewCard"
@@ -63,14 +63,13 @@ export default function Campground() {
               <Button variant="warning" onClick={() => setModalShow(true)}>
                 Edit
               </Button>
-              <Button
+              <SubmitButton
                 variant="danger"
                 disabled={mutate.isLoading}
-                style={{ minWidth: "4.5rem" }}
                 onClick={() => mutate.mutate(data._id)}
               >
-                <Loader text="Delete" isLoading={mutate.isLoading} />
-              </Button>
+                Delete
+              </SubmitButton>
             </Card.Body>
           )}
           <Card.Footer className="text-muted">

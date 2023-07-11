@@ -1,7 +1,7 @@
 import { FormEventHandler, useState } from "react"
 import { Form, Button, Row, InputGroup, Card } from "react-bootstrap"
 import ConditionalWrapper from "./ConditionalWrapper"
-import Loader from "./SubmitLoader"
+import SubmitButton from "./SubmitButton"
 
 type FormProps = {
   handleSubmit: FormEventHandler
@@ -14,7 +14,7 @@ type FormProps = {
 const FormComponent: React.FC<FormProps> = (props) => {
   const { handleSubmit, leaveHandler, initialData, action, isLoading } = props
   const [descChars, setDescChars] = useState(
-    initialData?.description?.length || 0,
+    initialData?.description?.length || 0
   )
   return (
     <Row>
@@ -103,17 +103,9 @@ const FormComponent: React.FC<FormProps> = (props) => {
               {descChars}/300 characters
             </Form.Text>
           </Form.Group>
-          <Button
-            type="submit"
-            variant="success"
+          <SubmitButton
             disabled={isLoading}
-            className="me-2"
-            style={{
-              minWidth: "11rem",
-            }}
-          >
-            <Loader text={`${action} campground`} isLoading={isLoading} />
-          </Button>
+          >{`${action} campground`}</SubmitButton>
           {leaveHandler && (
             <Button variant="danger" onClick={leaveHandler}>
               Cancel
