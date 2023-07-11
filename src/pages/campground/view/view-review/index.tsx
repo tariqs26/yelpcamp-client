@@ -25,6 +25,7 @@ export default function ReviewCard({ cId, review, user }: Props) {
             size="sm"
             disabled={isLoading}
             onClick={() => mutate({ id: cId, reviewId: review._id })}
+            notForm
           >
             Delete
           </Button>
