@@ -1,21 +1,19 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { deleteReview } from "api/reviews"
-import { useAlert } from "contexts/AlertContext"
+import { toast } from "react-hot-toast"
 
 export default function useDeleteCampground(campgroundId: string) {
   const queryClient = useQueryClient()
-  const { alert } = useAlert()
 
   return useMutation({
     mutationFn: deleteReview,
     onError: (error: Error) =>
-      alert(`${error.message}: Failed to delete review`, "danger"),
+      toast.error(`${error.message}: Failed to delete review`),
     onSuccess: (_, { reviewId }) => {
       queryClient.setQueryData(
         ["campgrounds", campgroundId],
         (oldData: Campground | undefined) => {
           if (oldData) {
-            alert("Review deleted successfully", "success")
             return {
               ...oldData,
               reviews: oldData.reviews.filter(({ _id }) => _id !== reviewId),
@@ -23,6 +21,7 @@ export default function useDeleteCampground(campgroundId: string) {
           }
         }
       )
+      toast.success("Review deleted successfully")
     },
   })
 }

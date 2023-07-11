@@ -1,19 +1,18 @@
 import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { createReview } from "api/reviews"
-import { useAlert } from "contexts/AlertContext"
+import { toast } from "react-hot-toast"
 import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useCreateReview(cId: string, close: () => void) {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
-  const { alert } = useAlert()
 
   const { mutate, isLoading } = useMutation({
     mutationFn: createReview,
     onError: ({ message }: Error) => {
       if (!message.endsWith("401"))
-        alert(`${message}: Failed to create review`, "danger")
+        toast.error(`${message}: Failed to create review`)
       else
         navigate("/login", {
           state: {
@@ -28,7 +27,6 @@ export default function useCreateReview(cId: string, close: () => void) {
         ["campgrounds", cId],
         (oldData: Campground | undefined) => {
           if (oldData) {
-            alert("Review created successfully", "success")
             return {
               ...oldData,
               reviews: [...oldData.reviews, data],
@@ -36,6 +34,7 @@ export default function useCreateReview(cId: string, close: () => void) {
           }
         }
       )
+      toast.success("Review created successfully")
     },
   })
 

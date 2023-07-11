@@ -2,23 +2,22 @@ import { useNavigate } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
 import { logoutUser } from "api/users"
 import { useAuth } from "contexts/AuthContext"
-import { useAlert } from "contexts/AlertContext"
+import { toast } from "react-hot-toast"
 
 export default function useLogoutUser() {
   const navigate = useNavigate()
-  const { alert } = useAlert()
   const { setUser } = useAuth()
 
   return useMutation({
     mutationFn: logoutUser,
     retry: false,
     onSuccess: () => {
-      setUser(undefined)
-      alert("Successfully signed out", "success")
+      setUser(null)
+      toast.success("Successfully signed out")
       navigate("/campgrounds", { replace: true })
     },
     onError: (error: Error) => {
-      alert(`${error.message}: Failed to sign out`, "danger")
+      toast.error(`${error.message}: Failed to sign out`)
     },
   })
 }

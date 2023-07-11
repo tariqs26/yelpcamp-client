@@ -2,14 +2,14 @@ import { createContext, useContext, useState, useEffect, useMemo } from "react"
 import { fetchUser } from "api/users"
 
 type AuthContext = {
-  user: AppUser | undefined
-  setUser: (user: AppUser | undefined) => void
+  user: AppUser | null
+  setUser: (user: AppUser | null) => void
 }
 
 const AuthContext = createContext<AuthContext>({} as AuthContext)
 
 export default function AuthApi({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<AppUser>()
+  const [user, setUser] = useState<AppUser | null>(null)
   const [loadingInitial, setLoadingInitial] = useState(true)
 
   useEffect(() => {

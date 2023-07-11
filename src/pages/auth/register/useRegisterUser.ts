@@ -1,21 +1,20 @@
 import { useNavigate } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
 import { registerUser } from "api/users"
-import { useAlert } from "contexts/AlertContext"
+import { toast } from "react-hot-toast"
 import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useRegisterUser() {
   const navigate = useNavigate()
-  const { alert } = useAlert()
 
   const { isLoading, mutate } = useMutation(registerUser, {
     onSuccess: (data) => {
-      if (typeof data === "string") return alert(data, "danger")
-      alert(`Welcome to YelpCamp ${data.username}!`, "success")
+      if (typeof data === "string") return toast.error(data)
       navigate("/login", { replace: true })
+      toast.success(`Welcome to YelpCamp ${data.username}!`)
     },
     onError: (error: Error) => {
-      alert(`${error.message}: Failed to register user`, "danger")
+      toast.error(`${error.message}: Failed to register user`)
     },
   })
 

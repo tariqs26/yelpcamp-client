@@ -1,19 +1,17 @@
 import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { deleteCampground } from "api/campgrounds"
-import { useAlert } from "contexts/AlertContext"
+import { toast } from "react-hot-toast"
 
 export default function useDeleteCampground() {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
-  const { alert } = useAlert()
 
   return useMutation({
     mutationFn: deleteCampground,
     onError: (err: MutationError) => {
-      alert(
-        `${err.response?.data || err.message}: Failed to delete campground`,
-        "danger"
+      toast.error(
+        `${err.response?.data || err.message}: Failed to delete campground`
       )
     },
     onSuccess: (_, campgroundId) => {
@@ -33,7 +31,7 @@ export default function useDeleteCampground() {
       navigate("/campgrounds", {
         replace: true,
       })
-      alert("Campground deleted successfully", "success")
+      toast.success("Campground deleted successfully")
     },
   })
 }

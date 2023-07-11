@@ -2,7 +2,7 @@ import { StrictMode, lazy, Suspense } from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import AlertApi from "contexts/AlertContext"
+import { Toaster } from "react-hot-toast"
 import AuthApi from "contexts/AuthContext"
 import Home from "pages/home"
 import Fallback from "components/fallback"
@@ -30,44 +30,43 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
+    <Toaster />
     <QueryClientProvider client={queryClient}>
       <AuthApi>
         <BrowserRouter>
-          <AlertApi>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route
-                element={
-                  <main className="container position-relative my-4">
-                    <Suspense fallback={<Fallback />}>
-                      <Outlet />
-                    </Suspense>
-                  </main>
-                }
-              >
-                <Route path="/" element={<AuthLayout />}>
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/login" element={<Login />} />
-                </Route>
-                <Route path="/campgrounds">
-                  <Route index element={<Campgrounds />} />
-                  <Route path=":id" element={<Campground />} />
-                </Route>
-                <Route
-                  path="new-campground"
-                  element={
-                    <ProtectedRoute
-                      message="Please sign in to create a new campground"
-                      element={<NewCampground />}
-                    />
-                  }
-                />
-                <Route path="*" element={<NotFound />} />
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              element={
+                <main className="container position-relative my-4">
+                  <Suspense fallback={<Fallback />}>
+                    <Outlet />
+                  </Suspense>
+                </main>
+              }
+            >
+              <Route path="/" element={<AuthLayout />}>
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
               </Route>
-            </Routes>
-            <Footer />
-          </AlertApi>
+              <Route path="/campgrounds">
+                <Route index element={<Campgrounds />} />
+                <Route path=":id" element={<Campground />} />
+              </Route>
+              <Route
+                path="new-campground"
+                element={
+                  <ProtectedRoute
+                    message="Please sign in to create a new campground"
+                    element={<NewCampground />}
+                  />
+                }
+              />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+          <Footer />
         </BrowserRouter>
       </AuthApi>
     </QueryClientProvider>

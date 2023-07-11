@@ -1,7 +1,7 @@
 import { FormEvent } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { updateCampground } from "api/campgrounds"
-import { useAlert } from "contexts/AlertContext"
+import { toast } from "react-hot-toast"
 import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useUpdateCampground(
@@ -9,15 +9,13 @@ export default function useUpdateCampground(
   close: () => void
 ) {
   const queryClient = useQueryClient()
-  const { alert } = useAlert()
 
   const { mutate, isLoading } = useMutation({
     mutationFn: updateCampground,
     onError: (err: MutationError) => {
       close()
-      alert(
-        `${err.response?.data || err.message}: Failed to update campground`,
-        "danger"
+      toast.error(
+        `${err.response?.data || err.message}: Failed to update campground`
       )
     },
     onSuccess: (_, { id, campground: updatedCampground }) => {
@@ -41,7 +39,7 @@ export default function useUpdateCampground(
       })
 
       close()
-      alert("Campground updated successfully", "success")
+      toast.error("Campground updated successfully")
     },
   })
 
