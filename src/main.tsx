@@ -47,7 +47,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                   </main>
                 }
               >
-                <Route path="/" element={<AuthLayout />}>
+                <Route element={<AuthLayout />}>
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
                 </Route>
