@@ -108,6 +108,7 @@ const CampgroundForm: React.FC<CampgroundFormProps> = (props) => {
           </Form.Group>
           <SubmitButton
             disabled={isLoading}
+            className="me-2"
             notForm
           >{`${action} campground`}</SubmitButton>
           {initialData && (
