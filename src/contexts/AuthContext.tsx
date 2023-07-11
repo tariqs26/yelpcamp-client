@@ -8,7 +8,7 @@ type AuthContext = {
 
 const AuthContext = createContext<AuthContext>({} as AuthContext)
 
-export default function AuthApi({ children }: { children: React.ReactNode }) {
+export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AppUser | null>(null)
   const [loadingInitial, setLoadingInitial] = useState(true)
 

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client"
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { Toaster } from "react-hot-toast"
-import AuthApi from "contexts/AuthContext"
+import AuthProvider from "contexts/AuthContext"
 import Home from "pages/home"
 import Fallback from "components/fallback"
 import Navbar from "components/navbar"
@@ -30,9 +30,9 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
-    <Toaster />
+    <Toaster toastOptions={{ duration: 1500 }} />
     <QueryClientProvider client={queryClient}>
-      <AuthApi>
+      <AuthProvider>
         <BrowserRouter>
           <main className="d-flex flex-column min-vh-100 h-100">
             <Navbar />
@@ -70,7 +70,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <Footer />
           </main>
         </BrowserRouter>
-      </AuthApi>
+      </AuthProvider>
     </QueryClientProvider>
   </StrictMode>
 )
