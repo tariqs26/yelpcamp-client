@@ -21,15 +21,11 @@ export default function Campground() {
 
   if (isFetching) return <Fallback />
 
-  if (isAppError(data) || !data)
+  if (!data) return <div>Not found</div>
+
+  if (isAppError(data))
     return (
-      <Error
-        title={data?.message || "Campground not found"}
-        message={
-          data?.details || "The campground you are looking for does not exist"
-        }
-        link={data?.link}
-      />
+      <Error title={data.message} message={data.details} link={data.link} />
     )
 
   return (
