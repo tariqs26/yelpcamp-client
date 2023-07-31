@@ -1,18 +1,16 @@
 import { Outlet } from "react-router-dom"
-import { Card, Row } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 import TentImg from "assets/images/zach-betten-K9olx8OF36A-unsplash.jpg"
 
 export default function AuthLayout() {
   return (
-    <Row className="px-3">
-      <Card
-        className="border shadow"
-        style={{
-          width: "min(100%, 450px)",
-          margin: "auto",
-          padding: "0",
-        }}
-      >
+    <div
+      className="m-auto p-3 p-sm-4"
+      style={{
+        width: "min(100%, 450px)",
+      }}
+    >
+      <Card className="border shadow">
         <Card.Img
           variant="top"
           src={TentImg}
@@ -22,9 +20,9 @@ export default function AuthLayout() {
           }}
         />
         <Card.Body>
-            <Outlet />
+          <Outlet />
         </Card.Body>
       </Card>
-    </Row>
+    </div>
   )
 }

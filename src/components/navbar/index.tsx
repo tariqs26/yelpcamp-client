@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { useAuth } from "contexts/AuthContext"
+import { useAuth } from "providers/auth"
 import useLogoutUser from "./useLogout"
 import { Navbar, Nav, Container } from "react-bootstrap"
 import Button from "../submit-button"
@@ -21,10 +21,10 @@ export default function NavbarComponent() {
       bg="dark"
       variant="dark"
       expand="lg"
-      className="px-sm-5 "
-      sticky="top"
+      className="px-sm-5"
+      fixed="top"
     >
-      <Container fluid>
+      <Container>
         <NavLink to="/" className="navbar-brand" onClick={handleNavClick}>
           YelpCamp
         </NavLink>

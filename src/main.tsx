@@ -1,76 +1,64 @@
-import { StrictMode, lazy, Suspense } from "react"
+import { StrictMode, lazy } from "react"
 import ReactDOM from "react-dom/client"
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
-import AuthProvider from "contexts/AuthContext"
+import ReactQueryProvider from "providers/react-query"
+import AuthProvider from "providers/auth"
 import Home from "pages/home"
-import Fallback from "components/fallback"
-import Navbar from "components/navbar"
+import Register from "pages/auth/register"
+import Login from "pages/auth/login"
 import Footer from "components/footer"
+import NavLayout from "components/layouts/nav-layout"
+import SuspenseLayout from "components/layouts/suspense-layout"
 import AuthLayout from "components/layouts/auth-layout"
+import ProtectedRoute from "components/protected"
+import NotFound from "components/not-found"
 
-const Register = lazy(() => import("pages/auth/register"))
-const Login = lazy(() => import("pages/auth/login"))
-const Campgrounds = lazy(() => import("pages/campground/main"))
-const Campground = lazy(() => import("pages/campground/view"))
-const NewCampground = lazy(() => import("pages/campground/create"))
-const ProtectedRoute = lazy(() => import("components/protected"))
-const NotFound = lazy(() => import("components/not-found"))
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-      refetchOnWindowFocus: false,
-      staleTime: 3600 * 24,
-    },
-  },
-})
+const [Campgrounds, Campground, NewCampground] = [
+  lazy(() => import("pages/campground/main")),
+  lazy(() => import("pages/campground/view")),
+  lazy(() => import("pages/campground/create")),
+]
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+
+root.render(
   <StrictMode>
     <Toaster toastOptions={{ duration: 1500 }} />
-    <QueryClientProvider client={queryClient}>
+    <ReactQueryProvider>
       <AuthProvider>
         <BrowserRouter>
-          <main className="d-flex flex-column min-vh-100 h-100">
-            <Navbar />
+          <main className="d-flex flex-column min-vh-100">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route
-                element={
-                  <main className="container position-relative my-4">
-                    <Suspense fallback={<Fallback />}>
-                      <Outlet />
-                    </Suspense>
-                  </main>
-                }
-              >
-                <Route element={<AuthLayout />}>
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/login" element={<Login />} />
-                </Route>
-                <Route path="/campgrounds">
-                  <Route index element={<Campgrounds />} />
-                  <Route path=":id" element={<Campground />} />
-                </Route>
-                <Route
-                  path="new-campground"
-                  element={
-                    <ProtectedRoute
-                      message="Please sign in to create a new campground"
-                      element={<NewCampground />}
-                    />
-                  }
-                />
-                <Route path="*" element={<NotFound />} />
+              <Route element={<AuthLayout />}>
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
               </Route>
+              <Route element={<NavLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route element={<SuspenseLayout />}>
+                  <Route path="/campgrounds">
+                    <Route index element={<Campgrounds />} />
+                    <Route path=":id" element={<Campground />} />
+                  </Route>
+                  <Route
+                    path="new-campground"
+                    element={
+                      <ProtectedRoute
+                        message="Please sign in to create a new campground"
+                        element={<NewCampground />}
+                      />
+                    }
+                  />
+                </Route>
+              </Route>
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
           </main>
         </BrowserRouter>
       </AuthProvider>
-    </QueryClientProvider>
+    </ReactQueryProvider>
   </StrictMode>
 )

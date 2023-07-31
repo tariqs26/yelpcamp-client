@@ -1,8 +1,8 @@
 import { useState } from "react"
 import useFetchCampground from "./useFetchCampground"
 import useDeleteCampground from "./useDeleteCampground"
-import { useAuth } from "contexts/AuthContext"
-import { fromDate, isAppError } from "../../../lib/utils"
+import { useAuth } from "providers/auth"
+import { fromDate, isAppError } from "lib/utils"
 
 import { Row, Card, ListGroup, Button } from "react-bootstrap"
 import EditCampground from "../edit"

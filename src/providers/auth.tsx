@@ -31,7 +31,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       {!loadingInitial ? (
         children
       ) : (
-        <div className="d-flex justify-content-center mt-3">
+        <div className="d-flex justify-content-center align-items-center min-vh-100">
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>

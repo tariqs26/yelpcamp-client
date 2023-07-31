@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
 import { loginUser } from "api/users"
 import { toast } from "react-hot-toast"
-import { useAuth } from "contexts/AuthContext"
+import { useAuth } from "providers/auth"
 import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useLoginUser() {

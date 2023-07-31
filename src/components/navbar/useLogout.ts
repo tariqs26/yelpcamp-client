@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
 import { logoutUser } from "api/users"
-import { useAuth } from "contexts/AuthContext"
+import { useAuth } from "providers/auth"
 import { toast } from "react-hot-toast"
 
 export default function useLogoutUser() {
