@@ -6,7 +6,7 @@ type Props = {
   message: string
   link?: { url: string; text: string }
 }
-const Error: React.FC<Props> = ({ title, message, link }) => {
+export default function Error({ title, message, link }: Props) {
   return (
     <Row>
       <Col
@@ -31,5 +31,3 @@ const Error: React.FC<Props> = ({ title, message, link }) => {
     </Row>
   )
 }
-
-export default Error
