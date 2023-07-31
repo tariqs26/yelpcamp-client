@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useMemo } from "react"
 import { fetchUser } from "api/users"
+import Fallback from "components/fallback"
 
 type AuthContext = {
   user: AppUser | null
@@ -8,7 +9,11 @@ type AuthContext = {
 
 const AuthContext = createContext<AuthContext>({} as AuthContext)
 
-export default function AuthProvider({ children }: { children: React.ReactNode }) {
+export default function AuthProvider({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const [user, setUser] = useState<AppUser | null>(null)
   const [loadingInitial, setLoadingInitial] = useState(true)
 
@@ -28,15 +33,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
   return (
     <AuthContext.Provider value={memoizedValue}>
-      {!loadingInitial ? (
-        children
-      ) : (
-        <div className="d-flex justify-content-center align-items-center min-vh-100">
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
-      )}
+      {!loadingInitial ? children : <Fallback />}
     </AuthContext.Provider>
   )
 }
