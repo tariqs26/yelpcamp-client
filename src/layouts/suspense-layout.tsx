@@ -7,7 +7,8 @@ export default function SuspenseLayout() {
   return (
     <Suspense fallback={<Fallback />}>
       <Container style={{
-        paddingTop: "68px",
+        paddingTop: "72px",
+        paddingBottom: "20px"
       }}>
         <Outlet />
       </Container>
