@@ -5,9 +5,9 @@ import {
   Layer,
   MapLayerMouseEvent,
   NavigationControl,
-  MapboxGeoJSONFeature,
   type MapRef,
   type GeoJSONSource,
+  type MapGeoJSONFeature,
 } from "react-map-gl"
 
 import {
@@ -20,7 +20,7 @@ import "mapbox-gl/dist/mapbox-gl.css"
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN
 
-type Feature = MapboxGeoJSONFeature & {
+type Feature = MapGeoJSONFeature & {
   properties?: {
     cluster_id: number
   }
@@ -40,15 +40,23 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
     if (!mapRef.current) return
     const mapboxSource = mapRef.current.getSource(
       "campgrounds"
-    ) as GeoJSONSource
-    mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
-      if (err || !mapRef.current) return
-      mapRef.current.easeTo({
-        center: feature.geometry.coordinates,
-        zoom,
-        duration: 500,
-      })
-    })
+    ) as unknown as GeoJSONSource & {
+      getClusterExpansionZoom: (
+        clusterId: number,
+        callback: (err: any, zoom: number) => void
+      ) => void
+    }
+    mapboxSource.getClusterExpansionZoom(
+      clusterId,
+      (err: any, zoom: number) => {
+        if (err || !mapRef.current) return
+        mapRef.current.easeTo({
+          center: feature.geometry.coordinates,
+          zoom,
+          duration: 500,
+        })
+      }
+    )
   }
 
   return (
