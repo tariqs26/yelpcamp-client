@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import { Card } from "react-bootstrap"
-import TentImg from "assets/images/zach-betten-K9olx8OF36A-unsplash.jpg"
+import TentImg from "assets/images/auth-image.webp"
 
 export default function AuthLayout() {
   return (
