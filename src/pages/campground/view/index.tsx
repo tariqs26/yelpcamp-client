@@ -9,8 +9,8 @@ import EditCampground from "../edit"
 import Error from "components/error"
 import SubmitButton from "components/submit-button"
 import Map from "components/Map"
-import ReviewForm from "pages/campground/view/create-review"
-import ReviewCard from "pages/campground/view/view-review"
+import ReviewForm from "./create-review"
+import ReviewCard from "./view-review"
 import Fallback from "components/fallback"
 
 export default function Campground() {
@@ -20,16 +20,17 @@ export default function Campground() {
   const { user } = useAuth()
 
   if (isFetching) return <Fallback />
-  if (!data) return <div>Not found</div>
-  if (isAppError(data)) {
+
+  if (isAppError(data) || !data)
     return (
       <Error
-        title={data.message}
-        message={data.details}
-        link={data.link ?? undefined}
+        title={data?.message || "Campground not found"}
+        message={
+          data?.details || "The campground you are looking for does not exist"
+        }
+        link={data?.link}
       />
     )
-  }
 
   return (
     <Row>
