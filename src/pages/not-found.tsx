@@ -1,8 +1,14 @@
+import Container from "react-bootstrap/Container"
 import { Link } from "react-router-dom"
 
 export default function NotFound() {
   return (
-    <div>
+    <Container
+      style={{
+        paddingTop: "72px",
+        paddingBottom: "20px",
+      }}
+    >
       <h1>
         404: Not Found{" "}
         <span role="img" aria-label="sad face">
@@ -15,6 +21,6 @@ export default function NotFound() {
       <Link to="/campgrounds" replace={true}>
         Go back to campgrounds
       </Link>
-    </div>
+    </Container>
   )
 }

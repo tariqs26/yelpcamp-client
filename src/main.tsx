@@ -12,7 +12,7 @@ import NavLayout from "layouts/nav-layout"
 import SuspenseLayout from "layouts/suspense-layout"
 import AuthLayout from "layouts/auth-layout"
 import ProtectedRoute from "components/protected"
-import NotFound from "components/not-found"
+import NotFound from "pages/not-found"
 
 const [Campgrounds, Campground, NewCampground] = [
   lazy(() => import("pages/campground/main")),
