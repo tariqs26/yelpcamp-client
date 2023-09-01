@@ -14,7 +14,6 @@ import AuthLayout from "layouts/auth-layout"
 import ProtectedRoute from "components/protected"
 import NotFound from "components/not-found"
 
-
 const [Campgrounds, Campground, NewCampground] = [
   lazy(() => import("pages/campground/main")),
   lazy(() => import("pages/campground/view")),
