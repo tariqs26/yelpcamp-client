@@ -39,7 +39,7 @@ export default function useUpdateCampground(
       })
 
       close()
-      toast.error("Campground updated successfully")
+      toast.success("Campground updated successfully")
     },
   })
 
