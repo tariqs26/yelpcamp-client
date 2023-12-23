@@ -31,7 +31,7 @@ export default function Login() {
             type="password"
           />
         </Form.Group>
-        <Button disabled={isLoading}>Sign in</Button>
+        <Button disabled={isLoading} className="w-100">Sign in</Button>
         <div className="d-flex justify-content-center gap-1 align-items-center mt-3">
           <span>Don't have an account?</span>{" "}
           <Link to="/register" className="text-decoration-none">

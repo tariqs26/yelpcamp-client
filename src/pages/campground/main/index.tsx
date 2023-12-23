@@ -64,7 +64,6 @@ export default function Campgrounds() {
           variant="secondary mt-4"
           disabled={isFetchingNextPage}
           onClick={() => fetchNextPage()}
-          notForm
         >
           Load more
         </Button>

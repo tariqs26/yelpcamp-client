@@ -20,7 +20,7 @@ export default function ReviewForm({ handleSubmit, isLoading }: FormProps) {
           Review cannot be empty
         </Form.Control.Feedback>
       </Form.Group>
-      <Button variant="success" disabled={isLoading} notForm>
+      <Button variant="success" disabled={isLoading}>
         submit
       </Button>
     </Form>

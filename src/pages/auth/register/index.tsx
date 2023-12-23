@@ -48,7 +48,7 @@ export default function Register() {
             Password must be at least 8 characters.
           </Form.Control.Feedback>
         </Form.Group>
-        <Button disabled={isLoading} variant="success">
+        <Button disabled={isLoading} variant="success" className="w-100">
           Sign up
         </Button>
         <div className="d-flex justify-content-center gap-1 align-items-center mt-3">

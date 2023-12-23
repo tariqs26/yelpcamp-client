@@ -64,7 +64,6 @@ export default function Campground() {
                 variant="danger"
                 disabled={mutate.isLoading}
                 onClick={() => mutate.mutate(data._id)}
-                notForm
               >
                 Delete
               </SubmitButton>
