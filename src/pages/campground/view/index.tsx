@@ -39,7 +39,7 @@ export default function Campground() {
               backgroundColor: "rgba(0,0,0,0.5)",
               objectFit: "cover",
               objectPosition: "center",
-              height: "min(40vh, 350px)",
+              height: "350px",
             }}
             onError={(e) => {
               const target = e.target as HTMLImageElement
