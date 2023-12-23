@@ -106,14 +106,16 @@ const CampgroundForm: React.FC<CampgroundFormProps> = (props) => {
               {descChars}/300 characters
             </Form.Text>
           </Form.Group>
-          <SubmitButton
-            disabled={isLoading}
-          >{`${action} campground`}</SubmitButton>
-          {initialData && (
-            <Button variant="danger" onClick={leaveHandler}>
-              Cancel
-            </Button>
-          )}
+          <div className="d-flex gap-2">
+            {initialData && (
+              <Button variant="danger" onClick={leaveHandler}>
+                Cancel
+              </Button>
+            )}
+            <SubmitButton
+              disabled={isLoading}
+            >{`${action} campground`}</SubmitButton>
+          </div>
         </Form>
       </ConditionalWrapper>
     </Row>
