@@ -12,15 +12,15 @@ Full-stack application, where users can create, edit, delete and view and review
 
 ### Frontend
 
-| Technology                                            | Purpose                                         |
-| ----------------------------------------------------- | ----------------------------------------------- |
-| [React](https://reactjs.org/)                         | Frontend framework for building user interfaces |
-| [React Router](https://reactrouter.com/)              | Routing                                         |
-| [React Query](https://react-query.tanstack.com/)      | Data fetching and caching                       |
-| [React-Bootstrap](https://react-bootstrap.github.io/) | UI components and styling                       |
-| [TypeScript](https://www.typescriptlang.org/)         | Primary language for the frontend               |
-| [Mapbox](https://www.mapbox.com/)                     | Map API                                         |
-| [Vite](https://vitejs.dev/)                           | Frontend build tool                             |
+| Technology                                            | Purpose                           |
+| ----------------------------------------------------- | --------------------------------- |
+| [React](https://reactjs.org/)                         | Frontend framework                |
+| [React Router](https://reactrouter.com/)              | Routing                           |
+| [React Query](https://react-query.tanstack.com/)      | Data fetching and caching         |
+| [React-Bootstrap](https://react-bootstrap.github.io/) | UI components and styling         |
+| [TypeScript](https://www.typescriptlang.org/)         | Primary language for the frontend |
+| [Mapbox](https://www.mapbox.com/)                     | Map API                           |
+| [Vite](https://vitejs.dev/)                           | Frontend build tool               |
 
 ### [Backend](https://github.com/tariqs26/yelpcamp-server)
 
