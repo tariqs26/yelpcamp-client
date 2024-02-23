@@ -56,8 +56,8 @@ VITE_MAPBOX_TOKEN= # Mapbox API token
 
 ## Available Scripts
 
-| Script            | Description                                                 |
-| ----------------- | ----------------------------------------------------------- |
-| `npm run dev`     | Run the app in the development mode (http://localhost:3001) |
-| `npm run build`   | Build the app for production                                |
-| `npm run preview` | Preview the production build                                |
+| Script            | Description                                                   |
+| ----------------- | ------------------------------------------------------------- |
+| `npm run dev`     | Run the app in the development mode (<http://localhost:3001>) |
+| `npm run build`   | Build the app for production                                  |
+| `npm run preview` | Preview the production build                                  |
