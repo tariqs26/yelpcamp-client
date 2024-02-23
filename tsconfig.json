@@ -16,7 +16,7 @@
     "jsx": "preserve", // most upto date
     "baseUrl": "src"
   },
-  "include": ["src"],
+  "include": ["src", "vite.config.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"
