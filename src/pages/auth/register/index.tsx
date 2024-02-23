@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import useRegisterUser from "./useRegisterUser"
 import Form from "react-bootstrap/Form"
 import Button from "components/submit-button"
+import useRegisterUser from "./useRegisterUser"
 
 export default function Register() {
   const { handleSubmit, isLoading } = useRegisterUser()

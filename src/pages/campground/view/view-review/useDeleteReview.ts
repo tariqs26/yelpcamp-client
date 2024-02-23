@@ -13,13 +13,13 @@ export default function useDeleteCampground(campgroundId: string) {
       queryClient.setQueryData(
         ["campgrounds", campgroundId],
         (oldData: Campground | undefined) => {
-          if (oldData) {
+          if (oldData !== undefined) {
             return {
               ...oldData,
               reviews: oldData.reviews.filter(({ _id }) => _id !== reviewId),
             }
           }
-        }
+        },
       )
       toast.success("Review deleted successfully")
     },

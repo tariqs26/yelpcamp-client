@@ -13,26 +13,26 @@ export default function useCreateReview(cId: string, close: () => void) {
     onError: ({ message }: Error) => {
       if (!message.endsWith("401"))
         toast.error(`${message}: Failed to create review`)
-      else
+      else {
         navigate("/login", {
           state: {
             from: window.location.pathname,
-            message: "Please sign in to create a review",
           },
         })
+      }
     },
-    onSuccess: (data) => {
+    onSuccess: data => {
       close()
       queryClient.setQueryData(
         ["campgrounds", cId],
         (oldData: Campground | undefined) => {
-          if (oldData) {
+          if (oldData !== undefined) {
             return {
               ...oldData,
               reviews: [...oldData.reviews, data],
             }
           }
-        }
+        },
       )
       toast.success("Review created successfully")
     },

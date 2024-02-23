@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
-import useFetchCampgrounds from "./useFetchCampgrounds"
 import Error from "components/error"
-import Card from "./Card"
 import LoadingCard, { CardComponent } from "components/loading-card"
 import ClusterMap from "components/Map/cluster"
 import Button from "components/submit-button"
-import { ErrorDetails } from "types/errors"
+import ErrorDetails from "types/errors"
+import Card from "./Card"
+import useFetchCampgrounds from "./useFetchCampgrounds"
 
 export default function Campgrounds() {
   const {
@@ -19,13 +19,14 @@ export default function Campgrounds() {
   } = useFetchCampgrounds()
 
   if (status === "loading" || isRefetching) return <LoadingCard />
-  if (status === "error" || !data)
+  if (status === "error" || data === undefined) {
     return (
       <Error
         title={(error as Error).message}
         message={ErrorDetails.SERVER_ERROR}
       />
     )
+  }
   return (
     <>
       <ClusterMap
@@ -43,12 +44,11 @@ export default function Campgrounds() {
         <Link
           className="btn btn-success"
           to="/new-campground"
-          style={{ width: "fit-content" }}
-        >
+          style={{ width: "fit-content" }}>
           Add campground
         </Link>
       </header>
-      {!data.pages.length ? (
+      {data.pages.length === 0 ? (
         <h4 className="text-muted mt-4">No campgrounds available</h4>
       ) : (
         data.pages
@@ -63,8 +63,7 @@ export default function Campgrounds() {
         <Button
           variant="secondary mt-4"
           disabled={isFetchingNextPage}
-          onClick={() => fetchNextPage()}
-        >
+          onClick={fetchNextPage}>
           Load more
         </Button>
       )}

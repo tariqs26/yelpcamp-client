@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
+import { Navbar, Nav, Container } from "react-bootstrap"
 import { useAuth } from "providers/auth"
 import useLogoutUser from "./useLogout"
-import { Navbar, Nav, Container } from "react-bootstrap"
 import "./index.css"
 
 export default function NavbarComponent() {
@@ -10,8 +10,9 @@ export default function NavbarComponent() {
 
   const handleNavClick = () => {
     if (window.innerWidth < 992) {
-      const toggle = document.querySelector(".navbar-toggler") as HTMLElement
-      toggle.click()
+      const toggle: HTMLButtonElement | null =
+        document.querySelector(".navbar-toggler")
+      if (toggle !== null) toggle.click()
     }
   }
 
@@ -21,8 +22,7 @@ export default function NavbarComponent() {
       variant="dark"
       expand="lg"
       className="px-sm-5"
-      fixed="top"
-    >
+      fixed="top">
       <Container>
         <NavLink to="/" className="navbar-brand" onClick={handleNavClick}>
           YelpCamp
@@ -36,44 +36,39 @@ export default function NavbarComponent() {
             <NavLink
               to="/campgrounds"
               className="nav-link"
-              onClick={handleNavClick}
-            >
+              onClick={handleNavClick}>
               Campgrounds
             </NavLink>
             <NavLink
               to="/new-campground"
               className="nav-link"
-              onClick={handleNavClick}
-            >
+              onClick={handleNavClick}>
               New campground
             </NavLink>
           </Nav>
           <div className="nav-btns d-flex gap-3 align-items-center ms-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
-            {user || isLoading ? (
+            {user !== null || isLoading ? (
               <button
-                className="btn btn-outline-secondary text-light px-2 py-1"
+                className="btn btn-secondary text-light px-2 py-1"
                 onClick={() => {
                   mutate()
                   handleNavClick()
                 }}
-                disabled={isLoading}
-              >
+                disabled={isLoading}>
                 Sign out
               </button>
             ) : (
               <>
                 <NavLink
                   to="/login"
-                  className="btn btn-outline-secondary text-light px-2 py-1"
-                  onClick={handleNavClick}
-                >
+                  className="btn btn-secondary text-light px-2 py-1"
+                  onClick={handleNavClick}>
                   Sign in
                 </NavLink>
                 <NavLink
                   className="btn btn-primary text-light px-2 py-1"
                   to="/register"
-                  onClick={handleNavClick}
-                >
+                  onClick={handleNavClick}>
                   Register
                 </NavLink>
               </>

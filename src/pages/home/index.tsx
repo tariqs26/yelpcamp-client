@@ -13,8 +13,7 @@ export default function Home() {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
-      }}
-    >
+      }}>
       <div className="image-cover" />
       <main className="main">
         <div>
@@ -28,8 +27,7 @@ export default function Home() {
           <p className="lead">
             <NavLink
               to="/campgrounds"
-              className="cover-btn btn btn-secondary border-white bg-white text-dark fw-bold"
-            >
+              className="cover-btn btn btn-secondary border-white bg-white text-dark fw-bold">
               View Campgrounds
             </NavLink>
           </p>

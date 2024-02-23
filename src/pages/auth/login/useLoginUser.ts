@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
 import { loginUser } from "api/users"
@@ -9,18 +8,19 @@ import { dataFromInput, handleValidation } from "lib/utils"
 export default function useLoginUser() {
   const navigate = useNavigate()
   const { setUser } = useAuth()
-  const { state } = useLocation()
-
-  useEffect(() => {
-    if (state?.from)
-      toast.error(`${state?.message || "Please sign in to access this page"}`)
-  }, [])
+  const {
+    state,
+  }: {
+    state?: {
+      from?: string
+    }
+  } = useLocation()
 
   const mutation = useMutation(loginUser, {
-    onSuccess: (data) => {
+    onSuccess: data => {
       if (typeof data === "string") return toast.error(data)
       setUser(data)
-      if (state?.from) navigate(state.from, { replace: true })
+      if (state?.from !== undefined) navigate(state.from, { replace: true })
       else navigate("/campgrounds", { replace: true })
       toast.success("Successfully signed in!")
     },

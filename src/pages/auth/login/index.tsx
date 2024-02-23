@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import useLoginUser from "./useLoginUser"
 import Form from "react-bootstrap/Form"
 import Button from "components/submit-button"
+import useLoginUser from "./useLoginUser"
 
 export default function Login() {
   const { handleSubmit, isLoading } = useLoginUser()
@@ -31,9 +31,11 @@ export default function Login() {
             type="password"
           />
         </Form.Group>
-        <Button disabled={isLoading} className="w-100">Sign in</Button>
+        <Button disabled={isLoading} className="w-100">
+          Sign in
+        </Button>
         <div className="d-flex justify-content-center gap-1 align-items-center mt-3">
-          <span>Don't have an account?</span>{" "}
+          <span>Don&apos;t have an account?</span>{" "}
           <Link to="/register" className="text-decoration-none">
             Sign up
           </Link>

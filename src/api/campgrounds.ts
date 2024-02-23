@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios"
 import { axios } from "lib/axios"
-import { ErrorDetails } from "types/errors"
+import ErrorDetails from "types/errors"
 
 const campgroundsAPI = axios("/campgrounds")
 
@@ -9,12 +9,10 @@ export const fetchCampgrounds = async ({
 }): Promise<{
   campgrounds: Campground[]
   totalPages: number
-}> => {
-  return (await campgroundsAPI.get("/", { params: { page } })).data
-}
+}> => (await campgroundsAPI.get("/", { params: { page } })).data
 
 export const fetchCampgroundById = async (
-  id: string
+  id: string,
 ): Promise<Campground | AppError> => {
   try {
     return (await campgroundsAPI.get(`/${id}`)).data
@@ -35,7 +33,7 @@ export const fetchCampgroundById = async (
   }
 }
 export const createCampground = async (
-  campground: CampgroundInput
+  campground: CampgroundInput,
 ): Promise<Campground> => (await campgroundsAPI.post("/", campground)).data
 
 export const updateCampground = async ({

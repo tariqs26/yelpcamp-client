@@ -3,7 +3,7 @@ import {
   Map,
   Source,
   Layer,
-  MapLayerMouseEvent,
+  type MapLayerMouseEvent,
   NavigationControl,
   type MapRef,
   type GeoJSONSource,
@@ -33,29 +33,28 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
   const mapRef = useRef<MapRef>(null)
 
   const onClick = (e: MapLayerMouseEvent) => {
-    if (!e.features) return
+    if (e.features === undefined) return
     const feature = e.features[0] as Feature
-    if (!feature.properties) return
     const clusterId = feature.properties.cluster_id
-    if (!mapRef.current) return
+    if (mapRef.current === null) return
     const mapboxSource = mapRef.current.getSource(
-      "campgrounds"
+      "campgrounds",
     ) as unknown as GeoJSONSource & {
       getClusterExpansionZoom: (
         clusterId: number,
-        callback: (err: any, zoom: number) => void
+        callback: (err: any, zoom: number) => void,
       ) => void
     }
     mapboxSource.getClusterExpansionZoom(
       clusterId,
       (err: any, zoom: number) => {
-        if (err || !mapRef.current) return
+        if (err || mapRef.current === null) return
         mapRef.current.easeTo({
           center: feature.geometry.coordinates,
           zoom,
           duration: 500,
         })
-      }
+      },
     )
   }
 
@@ -76,17 +75,15 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
         width: "100%",
         marginBottom: "1rem",
         borderRadius: "calc(0.375rem - 1px)",
-      }}
-    >
+      }}>
       <NavigationControl />
       <Source
         id="campgrounds"
         type="geojson"
         data={campgrounds}
-        cluster={true}
+        cluster
         clusterMaxZoom={14}
-        clusterRadius={50}
-      >
+        clusterRadius={50}>
         <Layer {...clusterLayer} />
         <Layer {...clusterCountLayer} />
         <Layer {...unclusteredPointLayer} />

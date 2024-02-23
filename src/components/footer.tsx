@@ -2,11 +2,15 @@ import { useLocation } from "react-router-dom"
 
 export default function Footer() {
   const { pathname } = useLocation()
-  if (pathname.endsWith("campgrounds"))
+  if (pathname.endsWith("campgrounds")) {
     return (
       <footer className="footer bg-dark py-3 px-4 mt-auto">
-        <span className="text-light">&copy; YelpCamp {new Date().getFullYear()}</span>
+        <span className="text-light">
+          &copy; YelpCamp
+          {new Date().getFullYear()}
+        </span>
       </footer>
     )
+  }
   return null
 }

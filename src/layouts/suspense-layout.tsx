@@ -6,10 +6,11 @@ import Fallback from "components/fallback"
 export default function SuspenseLayout() {
   return (
     <Suspense fallback={<Fallback />}>
-      <Container style={{
-        paddingTop: "72px",
-        paddingBottom: "20px"
-      }}>
+      <Container
+        style={{
+          paddingTop: "72px",
+          paddingBottom: "20px",
+        }}>
         <Outlet />
       </Container>
     </Suspense>

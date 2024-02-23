@@ -1,9 +1,9 @@
 import Card from "react-bootstrap/Card"
-import useDeleteReview from "./useDeleteReview"
 import { Rating } from "components/rating"
 import Button from "components/submit-button"
+import useDeleteReview from "./useDeleteReview"
 
-type Props = {
+interface Props {
   cId: string
   review: Review
   user: AppUser | null
@@ -19,13 +19,14 @@ export default function ReviewCard({ cId, review, user }: Props) {
           <Rating rating={review.rating} text={`Rated: ${review.rating}/5`} />
         </div>
         <Card.Text>{review.body}</Card.Text>
-        {user && user._id === review.author._id && (
+        {user !== null && user._id === review.author._id && (
           <Button
             variant="danger"
             size="sm"
             disabled={isLoading}
-            onClick={() => mutate({ id: cId, reviewId: review._id })}
-          >
+            onClick={() => {
+              mutate({ id: cId, reviewId: review._id })
+            }}>
             Delete
           </Button>
         )}

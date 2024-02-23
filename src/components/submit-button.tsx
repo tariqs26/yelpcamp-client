@@ -7,26 +7,22 @@ type Props = ButtonProps & {
   disabled: boolean
 }
 
-export default function SubmitButton({
-  className,
-  children,
-  disabled,
-  ...props
-}: Props) {
+export default function SubmitButton({ className, children, ...props }: Props) {
   return (
     <Button
       type="submit"
       variant="success"
-      className={cn("d-inline-flex align-items-center justify-content-center gap-2", className)}
-      disabled={disabled}
-      {...props}
-    >
+      className={cn(
+        "d-inline-flex align-items-center justify-content-center gap-2",
+        className,
+      )}
+      {...props}>
       <Spinner
         animation="border"
         size="sm"
         role="status"
-        aria-hidden={!disabled}
-        className={disabled ? "" : "d-none"}
+        aria-hidden={!props.disabled}
+        className={props.disabled ? "" : "d-none"}
       />
       {children}
     </Button>

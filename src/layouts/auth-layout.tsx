@@ -8,8 +8,7 @@ export default function AuthLayout() {
       className="m-auto p-3 p-sm-4"
       style={{
         width: "min(100%, 450px)",
-      }}
-    >
+      }}>
       <Card className="border shadow">
         <Card.Img
           variant="top"

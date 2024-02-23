@@ -27,7 +27,7 @@ export default function LoadingCard() {
   )
 }
 
-export const CardComponent = () => {
+export function CardComponent() {
   return (
     <Card className="mt-4 overflow-hidden">
       <Row>

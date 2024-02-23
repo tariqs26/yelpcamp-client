@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom"
 import { useAuth } from "providers/auth"
 
-type Props = {
+interface Props {
   element: JSX.Element
   message?: string
 }
@@ -9,7 +9,7 @@ type Props = {
 export default function Protected({ element, message }: Props) {
   const { user } = useAuth()
 
-  if (user) return element
+  if (user !== null) return element
   return (
     <Navigate
       to="/login"

@@ -2,7 +2,9 @@ import { Link } from "react-router-dom"
 import { Card, Row, Col, Image } from "react-bootstrap"
 import { fromDate } from "lib/utils"
 
-const CardComponent: React.FC<Campground & { pageIdx?: number }> = (props) => {
+export default function CardComponent(
+  props: Campground & { pageIdx?: number },
+) {
   const { _id, title, image, location, description } = props
   return (
     <Card className="mt-4 overflow-hidden">
@@ -11,7 +13,7 @@ const CardComponent: React.FC<Campground & { pageIdx?: number }> = (props) => {
           <Image
             src={image}
             alt={`${title} campground image`}
-            onError={(e) => {
+            onError={e => {
               const target = e.target as HTMLImageElement
               target.src = "https://via.placeholder.com/640x360"
             }}
@@ -33,8 +35,7 @@ const CardComponent: React.FC<Campground & { pageIdx?: number }> = (props) => {
             <Link
               className="btn btn-primary mb-3"
               to={`/campgrounds/${_id}`}
-              style={{ width: "fit-content" }}
-            >
+              style={{ width: "fit-content" }}>
               View {title}
             </Link>
             <Card.Subtitle className="mt-auto text-muted">
@@ -46,5 +47,3 @@ const CardComponent: React.FC<Campground & { pageIdx?: number }> = (props) => {
     </Card>
   )
 }
-
-export default CardComponent

@@ -1,15 +1,15 @@
-import useUpdateCampground from "./useUpdateCampground"
 import Modal from "react-bootstrap/Modal"
 import Form from "components/forms/campground-form"
+import useUpdateCampground from "./useUpdateCampground"
 import "./index.css"
 
-type EditCampgroundProps = {
+interface EditCampgroundProps {
   campground: Campground
   showModal: boolean
   closeModal: () => void
 }
 
-const CampgroundEdit = (props: EditCampgroundProps) => {
+function CampgroundEdit(props: EditCampgroundProps) {
   const { campground, showModal, closeModal } = props
   const formProps = useUpdateCampground(campground, closeModal)
   return (
@@ -18,8 +18,7 @@ const CampgroundEdit = (props: EditCampgroundProps) => {
       onHide={closeModal}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
+      centered>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           Edit Campground

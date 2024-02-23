@@ -12,12 +12,12 @@ export default function useCreateCampground() {
     mutationFn: createCampground,
     onError: (err: MutationError) => {
       toast.error(
-        `${err.response?.data || err.message}: Failed to create campground`
+        `${err.response?.data ?? err.message}: Failed to create campground`,
       )
     },
-    onSuccess: (data) => {
+    onSuccess: data => {
       queryClient.setQueryData(["campgrounds", data._id], data)
-      queryClient.invalidateQueries({ queryKey: ["campgrounds"] })
+      void queryClient.invalidateQueries({ queryKey: ["campgrounds"] })
       navigate(`/campgrounds/${data._id}`, { replace: true })
       toast.success("Campground created successfully")
     },

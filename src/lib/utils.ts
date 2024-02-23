@@ -3,16 +3,13 @@ import relativeTime from "dayjs/plugin/relativeTime"
 import { type ClassValue, clsx } from "clsx"
 
 const dataFromInput = <T>(form: HTMLFormElement): T => {
-  const numberFields = form.querySelectorAll(
-    "input[type=number]"
-  ) as NodeListOf<HTMLInputElement>
+  const numberFields: NodeListOf<HTMLInputElement> =
+    form.querySelectorAll("input[type=number]")
 
   return {
     ...Object.fromEntries(new FormData(form)),
     ...Object.fromEntries(
-      Array.from(numberFields).map((field) => {
-        return [field.name, field.valueAsNumber]
-      })
+      Array.from(numberFields).map(field => [field.name, field.valueAsNumber]),
     ),
   } as T
 }
@@ -27,9 +24,8 @@ const handleValidation = (e: React.FormEvent<HTMLFormElement>): boolean => {
   return true
 }
 
-const isAppError = (data: any): data is AppError => {
-  return "message" in data && "details" in data
-}
+const isAppError = (data: any): data is AppError =>
+  "message" in data && "details" in data
 
 const fromDate = (date: string) => {
   day.extend(relativeTime)

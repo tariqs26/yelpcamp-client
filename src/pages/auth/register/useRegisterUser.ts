@@ -8,7 +8,7 @@ export default function useRegisterUser() {
   const navigate = useNavigate()
 
   const { isLoading, mutate } = useMutation(registerUser, {
-    onSuccess: (data) => {
+    onSuccess: data => {
       if (typeof data === "string") return toast.error(data)
       navigate("/login", { replace: true })
       toast.success(`Welcome to YelpCamp ${data.username}!`)

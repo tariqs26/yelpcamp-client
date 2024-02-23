@@ -17,7 +17,7 @@
 }
 
 .accordion-collapse::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -20px;
   height: 20px;

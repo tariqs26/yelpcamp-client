@@ -7,11 +7,10 @@ export default function ReviewForm({ handleSubmit, isLoading }: FormProps) {
     <Form
       onSubmit={handleSubmit}
       noValidate
-      onBlur={(e) => {
+      onBlur={e => {
         const target = e.currentTarget
         target.classList.remove("was-validated")
-      }}
-    >
+      }}>
       <RatingInput />
       <Form.Group className="mb-3" controlId="review.body">
         <Form.Label>Review</Form.Label>

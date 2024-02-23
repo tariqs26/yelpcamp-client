@@ -12,26 +12,26 @@ type CampgroundFormProps = FormProps &
     | { initialData?: undefined; leaveHandler?: undefined }
   )
 
-const CampgroundForm: React.FC<CampgroundFormProps> = (props) => {
+export default function CampgroundForm(props: CampgroundFormProps) {
   const { handleSubmit, initialData, isLoading, leaveHandler } = props
   const [descChars, setDescChars] = useState(
-    initialData?.description.length ?? 0
+    initialData?.description.length ?? 0,
   )
-  const action = initialData ? "Update" : "Create"
+
+  const action = initialData === undefined ? "Create" : "Update"
 
   return (
     <Row>
       <ConditionalWrapper
-        condition={!initialData}
-        wrapper={(children) => (
+        condition={action === "Create"}
+        wrapper={children => (
           <Card className="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 border shadow p-3">
             <Card.Body>
-              <div className="mb-3 card-title h3">{action + " Campground"}</div>
+              <div className="mb-3 card-title h3">{`${action} Campground`}</div>
               {children}
             </Card.Body>
           </Card>
-        )}
-      >
+        )}>
         <Form onSubmit={handleSubmit} noValidate>
           <Form.Group className="mb-3" controlId="title">
             <Form.Label>Title</Form.Label>
@@ -95,7 +95,9 @@ const CampgroundForm: React.FC<CampgroundFormProps> = (props) => {
               placeholder="A beautiful campground with a creek running through it."
               defaultValue={initialData?.description}
               maxLength={300}
-              onChange={(e) => setDescChars(e.target.value.length)}
+              onChange={e => {
+                setDescChars(e.target.value.length)
+              }}
               rows={4}
               required
             />
@@ -103,23 +105,22 @@ const CampgroundForm: React.FC<CampgroundFormProps> = (props) => {
               Description cannot be empty
             </Form.Control.Feedback>
             <Form.Text className="text-muted">
-              {descChars}/300 characters
+              {descChars}
+              /300 characters
             </Form.Text>
           </Form.Group>
           <div className="d-flex gap-2">
-            {initialData && (
+            {action === "Update" && (
               <Button variant="danger" onClick={leaveHandler}>
                 Cancel
               </Button>
             )}
-            <SubmitButton
-              disabled={isLoading}
-            >{`${action} campground`}</SubmitButton>
+            <SubmitButton disabled={isLoading}>
+              {`${action} campground`}
+            </SubmitButton>
           </div>
         </Form>
       </ConditionalWrapper>
     </Row>
   )
 }
-
-export default CampgroundForm

@@ -11,23 +11,19 @@ export default function useDeleteCampground() {
     mutationFn: deleteCampground,
     onError: (err: MutationError) => {
       toast.error(
-        `${err.response?.data || err.message}: Failed to delete campground`
+        `${err.response?.data ?? err.message}: Failed to delete campground`,
       )
     },
     onSuccess: (_, campgroundId) => {
-      queryClient.setQueryData(["campgrounds"], (old: CampgroundsData) => {
-        return {
-          ...old,
-          pages: old?.pages?.map((page) => {
-            return {
-              ...page,
-              campgrounds: page.campgrounds.filter(
-                (campground) => campground._id !== campgroundId
-              ),
-            }
-          }),
-        }
-      })
+      queryClient.setQueryData(["campgrounds"], (old: CampgroundsData) => ({
+        ...old,
+        pages: old?.pages?.map(page => ({
+          ...page,
+          campgrounds: page.campgrounds.filter(
+            campground => campground._id !== campgroundId,
+          ),
+        })),
+      }))
       navigate("/campgrounds", {
         replace: true,
       })

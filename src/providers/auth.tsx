@@ -2,19 +2,21 @@ import { createContext, useContext, useState, useEffect, useMemo } from "react"
 import { fetchUser } from "api/users"
 import Fallback from "components/fallback"
 
-type AuthContext = {
-  user: AppUser | null
-  setUser: (user: AppUser | null) => void
+type AuthUser = AppUser | null
+
+interface AuthContextType {
+  user: AuthUser
+  setUser: (user: AuthUser) => void
 }
 
-const AuthContext = createContext<AuthContext>({} as AuthContext)
+const AuthContext = createContext<AuthContextType | null>(null)
 
 export default function AuthProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const [user, setUser] = useState<AppUser | null>(null)
+  const [user, setUser] = useState<AuthUser>(null)
   const [loadingInitial, setLoadingInitial] = useState(true)
 
   useEffect(() => {
@@ -26,16 +28,24 @@ export default function AuthProvider({
         setLoadingInitial(false)
       }
     }
-    fetchUserFromServer()
+    void fetchUserFromServer()
   }, [])
 
   const memoizedValue = useMemo(() => ({ user, setUser }), [user])
 
   return (
     <AuthContext.Provider value={memoizedValue}>
-      {!loadingInitial ? children : <Fallback />}
+      {loadingInitial ? <Fallback /> : children}
     </AuthContext.Provider>
   )
 }
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => {
+  const context = useContext(AuthContext)
+
+  if (context === null) {
+    throw new Error("useAuth must be used within AuthProvider")
+  }
+
+  return context
+}

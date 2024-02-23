@@ -1,4 +1,4 @@
-type Props = {
+interface Props {
   condition: boolean
   wrapper: (children: React.ReactNode) => JSX.Element
   children: React.ReactNode

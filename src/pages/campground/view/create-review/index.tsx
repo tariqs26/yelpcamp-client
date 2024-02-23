@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom"
-import useCreateReview from "./useCreateReview"
 import { Accordion } from "react-bootstrap"
 import ReviewForm from "components/forms/review-form"
+import useCreateReview from "./useCreateReview"
 import "./index.css"
 
-type Props = {
+interface Props {
   cId: string
   user: AppUser | null
 }
 
 export default function CreateReview({ cId, user }: Props) {
   const formProps = useCreateReview(cId, () => {
-    const accordionBtn = document.querySelector(
-      ".accordion-button"
-    ) as HTMLElement
-    accordionBtn.click()
+    const accordionBtn: HTMLButtonElement | null =
+      document.querySelector(".accordion-button")
+    if (accordionBtn !== null) {
+      accordionBtn.click()
+    }
   })
 
   return (
@@ -24,7 +25,7 @@ export default function CreateReview({ cId, user }: Props) {
           <h5 className="mb-0">Write a review</h5>
         </Accordion.Header>
         <Accordion.Body>
-          {!user && (
+          {user === null && (
             <p className="text-muted">
               Please <Link to="/login">sign in</Link> to write a review
             </p>

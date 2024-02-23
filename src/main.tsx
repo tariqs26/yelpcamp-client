@@ -15,12 +15,12 @@ import ProtectedRoute from "components/protected"
 import NotFound from "pages/not-found"
 
 const [Campgrounds, Campground, NewCampground] = [
-  lazy(() => import("pages/campground/main")),
-  lazy(() => import("pages/campground/view")),
-  lazy(() => import("pages/campground/create")),
+  lazy(async () => await import("pages/campground/main")),
+  lazy(async () => await import("pages/campground/view")),
+  lazy(async () => await import("pages/campground/create")),
 ]
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+const root = ReactDOM.createRoot(document.getElementById("root")!)
 
 root.render(
   <StrictMode>
@@ -43,12 +43,7 @@ root.render(
                   </Route>
                   <Route
                     path="new-campground"
-                    element={
-                      <ProtectedRoute
-                        message="Please sign in to create a new campground"
-                        element={<NewCampground />}
-                      />
-                    }
+                    element={<ProtectedRoute element={<NewCampground />} />}
                   />
                 </Route>
                 <Route path="*" element={<NotFound />} />
@@ -59,5 +54,5 @@ root.render(
         </BrowserRouter>
       </AuthProvider>
     </ReactQueryProvider>
-  </StrictMode>
+  </StrictMode>,
 )

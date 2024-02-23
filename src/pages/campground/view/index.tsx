@@ -1,17 +1,17 @@
 import { useState } from "react"
-import useFetchCampground from "./useFetchCampground"
-import useDeleteCampground from "./useDeleteCampground"
 import { useAuth } from "providers/auth"
 import { fromDate, isAppError } from "lib/utils"
 
 import { Row, Card, ListGroup, Button } from "react-bootstrap"
-import EditCampground from "../edit"
 import Error from "components/error"
 import SubmitButton from "components/submit-button"
 import Map from "components/Map"
+import Fallback from "components/fallback"
 import ReviewForm from "./create-review"
 import ReviewCard from "./view-review"
-import Fallback from "components/fallback"
+import EditCampground from "../edit"
+import useDeleteCampground from "./useDeleteCampground"
+import useFetchCampground from "./useFetchCampground"
 
 export default function Campground() {
   const [modalShow, setModalShow] = useState(false)
@@ -21,12 +21,13 @@ export default function Campground() {
 
   if (isFetching) return <Fallback />
 
-  if (!data) return <div>Not found</div>
+  if (data === undefined) return <div>Not found</div>
 
-  if (isAppError(data))
+  if (isAppError(data)) {
     return (
       <Error title={data.message} message={data.details} link={data.link} />
     )
+  }
 
   return (
     <Row>
@@ -41,7 +42,7 @@ export default function Campground() {
               objectPosition: "center",
               height: "350px",
             }}
-            onError={(e) => {
+            onError={e => {
               const target = e.target as HTMLImageElement
               target.src = "https://via.placeholder.com/640x360"
             }}
@@ -52,19 +53,27 @@ export default function Campground() {
             <Card.Text>{data.description}</Card.Text>
           </Card.Body>
           <ListGroup variant="flush">
-            <ListGroup.Item>${data.price.toFixed(2)}/night</ListGroup.Item>
+            <ListGroup.Item>
+              ${data.price.toFixed(2)}
+              /night
+            </ListGroup.Item>
             <ListGroup.Item>Submitted by {data.author.username}</ListGroup.Item>
           </ListGroup>
-          {user && (user._id === data.author._id || user.isAdmin) && (
+          {user !== null && (user._id === data.author._id || user.isAdmin) && (
             <Card.Body className="d-flex gap-2">
-              <Button variant="warning" onClick={() => setModalShow(true)}>
+              <Button
+                variant="warning"
+                onClick={() => {
+                  setModalShow(true)
+                }}>
                 Edit
               </Button>
               <SubmitButton
                 variant="danger"
                 disabled={mutate.isLoading}
-                onClick={() => mutate.mutate(data._id)}
-              >
+                onClick={() => {
+                  mutate.mutate(data._id)
+                }}>
                 Delete
               </SubmitButton>
             </Card.Body>
@@ -76,7 +85,9 @@ export default function Campground() {
         <EditCampground
           showModal={modalShow}
           campground={data}
-          closeModal={() => setModalShow(false)}
+          closeModal={() => {
+            setModalShow(false)
+          }}
         />
       </div>
       <div className="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-0">
