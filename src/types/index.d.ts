@@ -20,7 +20,7 @@ type MutationError = Error & {
 
 type FormProps = {
   handleSubmit: React.FormEventHandler
-  isLoading: boolean
+  isPending: boolean
 }
 
 type Campground = {

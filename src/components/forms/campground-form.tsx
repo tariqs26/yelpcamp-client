@@ -13,7 +13,7 @@ type CampgroundFormProps = FormProps &
   )
 
 export default function CampgroundForm(props: CampgroundFormProps) {
-  const { handleSubmit, initialData, isLoading, leaveHandler } = props
+  const { handleSubmit, initialData, isPending, leaveHandler } = props
   const [descChars, setDescChars] = useState(
     initialData?.description.length ?? 0,
   )
@@ -115,7 +115,7 @@ export default function CampgroundForm(props: CampgroundFormProps) {
                 Cancel
               </Button>
             )}
-            <SubmitButton disabled={isLoading}>
+            <SubmitButton disabled={isPending}>
               {`${action} campground`}
             </SubmitButton>
           </div>

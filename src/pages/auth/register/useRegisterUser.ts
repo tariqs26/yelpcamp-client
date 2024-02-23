@@ -7,7 +7,8 @@ import { dataFromInput, handleValidation } from "lib/utils"
 export default function useRegisterUser() {
   const navigate = useNavigate()
 
-  const { isLoading, mutate } = useMutation(registerUser, {
+  const { isPending, mutate } = useMutation({
+    mutationFn: registerUser,
     onSuccess: data => {
       if (typeof data === "string") return toast.error(data)
       navigate("/login", { replace: true })
@@ -23,5 +24,5 @@ export default function useRegisterUser() {
     mutate(dataFromInput(e.currentTarget))
   }
 
-  return { handleSubmit, isLoading }
+  return { handleSubmit, isPending }
 }

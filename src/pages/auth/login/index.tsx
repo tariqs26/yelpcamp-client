@@ -4,7 +4,7 @@ import Button from "components/submit-button"
 import useLoginUser from "./useLoginUser"
 
 export default function Login() {
-  const { handleSubmit, isLoading } = useLoginUser()
+  const { handleSubmit, isPending } = useLoginUser()
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function Login() {
             type="password"
           />
         </Form.Group>
-        <Button disabled={isLoading} className="w-100">
+        <Button disabled={isPending} className="w-100">
           Sign in
         </Button>
         <div className="d-flex justify-content-center gap-1 align-items-center mt-3">

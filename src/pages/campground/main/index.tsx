@@ -18,14 +18,9 @@ export default function Campgrounds() {
     fetchNextPage,
   } = useFetchCampgrounds()
 
-  if (status === "loading" || isRefetching) return <LoadingCard />
+  if (status === "pending" || isRefetching) return <LoadingCard />
   if (status === "error" || data === undefined) {
-    return (
-      <Error
-        title={(error as Error).message}
-        message={ErrorDetails.SERVER_ERROR}
-      />
-    )
+    return <Error title={error.message} message={ErrorDetails.SERVER_ERROR} />
   }
   return (
     <>
@@ -63,7 +58,8 @@ export default function Campgrounds() {
         <Button
           variant="secondary mt-4"
           disabled={isFetchingNextPage}
-          onClick={fetchNextPage}>
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          onClick={async () => await fetchNextPage()}>
           Load more
         </Button>
       )}

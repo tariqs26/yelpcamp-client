@@ -8,7 +8,7 @@ export default function useCreateReview(cId: string, close: () => void) {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: createReview,
     onError: ({ message }: Error) => {
       if (!message.endsWith("401"))
@@ -45,5 +45,5 @@ export default function useCreateReview(cId: string, close: () => void) {
     e.currentTarget.reset()
   }
 
-  return { handleSubmit, isLoading }
+  return { handleSubmit, isPending }
 }

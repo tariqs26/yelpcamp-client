@@ -4,7 +4,7 @@ import Button from "components/submit-button"
 import useRegisterUser from "./useRegisterUser"
 
 export default function Register() {
-  const { handleSubmit, isLoading } = useRegisterUser()
+  const { handleSubmit, isPending } = useRegisterUser()
   return (
     <>
       <div className="mb-3 card-title h3">Create an account</div>
@@ -48,7 +48,7 @@ export default function Register() {
             Password must be at least 8 characters.
           </Form.Control.Feedback>
         </Form.Group>
-        <Button disabled={isLoading} variant="success" className="w-100">
+        <Button disabled={isPending} variant="success" className="w-100">
           Sign up
         </Button>
         <div className="d-flex justify-content-center gap-1 align-items-center mt-3">

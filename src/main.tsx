@@ -20,6 +20,7 @@ const [Campgrounds, Campground, NewCampground] = [
   lazy(async () => await import("pages/campground/create")),
 ]
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = ReactDOM.createRoot(document.getElementById("root")!)
 
 root.render(

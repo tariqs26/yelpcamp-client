@@ -7,7 +7,7 @@ export default function useFetchCampground() {
 
   const query = useQuery({
     queryKey: ["campgrounds", id],
-    queryFn: () => fetchCampgroundById(id),
+    queryFn: async () => await fetchCampgroundById(id),
   })
 
   return { ...query, id }

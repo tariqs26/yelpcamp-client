@@ -6,7 +6,7 @@ import "./index.css"
 
 export default function NavbarComponent() {
   const { user } = useAuth()
-  const { mutate, isLoading } = useLogoutUser()
+  const { mutate, isPending } = useLogoutUser()
 
   const handleNavClick = () => {
     if (window.innerWidth < 992) {
@@ -47,14 +47,14 @@ export default function NavbarComponent() {
             </NavLink>
           </Nav>
           <div className="nav-btns d-flex gap-3 align-items-center ms-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
-            {user !== null || isLoading ? (
+            {user !== null ? (
               <button
                 className="btn btn-secondary text-light px-2 py-1"
                 onClick={() => {
                   mutate()
                   handleNavClick()
                 }}
-                disabled={isLoading}>
+                disabled={isPending}>
                 Sign out
               </button>
             ) : (

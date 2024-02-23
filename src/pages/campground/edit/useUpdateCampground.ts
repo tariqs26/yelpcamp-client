@@ -10,7 +10,7 @@ export default function useUpdateCampground(
 ) {
   const queryClient = useQueryClient()
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: updateCampground,
     onError: (err: MutationError) => {
       close()
@@ -47,5 +47,5 @@ export default function useUpdateCampground(
     })
   }
 
-  return { handleSubmit, isLoading }
+  return { handleSubmit, isPending }
 }

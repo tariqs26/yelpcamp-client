@@ -16,7 +16,8 @@ export default function useLoginUser() {
     }
   } = useLocation()
 
-  const mutation = useMutation(loginUser, {
+  const mutation = useMutation({
+    mutationFn: loginUser,
     onSuccess: data => {
       if (typeof data === "string") return toast.error(data)
       setUser(data)
@@ -31,6 +32,6 @@ export default function useLoginUser() {
       if (!handleValidation(e)) return
       mutation.mutate(dataFromInput(e.currentTarget))
     },
-    isLoading: mutation.isLoading,
+    isPending: mutation.isPending,
   }
 }

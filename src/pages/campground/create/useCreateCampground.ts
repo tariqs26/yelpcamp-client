@@ -8,7 +8,7 @@ export default function useCreateCampground() {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: createCampground,
     onError: (err: MutationError) => {
       toast.error(
@@ -28,6 +28,6 @@ export default function useCreateCampground() {
       if (!handleValidation(e)) return
       mutate(dataFromInput(e.currentTarget))
     },
-    isLoading,
+    isPending,
   }
 }

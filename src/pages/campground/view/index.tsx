@@ -70,7 +70,7 @@ export default function Campground() {
               </Button>
               <SubmitButton
                 variant="danger"
-                disabled={mutate.isLoading}
+                disabled={mutate.isPending}
                 onClick={() => {
                   mutate.mutate(data._id)
                 }}>

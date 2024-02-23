@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form"
 import Button from "components/submit-button"
 import { RatingInput } from "components/rating"
 
-export default function ReviewForm({ handleSubmit, isLoading }: FormProps) {
+export default function ReviewForm({ handleSubmit, isPending }: FormProps) {
   return (
     <Form
       onSubmit={handleSubmit}
@@ -19,7 +19,7 @@ export default function ReviewForm({ handleSubmit, isLoading }: FormProps) {
           Review cannot be empty
         </Form.Control.Feedback>
       </Form.Group>
-      <Button variant="success" disabled={isLoading}>
+      <Button variant="success" disabled={isPending}>
         submit
       </Button>
     </Form>

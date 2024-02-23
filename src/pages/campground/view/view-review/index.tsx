@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function ReviewCard({ cId, review, user }: Props) {
-  const { mutate, isLoading } = useDeleteReview(cId)
+  const { mutate, isPending } = useDeleteReview(cId)
   return (
     <Card className="mt-3">
       <Card.Body>
@@ -23,7 +23,7 @@ export default function ReviewCard({ cId, review, user }: Props) {
           <Button
             variant="danger"
             size="sm"
-            disabled={isLoading}
+            disabled={isPending}
             onClick={() => {
               mutate({ id: cId, reviewId: review._id })
             }}>
