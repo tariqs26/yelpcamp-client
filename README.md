@@ -24,20 +24,20 @@ Full-stack application, where users can create, edit, delete and view and review
 
 ### [Backend](https://github.com/tariqs26/yelpcamp-server)
 
-| Technology                                                                     | Purpose                               |
-| ------------------------------------------------------------------------------ | ------------------------------------- |
-| [Express](http://expressjs.com/)                                               | Web framework                         |
-| [Cors](https://npmjs.com/package/cors)                                         | Cross-origin resource sharing         |
-| [Nodemon](https://npmjs.com/package/nodemon)                                   | Development server                    |
-| [MongoDB](https://mongodb.com/)                                                | Database                              |
-| [Mongoose](https://mongoosejs.com/)                                            | ODM                                   |
-| [Zod](https://zod.dev/)                                                        | Validation Library                    |
-| [Dotenv](https://npmjs.com/package/dotenv)                                     | Environment variables                 |
-| [Passport](http://passportjs.org/)                                             | Authentication                        |
-| [Express-Session](https://npmjs.com/package/express-session)                   | Session management                    |
-| [Helmet](https://helmetjs.github.io/)                                          | Setting security-related HTTP headers |
-| [Express-Mongo-Sanitize](https://www.npmjs.com/package/express-mongo-sanitize) | Preventing NoSQL injections           |
-| [Express-Rate-Limit](https://www.npmjs.com/package/express-rate-limit)         | Rate limiting                         |
+| Technology                                                                     | Purpose                                  |
+| ------------------------------------------------------------------------------ | ---------------------------------------- |
+| [Express](http://expressjs.com/)                                               | Web framework                            |
+| [MongoDB](https://mongodb.com/)                                                | Database                                 |
+| [Mongoose](https://mongoosejs.com/)                                            | ODM                                      |
+| [Passport](http://passportjs.org/)                                             | Authentication                           |
+| [Express-Session](https://npmjs.com/package/express-session)                   | Session management                       |
+| [Express-Mongo-Sanitize](https://www.npmjs.com/package/express-mongo-sanitize) | Preventing NoSQL injections              |
+| [Express-Rate-Limit](https://www.npmjs.com/package/express-rate-limit)         | Rate limiting                            |
+| [Cors](https://npmjs.com/package/cors)                                         | Cross-origin resource sharing middleware |
+| [Dotenv](https://npmjs.com/package/dotenv)                                     | Environment variables                    |
+| [Helmet](https://helmetjs.github.io/)                                          | Setting security-related HTTP headers    |
+| [Swagger](https://swagger.io/)                                                 | API documentation                        |
+| [Zod](https://zod.dev/)                                                        | Validation Library                       |
 
 ## Setup
 
