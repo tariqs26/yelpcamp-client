@@ -1,12 +1,12 @@
 # YelpCamp
 
+Full-stack application, where users can create, edit, delete and view and review campgrounds locations built with the [MERN](https://www.mongodb.com/mern-stack) stack.
+
 ![home](./project-images/home-page.png)
 
 ![main](./project-images/campgrounds-page.png)
 
 ![show](./project-images/show-page.png)
-
-Full-stack application, where users can create, edit, delete and view and review campgrounds locations built with the [MERN](https://www.mongodb.com/mern-stack) stack.
 
 ## Technologies Used
 
