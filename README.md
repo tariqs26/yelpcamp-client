@@ -39,7 +39,7 @@ Full-stack application, where users can create, edit, delete and view and review
 | [Express-Mongo-Sanitize](https://www.npmjs.com/package/express-mongo-sanitize) | Preventing NoSQL injections           |
 | [Express-Rate-Limit](https://www.npmjs.com/package/express-rate-limit)         | Rate limiting                         |
 
-## Installation
+## Setup
 
 ### Install dependencies
 
