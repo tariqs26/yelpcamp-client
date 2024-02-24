@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import Form from "react-bootstrap/Form"
 import Button from "components/submit-button"
-import useRegisterUser from "./useRegisterUser"
+import useRegister from "./useRegister"
 
 export default function Register() {
-  const { handleSubmit, isPending } = useRegisterUser()
+  const { handleSubmit, isPending } = useRegister()
   return (
     <>
       <div className="mb-3 card-title h3">Create an account</div>

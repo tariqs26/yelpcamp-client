@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useMemo } from "react"
-import { fetchUser } from "api/users"
+import { getUser } from "api/users"
 import Fallback from "components/fallback"
 
 type AuthUser = AppUser | null
@@ -22,7 +22,7 @@ export default function AuthProvider({
   useEffect(() => {
     const fetchUserFromServer = async () => {
       try {
-        setUser(await fetchUser())
+        setUser(await getUser())
       } catch {
       } finally {
         setLoadingInitial(false)

@@ -1,10 +1,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { fetchCampgrounds } from "api/campgrounds"
+import { getCampgrounds } from "api/campgrounds"
 
-export default function useFetchCampgrounds() {
+export default function useGetCampgrounds() {
   return useInfiniteQuery({
     queryKey: ["campgrounds"],
-    queryFn: fetchCampgrounds,
+    queryFn: getCampgrounds,
     initialPageParam: 1,
     getNextPageParam: (_, pages) => {
       if (pages.length < pages[0].totalPages) return pages.length + 1

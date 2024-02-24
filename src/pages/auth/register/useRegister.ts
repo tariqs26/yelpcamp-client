@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
-import { registerUser } from "api/users"
+import { register } from "api/users"
 import { toast } from "react-hot-toast"
 import { dataFromInput, handleValidation } from "lib/utils"
 
-export default function useRegisterUser() {
+export default function useRegister() {
   const navigate = useNavigate()
 
   const { isPending, mutate } = useMutation({
-    mutationFn: registerUser,
+    mutationFn: register,
     onSuccess: data => {
       if (typeof data === "string") return toast.error(data)
       navigate("/login", { replace: true })

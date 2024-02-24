@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import Form from "react-bootstrap/Form"
 import Button from "components/submit-button"
-import useLoginUser from "./useLoginUser"
+import useLogin from "./useLogin"
 
 export default function Login() {
-  const { handleSubmit, isPending } = useLoginUser()
+  const { handleSubmit, isPending } = useLogin()
 
   return (
     <>

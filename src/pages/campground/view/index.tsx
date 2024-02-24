@@ -11,11 +11,11 @@ import ReviewForm from "./create-review"
 import ReviewCard from "./view-review"
 import EditCampground from "../edit"
 import useDeleteCampground from "./useDeleteCampground"
-import useFetchCampground from "./useFetchCampground"
+import useGetCampground from "./useGetCampground"
 
 export default function Campground() {
   const [modalShow, setModalShow] = useState(false)
-  const { data, isFetching, id } = useFetchCampground()
+  const { data, isFetching, id } = useGetCampground()
   const mutate = useDeleteCampground()
   const { user } = useAuth()
 

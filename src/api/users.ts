@@ -2,9 +2,7 @@ import { isAxiosError } from "axios"
 import axios from "lib/axios"
 import ErrorDetails from "types/errors"
 
-export const registerUser = async (
-  user: UserInput,
-): Promise<AppUser | string> => {
+export const register = async (user: UserInput): Promise<AppUser | string> => {
   try {
     const res = await axios.post("/register", user)
     return res.data
@@ -15,7 +13,7 @@ export const registerUser = async (
   }
 }
 
-export const loginUser = async (user: UserInput): Promise<AppUser | string> => {
+export const login = async (user: UserInput): Promise<AppUser | string> => {
   try {
     const res = await axios.post("/login", user)
     return res.data
@@ -26,9 +24,9 @@ export const loginUser = async (user: UserInput): Promise<AppUser | string> => {
   }
 }
 
-export const logoutUser = async () => {
+export const logout = async () => {
   await axios.post("/logout")
 }
 
-export const fetchUser = async (): Promise<AppUser> =>
+export const getUser = async (): Promise<AppUser> =>
   (await axios.get("/getUser")).data

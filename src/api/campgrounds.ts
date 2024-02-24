@@ -4,14 +4,14 @@ import ErrorDetails from "types/errors"
 
 const campgroundsAPI = axios("/campgrounds")
 
-export const fetchCampgrounds = async ({
+export const getCampgrounds = async ({
   pageParam: page = 1,
 }): Promise<{
   campgrounds: Campground[]
   totalPages: number
 }> => (await campgroundsAPI.get("/", { params: { page } })).data
 
-export const fetchCampgroundById = async (
+export const getCampgroundById = async (
   id: string,
 ): Promise<Campground | AppError> => {
   try {

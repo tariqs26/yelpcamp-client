@@ -5,7 +5,7 @@ import ClusterMap from "components/Map/cluster"
 import Button from "components/submit-button"
 import ErrorDetails from "types/errors"
 import Card from "./Card"
-import useFetchCampgrounds from "./useFetchCampgrounds"
+import useGetCampgrounds from "./useGetCampgrounds"
 
 export default function Campgrounds() {
   const {
@@ -16,7 +16,7 @@ export default function Campgrounds() {
     isFetchingNextPage,
     isRefetching,
     fetchNextPage,
-  } = useFetchCampgrounds()
+  } = useGetCampgrounds()
 
   if (status === "pending" || isRefetching) return <LoadingCard />
   if (status === "error" || data === undefined) {
