@@ -23,8 +23,8 @@ export default function AuthProvider({
     const fetchUserFromServer = async () => {
       try {
         setUser(await fetchUser())
-        setLoadingInitial(false)
       } catch {
+      } finally {
         setLoadingInitial(false)
       }
     }
