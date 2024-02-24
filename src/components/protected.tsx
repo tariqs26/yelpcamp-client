@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom"
-import { useAuth } from "providers/auth"
+import { useAuth } from "components/providers/auth"
 
 interface Props {
   element: JSX.Element

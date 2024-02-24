@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useAuth } from "providers/auth"
+import { useAuth } from "components/providers/auth"
 import { fromDate, isAppError } from "lib/utils"
 
 import { Row, Card, ListGroup, Button } from "react-bootstrap"
