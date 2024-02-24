@@ -1,6 +1,7 @@
 .main {
   padding-inline: 1rem;
-  margin-block: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
   display: flex;
   flex-direction: column;
   z-index: 1;
