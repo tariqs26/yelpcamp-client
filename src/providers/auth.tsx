@@ -43,9 +43,8 @@ export default function AuthProvider({
 export const useAuth = () => {
   const context = useContext(AuthContext)
 
-  if (context === null) {
+  if (context === null)
     throw new Error("useAuth must be used within AuthProvider")
-  }
 
   return context
 }
