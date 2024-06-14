@@ -1,6 +1,6 @@
 # YelpCamp
 
-Full-stack application, where users can share and review campground locations built with the [MERN](https://www.mongodb.com/mern-stack) stack.
+Full-stack application, where users can share and review campground locations built with the [MERN stack](https://www.mongodb.com/mern-stack).
 
 ![home](./project-images/home-page.png)
 
@@ -60,7 +60,6 @@ VITE_MAPBOX_TOKEN= # Mapbox API token
 | ------------------ | ------------------------------------------------------------- |
 | `npm run dev`      | Run the app in the development mode (<http://localhost:3001>) |
 | `npm run lint`     | Lint the app                                                  |
-| `npm run lint:fix` | Lint the app and fix issues                                   |
 | `npm run format`   | Format the app                                                |
 | `npm run build`    | Build the app for production                                  |
 | `npm run preview`  | Preview the production build                                  |
