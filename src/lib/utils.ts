@@ -24,8 +24,11 @@ const handleValidation = (e: React.FormEvent<HTMLFormElement>): boolean => {
   return true
 }
 
-const isAppError = (data: any): data is AppError =>
-  "message" in data && "details" in data
+const isAppError = (data: unknown): data is AppError =>
+  typeof data === "object" &&
+  data !== null &&
+  "message" in data &&
+  "details" in data
 
 const fromDate = (date: string) => {
   day.extend(relativeTime)
