@@ -5,7 +5,12 @@ import type {
   MapLayerMouseEvent,
   MapRef,
 } from "react-map-gl"
-import { Layer, Map, NavigationControl, Source } from "react-map-gl"
+import {
+  Layer,
+  Map as ReactMapGlCluster,
+  NavigationControl,
+  Source,
+} from "react-map-gl"
 import {
   clusterCountLayer,
   clusterLayer,
@@ -55,7 +60,7 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
   }
 
   return (
-    <Map
+    <ReactMapGlCluster
       initialViewState={{
         latitude: 52.67,
         longitude: -93.59,
@@ -84,6 +89,6 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
         <Layer {...clusterCountLayer} />
         <Layer {...unclusteredPointLayer} />
       </Source>
-    </Map>
+    </ReactMapGlCluster>
   )
 }
