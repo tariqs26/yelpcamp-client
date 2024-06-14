@@ -1,8 +1,13 @@
-import { Outlet } from "react-router-dom"
 import { Card } from "react-bootstrap"
+import { Navigate, Outlet } from "react-router-dom"
 import TentImg from "assets/images/auth-image.webp"
+import { useAuth } from "components/providers/auth"
 
 export default function AuthLayout() {
+  const { user } = useAuth()
+
+  if (user) return <Navigate to="/campgrounds" replace />
+
   return (
     <div
       className="m-auto p-3 p-sm-4"
