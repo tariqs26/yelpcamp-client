@@ -1,18 +1,14 @@
 import { useRef } from "react"
-import {
-  Map,
-  Source,
-  Layer,
-  type MapLayerMouseEvent,
-  NavigationControl,
-  type MapRef,
-  type GeoJSONSource,
-  type MapGeoJSONFeature,
+import type {
+  GeoJSONSource,
+  MapGeoJSONFeature,
+  MapLayerMouseEvent,
+  MapRef,
 } from "react-map-gl"
-
+import { Layer, Map, NavigationControl, Source } from "react-map-gl"
 import {
-  clusterLayer,
   clusterCountLayer,
+  clusterLayer,
   unclusteredPointLayer,
 } from "./layers"
 

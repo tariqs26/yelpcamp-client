@@ -1,6 +1,6 @@
+import { clsx, type ClassValue } from "clsx"
 import day from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
-import { type ClassValue, clsx } from "clsx"
 
 const dataFromInput = <T>(form: HTMLFormElement): T => {
   const numberFields: NodeListOf<HTMLInputElement> =
@@ -34,4 +34,4 @@ const fromDate = (date: string) => {
 
 const cn = (...inputs: ClassValue[]) => clsx(inputs)
 
-export { dataFromInput, handleValidation, isAppError, fromDate, cn }
+export { cn, dataFromInput, fromDate, handleValidation, isAppError }

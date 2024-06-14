@@ -2,6 +2,7 @@ import { StrictMode, lazy } from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
+
 import ReactQueryProvider from "components/providers/react-query"
 import AuthProvider from "components/providers/auth"
 import Home from "pages/home"

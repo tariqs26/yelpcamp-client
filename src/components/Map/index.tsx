@@ -1,5 +1,5 @@
 import { useState } from "react"
-import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl"
+import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 
 interface Props {

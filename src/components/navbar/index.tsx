@@ -1,5 +1,5 @@
+import { Container, Nav, Navbar } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
-import { Navbar, Nav, Container } from "react-bootstrap"
 import { useAuth } from "components/providers/auth"
 import useLogoutUser from "./useLogout"
 import "./index.css"
