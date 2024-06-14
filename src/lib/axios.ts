@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const axiosInstance = (extendUrl: string = "") => {
+const axiosInstance = (extendUrl = "") => {
   const instance = axios.create({
     baseURL: `${import.meta.env.VITE_API_URL}${extendUrl}`,
     withCredentials: true,
