@@ -49,6 +49,7 @@ export default function NavbarComponent() {
           <div className="nav-btns d-flex gap-3 align-items-center ms-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
             {user ? (
               <button
+                type="button"
                 className="btn btn-secondary text-light px-2 py-1"
                 onClick={() => {
                   mutate()
