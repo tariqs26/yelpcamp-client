@@ -1,5 +1,0 @@
-**/*.d.ts
-**/*.test.tsx
-**/*.spec.tsx
-node_modules/
-dist/
