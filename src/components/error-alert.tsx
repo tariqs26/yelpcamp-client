@@ -6,7 +6,7 @@ interface Props {
   message: string
   link?: { url: string; text: string }
 }
-export default function Error({ title, message, link }: Props) {
+export default function ErrorAlert({ title, message, link }: Props) {
   return (
     <Row>
       <Col

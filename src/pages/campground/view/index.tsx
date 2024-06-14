@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button, Card, ListGroup, Row } from "react-bootstrap"
 
 import Map from "components/Map"
-import Error from "components/error"
+import ErrorAlert from "components/error-alert"
 import Fallback from "components/fallback"
 import { useAuth } from "components/providers/auth"
 import SubmitButton from "components/submit-button"
@@ -25,7 +25,7 @@ export default function Campground() {
 
   if (isAppError(data))
     return (
-      <Error title={data.message} message={data.details} link={data.link} />
+      <ErrorAlert title={data.message} message={data.details} link={data.link} />
     )
 
   return (
