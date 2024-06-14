@@ -11,7 +11,7 @@ export default function useDeleteCampground() {
     mutationFn: deleteCampground,
     onError: (err: MutationError) => {
       toast.error(
-        `${err.response?.data ?? err.message}: Failed to delete campground`,
+        `${err.response?.data ?? err.message}: Failed to delete campground`
       )
     },
     onSuccess: (_, campgroundId) => {
@@ -20,7 +20,7 @@ export default function useDeleteCampground() {
         pages: old?.pages?.map(page => ({
           ...page,
           campgrounds: page.campgrounds.filter(
-            campground => campground._id !== campgroundId,
+            campground => campground._id !== campgroundId
           ),
         })),
       }))

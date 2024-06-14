@@ -12,7 +12,7 @@ export const getCampgrounds = async ({
 }> => (await campgroundsAPI.get("/", { params: { page } })).data
 
 export const getCampgroundById = async (
-  id: string,
+  id: string
 ): Promise<Campground | AppError> => {
   try {
     return (await campgroundsAPI.get(`/${id}`)).data
@@ -33,7 +33,7 @@ export const getCampgroundById = async (
   }
 }
 export const createCampground = async (
-  campground: CampgroundInput,
+  campground: CampgroundInput
 ): Promise<Campground> => (await campgroundsAPI.post("/", campground)).data
 
 export const updateCampground = async ({

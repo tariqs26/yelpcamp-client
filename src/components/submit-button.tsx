@@ -14,7 +14,7 @@ export default function SubmitButton({ className, children, ...props }: Props) {
       variant="success"
       className={cn(
         "d-inline-flex align-items-center justify-content-center gap-2",
-        className,
+        className
       )}
       {...props}>
       <Spinner

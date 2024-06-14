@@ -12,7 +12,7 @@ export default function useCreateCampground() {
     mutationFn: createCampground,
     onError: (err: MutationError) => {
       toast.error(
-        `${err.response?.data ?? err.message}: Failed to create campground`,
+        `${err.response?.data ?? err.message}: Failed to create campground`
       )
     },
     onSuccess: data => {

@@ -56,5 +56,5 @@ root.render(
         </BrowserRouter>
       </AuthProvider>
     </ReactQueryProvider>
-  </StrictMode>,
+  </StrictMode>
 )

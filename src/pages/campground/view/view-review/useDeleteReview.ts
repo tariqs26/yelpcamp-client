@@ -19,7 +19,7 @@ export default function useDeleteCampground(campgroundId: string) {
               reviews: oldData.reviews.filter(({ _id }) => _id !== reviewId),
             }
           }
-        },
+        }
       )
       toast.success("Review deleted successfully")
     },

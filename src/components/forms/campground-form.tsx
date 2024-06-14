@@ -15,7 +15,7 @@ type CampgroundFormProps = FormProps &
 export default function CampgroundForm(props: CampgroundFormProps) {
   const { handleSubmit, initialData, isPending, leaveHandler } = props
   const [descChars, setDescChars] = useState(
-    initialData?.description.length ?? 0,
+    initialData?.description.length ?? 0
   )
 
   const action = initialData === undefined ? "Create" : "Update"

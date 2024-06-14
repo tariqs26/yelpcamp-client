@@ -34,11 +34,11 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
     const clusterId = feature.properties.cluster_id
     if (mapRef.current === null) return
     const mapboxSource = mapRef.current.getSource(
-      "campgrounds",
+      "campgrounds"
     ) as unknown as GeoJSONSource & {
       getClusterExpansionZoom: (
         clusterId: number,
-        callback: (err: any, zoom: number) => void,
+        callback: (err: any, zoom: number) => void
       ) => void
     }
     mapboxSource.getClusterExpansionZoom(
@@ -50,7 +50,7 @@ export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
           zoom,
           duration: 500,
         })
-      },
+      }
     )
   }
 

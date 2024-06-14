@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { fromDate } from "lib/utils"
 
 export default function CardComponent(
-  props: Campground & { pageIdx?: number },
+  props: Campground & { pageIdx?: number }
 ) {
   const { _id, title, image, location, description } = props
   return (

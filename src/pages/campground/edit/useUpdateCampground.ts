@@ -6,7 +6,7 @@ import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useUpdateCampground(
   campground: Campground,
-  close: () => void,
+  close: () => void
 ) {
   const queryClient = useQueryClient()
 
@@ -15,7 +15,7 @@ export default function useUpdateCampground(
     onError: (err: MutationError) => {
       close()
       toast.error(
-        `${err.response?.data ?? err.message}: Failed to update campground`,
+        `${err.response?.data ?? err.message}: Failed to update campground`
       )
     },
     onSuccess: (_, { id, campground: updatedCampground }) => {
@@ -29,7 +29,7 @@ export default function useUpdateCampground(
           campgrounds: page.campgrounds.map(campground =>
             campground._id !== id
               ? campground
-              : { ...campground, ...updatedCampground },
+              : { ...campground, ...updatedCampground }
           ),
         })),
       }))

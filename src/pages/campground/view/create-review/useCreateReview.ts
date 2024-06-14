@@ -32,7 +32,7 @@ export default function useCreateReview(cId: string, close: () => void) {
               reviews: [...oldData.reviews, data],
             }
           }
-        },
+        }
       )
       toast.success("Review created successfully")
     },
