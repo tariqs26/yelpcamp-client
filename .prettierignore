@@ -1,6 +1,5 @@
 node_modules
 dist
-project-images
 public
 package-lock.json
 src/**/*.min.css
