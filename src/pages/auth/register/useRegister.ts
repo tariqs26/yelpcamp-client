@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom"
 import { useMutation } from "@tanstack/react-query"
-import { register } from "api/users"
 import { toast } from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
+import { register } from "api/users"
 import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useRegister() {

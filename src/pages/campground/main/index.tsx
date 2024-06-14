@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
+import ClusterMap from "components/Map/cluster"
 import Error from "components/error"
 import LoadingCard, { CardComponent } from "components/loading-card"
-import ClusterMap from "components/Map/cluster"
 import Button from "components/submit-button"
 import ErrorDetails from "types/errors"
 import Card from "./Card"

@@ -1,17 +1,17 @@
 import { useState } from "react"
-import { useAuth } from "components/providers/auth"
-import { fromDate, isAppError } from "lib/utils"
+import { Button, Card, ListGroup, Row } from "react-bootstrap"
 
-import { Row, Card, ListGroup, Button } from "react-bootstrap"
-import Error from "components/error"
-import SubmitButton from "components/submit-button"
 import Map from "components/Map"
+import Error from "components/error"
 import Fallback from "components/fallback"
-import ReviewForm from "./create-review"
-import ReviewCard from "./view-review"
+import { useAuth } from "components/providers/auth"
+import SubmitButton from "components/submit-button"
+import { fromDate, isAppError } from "lib/utils"
 import EditCampground from "../edit"
+import ReviewForm from "./create-review"
 import useDeleteCampground from "./useDeleteCampground"
 import useGetCampground from "./useGetCampground"
+import ReviewCard from "./view-review"
 
 export default function Campground() {
   const [modalShow, setModalShow] = useState(false)
@@ -23,11 +23,10 @@ export default function Campground() {
 
   if (data === undefined) return <div>Not found</div>
 
-  if (isAppError(data)) {
+  if (isAppError(data))
     return (
       <Error title={data.message} message={data.details} link={data.link} />
     )
-  }
 
   return (
     <Row>

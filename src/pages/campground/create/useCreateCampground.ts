@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { createCampground } from "api/campgrounds"
 import { toast } from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
+import { createCampground } from "api/campgrounds"
 import { dataFromInput, handleValidation } from "lib/utils"
 
 export default function useCreateCampground() {

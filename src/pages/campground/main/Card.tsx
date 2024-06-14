@@ -1,5 +1,5 @@
+import { Card, Col, Image, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { Card, Row, Col, Image } from "react-bootstrap"
 import { fromDate } from "lib/utils"
 
 export default function CardComponent(
