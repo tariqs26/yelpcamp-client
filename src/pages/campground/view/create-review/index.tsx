@@ -6,7 +6,7 @@ import "./index.css"
 
 interface Props {
   cId: string
-  user: AppUser | null
+  user?: AppUser | null
 }
 
 export default function CreateReview({ cId, user }: Props) {
@@ -25,7 +25,7 @@ export default function CreateReview({ cId, user }: Props) {
           <h5 className="mb-0">Write a review</h5>
         </Accordion.Header>
         <Accordion.Body>
-          {user === null && (
+          {!user && (
             <p className="text-muted">
               Please <Link to="/login">sign in</Link> to write a review
             </p>

@@ -28,5 +28,5 @@ export const logout = async () => {
   await axios.post("/logout")
 }
 
-export const getUser = async (): Promise<AppUser> =>
+export const getUser = async (): Promise<AppUser | undefined> =>
   (await axios.get("/getUser")).data

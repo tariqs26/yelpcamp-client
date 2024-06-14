@@ -6,7 +6,7 @@ import useDeleteReview from "./useDeleteReview"
 interface Props {
   cId: string
   review: Review
-  user: AppUser | null
+  user?: AppUser | null
 }
 
 export default function ReviewCard({ cId, review, user }: Props) {
@@ -19,7 +19,7 @@ export default function ReviewCard({ cId, review, user }: Props) {
           <Rating rating={review.rating} text={`Rated: ${review.rating}/5`} />
         </div>
         <Card.Text>{review.body}</Card.Text>
-        {user !== null && user._id === review.author._id && (
+        {user && user._id === review.author._id && (
           <Button
             variant="danger"
             size="sm"

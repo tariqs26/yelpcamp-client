@@ -9,7 +9,7 @@ interface Props {
 export default function Protected({ element, message }: Props) {
   const { user } = useAuth()
 
-  if (user !== null) return element
+  if (user) return element
   return (
     <Navigate
       to="/login"

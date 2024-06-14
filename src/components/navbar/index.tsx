@@ -47,7 +47,7 @@ export default function NavbarComponent() {
             </NavLink>
           </Nav>
           <div className="nav-btns d-flex gap-3 align-items-center ms-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
-            {user !== null ? (
+            {user ? (
               <button
                 className="btn btn-secondary text-light px-2 py-1"
                 onClick={() => {

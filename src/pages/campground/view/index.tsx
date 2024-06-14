@@ -59,7 +59,7 @@ export default function Campground() {
             </ListGroup.Item>
             <ListGroup.Item>Submitted by {data.author.username}</ListGroup.Item>
           </ListGroup>
-          {user !== null && (user._id === data.author._id || user.isAdmin) && (
+          {user && (user._id === data.author._id || user.isAdmin) && (
             <Card.Body className="d-flex gap-2">
               <Button
                 variant="warning"

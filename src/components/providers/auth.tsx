@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, useMemo } from "react"
 import { getUser } from "api/users"
 import Fallback from "components/fallback"
 
-type AuthUser = AppUser | null
+type AuthUser = AppUser | null | undefined
 
 interface AuthContextType {
   user: AuthUser
