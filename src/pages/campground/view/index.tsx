@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button, Card, ListGroup, Row } from "react-bootstrap"
 
-import Map from "components/Map"
+import MapComponent from "components/Map"
 import ErrorAlert from "components/error-alert"
 import Fallback from "components/fallback"
 import { useAuth } from "components/providers/auth"
@@ -25,7 +25,11 @@ export default function Campground() {
 
   if (isAppError(data))
     return (
-      <ErrorAlert title={data.message} message={data.details} link={data.link} />
+      <ErrorAlert
+        title={data.message}
+        message={data.details}
+        link={data.link}
+      />
     )
 
   return (
@@ -90,7 +94,7 @@ export default function Campground() {
         />
       </div>
       <div className="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-0">
-        <Map
+        <MapComponent
           coordinates={{
             longitude: data.geometry.coordinates[0],
             latitude: data.geometry.coordinates[1],

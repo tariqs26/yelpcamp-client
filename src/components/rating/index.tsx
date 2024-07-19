@@ -1,10 +1,10 @@
 import "./coin-flip.min.css"
 import "./basic.min.css"
 
-interface Props {
+type Props = Readonly<{
   rating: number
   text?: string
-}
+}>
 
 export function Rating({ rating, text }: Props) {
   return (

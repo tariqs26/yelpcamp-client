@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
 import { Alert, Row, Col } from "react-bootstrap"
 
-interface Props {
+type Props = Readonly<{
   title: string
   message: string
   link?: { url: string; text: string }
-}
+}>
+
 export default function ErrorAlert({ title, message, link }: Props) {
   return (
     <Row>

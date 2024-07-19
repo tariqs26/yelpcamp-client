@@ -2,10 +2,12 @@ import Spinner from "react-bootstrap/Spinner"
 import Button, { type ButtonProps } from "react-bootstrap/Button"
 import { cn } from "lib/utils"
 
-type Props = ButtonProps & {
-  children: React.ReactNode
-  disabled: boolean
-}
+type Props = Readonly<
+  ButtonProps & {
+    children: React.ReactNode
+    disabled: boolean
+  }
+>
 
 export default function SubmitButton({ className, children, ...props }: Props) {
   return (
@@ -20,7 +22,6 @@ export default function SubmitButton({ className, children, ...props }: Props) {
       <Spinner
         animation="border"
         size="sm"
-        role="status"
         aria-hidden={!props.disabled}
         className={props.disabled ? "" : "d-none"}
       />

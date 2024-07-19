@@ -1,8 +1,8 @@
-interface Props {
+type Props = Readonly<{
   condition: boolean
   wrapper: (children: React.ReactNode) => JSX.Element
   children: React.ReactNode
-}
+}>
 
 export default function ConditionalWrapper({
   condition,

@@ -4,10 +4,10 @@ import Fallback from "components/fallback"
 
 type AuthUser = AppUser | null | undefined
 
-interface AuthContextType {
+type AuthContextType = Readonly<{
   user: AuthUser
   setUser: (user: AuthUser) => void
-}
+}>
 
 const AuthContext = createContext<AuthContextType | null>(null)
 
@@ -23,12 +23,11 @@ export default function AuthProvider({
     const fetchUserFromServer = async () => {
       try {
         setUser(await getUser())
-      } catch {
       } finally {
         setLoadingInitial(false)
       }
     }
-    void fetchUserFromServer()
+    fetchUserFromServer()
   }, [])
 
   const memoizedValue = useMemo(() => ({ user, setUser }), [user])

@@ -4,10 +4,10 @@ import ReviewForm from "components/forms/review-form"
 import useCreateReview from "./useCreateReview"
 import "./index.css"
 
-interface Props {
+type Props = Readonly<{
   cId: string
   user?: AppUser | null
-}
+}>
 
 export default function CreateReview({ cId, user }: Props) {
   const formProps = useCreateReview(cId, () => {

@@ -2,16 +2,16 @@ import { useState } from "react"
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 
-interface Props {
+type Props = Readonly<{ 
   coordinates: {
     longitude: number
     latitude: number
   }
   title: string
   location: string
-}
+}>
 
-export default function Map({ coordinates, title, location }: Props) {
+export default function MapComponent({ coordinates, title, location }: Props) {
   const [showPopup, setShowPopup] = useState(true)
   return (
     <ReactMapGL

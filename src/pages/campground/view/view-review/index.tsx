@@ -3,11 +3,11 @@ import { Rating } from "components/rating"
 import Button from "components/submit-button"
 import useDeleteReview from "./useDeleteReview"
 
-interface Props {
+type Props = Readonly<{
   cId: string
   review: Review
   user?: AppUser | null
-}
+}>
 
 export default function ReviewCard({ cId, review, user }: Props) {
   const { mutate, isPending } = useDeleteReview(cId)

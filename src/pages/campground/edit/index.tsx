@@ -3,13 +3,13 @@ import Form from "components/forms/campground-form"
 import useUpdateCampground from "./useUpdateCampground"
 import "./index.css"
 
-interface EditCampgroundProps {
+type Props = Readonly<{
   campground: Campground
   showModal: boolean
   closeModal: () => void
-}
+}>
 
-function CampgroundEdit(props: EditCampgroundProps) {
+function CampgroundEdit(props: Props) {
   const { campground, showModal, closeModal } = props
   const formProps = useUpdateCampground(campground, closeModal)
   return (
