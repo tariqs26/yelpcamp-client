@@ -17,7 +17,7 @@ export default function useCreateCampground() {
     },
     onSuccess: data => {
       queryClient.setQueryData(["campgrounds", data._id], data)
-      void queryClient.invalidateQueries({ queryKey: ["campgrounds"] })
+      queryClient.invalidateQueries({ queryKey: ["campgrounds"] })
       navigate(`/campgrounds/${data._id}`, { replace: true })
       toast.success("Campground created successfully")
     },
