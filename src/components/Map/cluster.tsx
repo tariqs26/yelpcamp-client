@@ -30,7 +30,9 @@ type Feature = MapGeoJSONFeature & {
   }
 }
 
-export default function ClusterMap({ campgrounds }: { campgrounds: any }) {
+export default function ClusterMap({
+  campgrounds,
+}: Readonly<{ campgrounds: any }>) {
   const mapRef = useRef<MapRef>(null)
 
   const onClick = (e: MapLayerMouseEvent) => {

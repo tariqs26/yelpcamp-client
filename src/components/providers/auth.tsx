@@ -13,9 +13,9 @@ const AuthContext = createContext<AuthContextType | null>(null)
 
 export default function AuthProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   const [user, setUser] = useState<AuthUser>(null)
   const [loadingInitial, setLoadingInitial] = useState(true)
 

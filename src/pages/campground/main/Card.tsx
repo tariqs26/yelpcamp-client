@@ -2,7 +2,7 @@ import { Card, Col, Image, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { fromDate } from "lib/utils"
 
-export default function CardComponent(props: Campground) {
+export default function CardComponent(props: Readonly<Campground>) {
   const { _id, title, image, location, description } = props
   return (
     <Card className="mt-4 overflow-hidden">
