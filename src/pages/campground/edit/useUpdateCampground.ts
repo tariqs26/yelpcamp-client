@@ -19,7 +19,7 @@ export default function useUpdateCampground(
       )
     },
     onSuccess: (_, { id, campground: updatedCampground }) => {
-      void queryClient.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: ["campgrounds", id],
       })
       queryClient.setQueryData(["campgrounds"], (old: CampgroundsData) => ({
