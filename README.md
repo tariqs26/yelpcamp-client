@@ -2,21 +2,19 @@
 
 Full-stack application, where users can share and review campground locations built with the [MERN stack](https://www.mongodb.com/mern-stack).
 
-<div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:1rem;">
-
 ![home](./project-images/home-page.png)
+
+<details>
+
+<summary>More Screenshots</summary>
 
 ![main](./project-images/campgrounds-page.png)
 
 ![show](./project-images/show-page.png)
 
-</div>
+</details>
 
 ## Technologies Used
-
-<div style="display:flex; gap: 1rem;">
-
-<div>
 
 ### Frontend
 
@@ -29,10 +27,6 @@ Full-stack application, where users can share and review campground locations bu
 | [Mapbox](https://www.mapbox.com/)                     | Map API                   |
 | [Vite](https://vitejs.dev/)                           | Frontend build tool       |
 
-</div>
-
-<div>
-
 ### [Backend](https://github.com/tariqs26/yelpcamp-server)
 
 | Technology                          | Purpose           |
@@ -43,11 +37,14 @@ Full-stack application, where users can share and review campground locations bu
 | [Passport](http://passportjs.org/)  | Authentication    |
 | [Swagger](https://swagger.io/)      | API documentation |
 
-</div>
-
-</div>
-
 ## Setup
+
+### Clone the repository
+
+```bash
+git clone https://github.com/tariqs26/yelpcamp-client.git
+cd yelpcamp-client
+```
 
 ### Install dependencies
 
@@ -56,6 +53,8 @@ npm i
 ```
 
 ### Configure environment variables
+
+Create a `.env` file in the root directory and add the following environment variables:
 
 ```bash
 VITE_API_URL=      # Backend API URL
