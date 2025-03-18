@@ -1,11 +1,10 @@
 [[redirects]]
-  force = true
-  from = '/api/*'
-  status = 200
-  to = '/.netlify/functions/:splat'
+force = true
+from = '/api/*'
+status = 200
+to = '/.netlify/functions/:splat'
 
 [[redirects]]
-    force = true
-    from = '/*'
-    status = 200
-    to = '/index.html'
+from = '/*'
+status = 200
+to = '/index.html'
