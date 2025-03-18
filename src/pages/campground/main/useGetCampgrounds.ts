@@ -8,7 +8,6 @@ export default function useGetCampgrounds() {
     initialPageParam: 1,
     getNextPageParam: (_, pages) => {
       if (pages.length < pages[0].totalPages) return pages.length + 1
-      return undefined
     },
   })
 }
