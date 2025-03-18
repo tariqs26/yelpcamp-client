@@ -1,22 +1,22 @@
 import { lazy } from "react"
 import { Route, Routes } from "react-router-dom"
 
-import Footer from "components/footer"
-import AuthLayout from "components/layouts/auth-layout"
-import NavLayout from "components/layouts/nav-layout"
-import SuspenseLayout from "components/layouts/suspense-layout"
-import ProtectedRoute from "components/protected"
-import Login from "pages/auth/login"
-import Register from "pages/auth/register"
-import Home from "pages/home"
-import NotFound from "pages/not-found"
+import Footer from "./components/footer"
+import AuthLayout from "./components/layouts/auth-layout"
+import NavLayout from "./components/layouts/nav-layout"
+import SuspenseLayout from "./components/layouts/suspense-layout"
+import ProtectedRoute from "./components/protected"
+import Login from "./pages/auth/login"
+import Register from "./pages/auth/register"
+import Home from "./pages/home"
+import NotFound from "./pages/not-found"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
 const [Campgrounds, Campground, NewCampground] = [
-  lazy(() => import("pages/campground/main")),
-  lazy(() => import("pages/campground/view")),
-  lazy(() => import("pages/campground/create")),
+  lazy(() => import("./pages/campground/main")),
+  lazy(() => import("./pages/campground/view")),
+  lazy(() => import("./pages/campground/create")),
 ]
 
 export default function App() {

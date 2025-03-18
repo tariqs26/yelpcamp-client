@@ -9,7 +9,7 @@ const dataFromInput = <T>(form: HTMLFormElement): T => {
   return {
     ...Object.fromEntries(new FormData(form)),
     ...Object.fromEntries(
-      Array.from(numberFields).map(field => [field.name, field.valueAsNumber])
+      Array.from(numberFields).map((field) => [field.name, field.valueAsNumber])
     ),
   } as T
 }

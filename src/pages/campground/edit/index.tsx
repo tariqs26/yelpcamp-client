@@ -1,5 +1,5 @@
 import Modal from "react-bootstrap/Modal"
-import Form from "components/forms/campground-form"
+import Form from "../../../components/forms/campground-form"
 import useUpdateCampground from "./useUpdateCampground"
 import "./index.css"
 

@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import type { FormEvent } from "react"
 import { toast } from "react-hot-toast"
-import { updateCampground } from "api/campgrounds"
-import { dataFromInput, handleValidation } from "lib/utils"
+import { updateCampground } from "../../../api/campgrounds"
+import { dataFromInput, handleValidation } from "../../../lib/utils"
 
 export default function useUpdateCampground(
   campground: Campground,
@@ -24,9 +24,9 @@ export default function useUpdateCampground(
       })
       queryClient.setQueryData(["campgrounds"], (old: CampgroundsData) => ({
         ...old,
-        pages: old?.pages?.map(page => ({
+        pages: old?.pages?.map((page) => ({
           ...page,
-          campgrounds: page.campgrounds.map(campground =>
+          campgrounds: page.campgrounds.map((campground) =>
             campground._id !== id
               ? campground
               : { ...campground, ...updatedCampground }

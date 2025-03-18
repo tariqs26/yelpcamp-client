@@ -1,4 +1,4 @@
-import Form from "components/forms/campground-form"
+import Form from "../../../components/forms/campground-form"
 import useCreateCampground from "./useCreateCampground"
 
 export default function CreateCampground() {

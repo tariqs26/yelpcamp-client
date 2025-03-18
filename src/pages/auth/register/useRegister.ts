@@ -1,15 +1,15 @@
 import { useMutation } from "@tanstack/react-query"
 import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
-import { register } from "api/users"
-import { dataFromInput, handleValidation } from "lib/utils"
+import { register } from "../../../api/users"
+import { dataFromInput, handleValidation } from "../../../lib/utils"
 
 export default function useRegister() {
   const navigate = useNavigate()
 
   const { isPending, mutate } = useMutation({
     mutationFn: register,
-    onSuccess: data => {
+    onSuccess: (data) => {
       if (typeof data === "string") return toast.error(data)
       navigate("/login", { replace: true })
       toast.success(`Welcome to YelpCamp ${data.username}!`)

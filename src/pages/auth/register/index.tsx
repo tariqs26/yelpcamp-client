@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Form from "react-bootstrap/Form"
-import Button from "components/submit-button"
+import Button from "../../../components/submit-button"
 import useRegister from "./useRegister"
 
 export default function Register() {

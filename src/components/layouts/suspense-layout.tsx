@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import Container from "react-bootstrap/Container"
 import { Outlet } from "react-router-dom"
-import Fallback from "components/fallback"
+import Fallback from "../fallback"
 
 export default function SuspenseLayout() {
   return (

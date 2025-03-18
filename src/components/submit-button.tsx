@@ -1,6 +1,6 @@
 import Button, { type ButtonProps } from "react-bootstrap/Button"
 import Spinner from "react-bootstrap/Spinner"
-import { cn } from "lib/utils"
+import { cn } from "../lib/utils"
 
 export default function SubmitButton({
   className,

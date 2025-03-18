@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query"
 import { toast } from "react-hot-toast"
 import { useLocation, useNavigate } from "react-router-dom"
-import { login } from "api/users"
-import { useAuth } from "components/providers/auth"
-import { dataFromInput, handleValidation } from "lib/utils"
+import { login } from "../../../api/users"
+import { useAuth } from "../../../components/providers/auth"
+import { dataFromInput, handleValidation } from "../../../lib/utils"
 
 export default function useLogin() {
   const navigate = useNavigate()
@@ -16,7 +16,7 @@ export default function useLogin() {
 
   const mutation = useMutation({
     mutationFn: login,
-    onSuccess: data => {
+    onSuccess: (data) => {
       if (typeof data === "string") return toast.error(data)
       setUser(data)
       if (state?.from !== undefined) navigate(state.from, { replace: true })

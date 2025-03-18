@@ -1,6 +1,6 @@
 import { Accordion } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import ReviewForm from "components/forms/review-form"
+import ReviewForm from "../../../../components/forms/review-form"
 import useCreateReview from "./useCreateReview"
 import "./index.css"
 

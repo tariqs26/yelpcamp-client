@@ -1,6 +1,6 @@
 import { Card, Col, Image, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { fromDate } from "lib/utils"
+import { fromDate } from "../../../lib/utils"
 
 export default function CardComponent(props: Readonly<Campground>) {
   const { _id, title, image, location, description } = props
@@ -11,10 +11,6 @@ export default function CardComponent(props: Readonly<Campground>) {
           <Image
             src={image}
             alt={`${title} campground image`}
-            onError={e => {
-              const target = e.target as HTMLImageElement
-              target.src = "https://via.placeholder.com/640x360"
-            }}
             fluid
             style={{
               height: "100%",

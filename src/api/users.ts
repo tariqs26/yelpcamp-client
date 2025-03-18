@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios"
-import axios from "lib/axios"
-import ErrorDetails from "types/errors"
+import axios from "../lib/axios"
+import ErrorDetails from "../types/errors"
 
 export const register = async (user: UserInput): Promise<AppUser | string> => {
   try {

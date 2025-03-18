@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom"
-import { useAuth } from "components/providers/auth"
+import { useAuth } from "./providers/auth"
 
-type Props = Readonly<{ element: JSX.Element; message?: string }>
+type Props = Readonly<{ element: React.ReactElement; message?: string }>
 
 export default function Protected({ element, message }: Props) {
   const { user } = useAuth()

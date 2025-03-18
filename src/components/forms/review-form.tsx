@@ -1,13 +1,13 @@
 import Form from "react-bootstrap/Form"
-import { RatingInput } from "components/rating"
-import Button from "components/submit-button"
+import { RatingInput } from "../rating"
+import Button from "../submit-button"
 
 export default function ReviewForm(props: Readonly<FormProps>) {
   return (
     <Form
       onSubmit={props.handleSubmit}
       noValidate
-      onBlur={e => {
+      onBlur={(e) => {
         const target = e.currentTarget
         target.classList.remove("was-validated")
       }}>

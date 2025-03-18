@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button, Card, Form, InputGroup, Row } from "react-bootstrap"
-import ConditionalWrapper from "components/conditional-wrapper"
-import SubmitButton from "components/submit-button"
+import ConditionalWrapper from "../conditional-wrapper"
+import SubmitButton from "../submit-button"
 
 type CampgroundFormProps = Readonly<
   FormProps &
@@ -23,7 +23,7 @@ export default function CampgroundForm(props: CampgroundFormProps) {
     <Row>
       <ConditionalWrapper
         condition={action === "Create"}
-        wrapper={children => (
+        wrapper={(children) => (
           <Card className="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 border shadow p-3">
             <Card.Body>
               <div className="mb-3 card-title h3">{`${action} Campground`}</div>
@@ -94,7 +94,7 @@ export default function CampgroundForm(props: CampgroundFormProps) {
               placeholder="A beautiful campground with a creek running through it."
               defaultValue={initialData?.description}
               maxLength={300}
-              onChange={e => {
+              onChange={(e) => {
                 setDescChars(e.target.value.length)
               }}
               rows={4}
