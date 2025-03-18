@@ -14,9 +14,9 @@ import NotFound from "pages/not-found"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 const [Campgrounds, Campground, NewCampground] = [
-  lazy(async () => await import("pages/campground/main")),
-  lazy(async () => await import("pages/campground/view")),
-  lazy(async () => await import("pages/campground/create")),
+  lazy(() => import("pages/campground/main")),
+  lazy(() => import("pages/campground/view")),
+  lazy(() => import("pages/campground/create")),
 ]
 
 export default function App() {
