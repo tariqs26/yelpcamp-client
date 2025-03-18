@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import type { FormEvent } from "react"
 import { toast } from "react-hot-toast"
-import { updateCampground } from "../../../api/campgrounds"
-import { dataFromInput, handleValidation } from "../../../lib/utils"
+import { updateCampground } from "~/api/campgrounds"
+import { dataFromInput, handleValidation } from "~/lib/utils"
 
 export default function useUpdateCampground(
   campground: Campground,

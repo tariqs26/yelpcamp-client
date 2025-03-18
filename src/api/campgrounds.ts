@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios"
-import { axios } from "../lib/axios"
-import ErrorDetails from "../types/errors"
+import { axios } from "~/lib/axios"
+import ErrorDetails from "~/types/errors"
 
 const campgroundsAPI = axios("/campgrounds")
 

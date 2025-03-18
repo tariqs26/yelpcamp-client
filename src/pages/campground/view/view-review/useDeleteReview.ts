@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "react-hot-toast"
-import { deleteReview } from "../../../../api/reviews"
+import { deleteReview } from "~/api/reviews"
 
 export default function useDeleteCampground(campgroundId: string) {
   const queryClient = useQueryClient()

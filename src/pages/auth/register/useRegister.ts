@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query"
 import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
-import { register } from "../../../api/users"
-import { dataFromInput, handleValidation } from "../../../lib/utils"
+import { register } from "~/api/users"
+import { dataFromInput, handleValidation } from "~/lib/utils"
 
 export default function useRegister() {
   const navigate = useNavigate()

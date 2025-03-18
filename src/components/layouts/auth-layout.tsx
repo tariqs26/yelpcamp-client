@@ -1,6 +1,6 @@
 import { Card } from "react-bootstrap"
 import { Navigate, Outlet } from "react-router-dom"
-import TentImg from "../../assets/images/auth-image.webp"
+import TentImg from "~/assets/images/auth-image.webp"
 import { useAuth } from "../providers/auth"
 
 export default function AuthLayout() {

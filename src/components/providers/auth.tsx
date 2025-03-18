@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react"
-import { getUser } from "../../api/users"
+import { getUser } from "~/api/users"
 import Fallback from "../fallback"
 
 type AuthUser = AppUser | null | undefined

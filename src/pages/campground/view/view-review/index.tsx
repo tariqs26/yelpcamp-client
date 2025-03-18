@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card"
-import { Rating } from "../../../../components/rating"
-import Button from "../../../../components/submit-button"
+import { Rating } from "~/components/rating"
+import Button from "~/components/submit-button"
 import useDeleteReview from "./useDeleteReview"
 
 type Props = Readonly<{
