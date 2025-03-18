@@ -11,6 +11,8 @@ import Register from "pages/auth/register"
 import Home from "pages/home"
 import NotFound from "pages/not-found"
 
+import "bootstrap/dist/css/bootstrap.min.css"
+
 const [Campgrounds, Campground, NewCampground] = [
   lazy(async () => await import("pages/campground/main")),
   lazy(async () => await import("pages/campground/view")),
