@@ -2,11 +2,8 @@ import { useState } from "react"
 import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 
-type Props = Readonly<{ 
-  coordinates: {
-    longitude: number
-    latitude: number
-  }
+type Props = Readonly<{
+  coordinates: { longitude: number; latitude: number }
   title: string
   location: string
 }>

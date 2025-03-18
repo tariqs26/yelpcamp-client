@@ -3,14 +3,13 @@ import { Button, Card, Form, InputGroup, Row } from "react-bootstrap"
 import ConditionalWrapper from "components/conditional-wrapper"
 import SubmitButton from "components/submit-button"
 
-type CampgroundFormProps = FormProps &
-  (
-    | {
-        initialData: Campground
-        leaveHandler: () => void
-      }
-    | { initialData?: undefined; leaveHandler?: undefined }
-  )
+type CampgroundFormProps = Readonly<
+  FormProps &
+    (
+      | { initialData: Campground; leaveHandler: () => void }
+      | { initialData?: undefined; leaveHandler?: undefined }
+    )
+>
 
 export default function CampgroundForm(props: CampgroundFormProps) {
   const { handleSubmit, initialData, isPending, leaveHandler } = props

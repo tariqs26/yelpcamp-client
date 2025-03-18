@@ -13,13 +13,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve", // most upto date
+    "jsx": "preserve", // most up to date
     "baseUrl": "src"
   },
   "include": ["src", "vite.config.ts"],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

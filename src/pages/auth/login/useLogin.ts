@@ -11,9 +11,7 @@ export default function useLogin() {
   const {
     state,
   }: {
-    state?: {
-      from?: string
-    }
+    state?: { from?: string }
   } = useLocation()
 
   const mutation = useMutation({

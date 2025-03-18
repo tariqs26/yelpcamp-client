@@ -3,11 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function NotFound() {
   return (
-    <Container
-      style={{
-        paddingTop: "72px",
-        paddingBottom: "20px",
-      }}>
+    <Container style={{ paddingTop: "72px", paddingBottom: "20px" }}>
       <h1>
         404: Not Found{" "}
         <span role="img" aria-label="sad face">

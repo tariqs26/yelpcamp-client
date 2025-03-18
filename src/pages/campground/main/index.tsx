@@ -20,7 +20,9 @@ export default function Campgrounds() {
 
   if (status === "pending" || isRefetching) return <LoadingCard />
   if (status === "error" || data === undefined) {
-    return <ErrorAlert title={error.message} message={ErrorDetails.SERVER_ERROR} />
+    return (
+      <ErrorAlert title={error.message} message={ErrorDetails.SERVER_ERROR} />
+    )
   }
   return (
     <>
@@ -28,10 +30,7 @@ export default function Campgrounds() {
         campgrounds={{
           features: data.pages
             .flatMap(({ campgrounds }) => campgrounds)
-            .map(({ geometry }) => ({
-              type: "Feature",
-              geometry,
-            })),
+            .map(({ geometry }) => ({ type: "Feature", geometry })),
         }}
       />
       <header className="d-flex justify-content-between flex-column gap-3 align-items-sm-center flex-sm-row align-items-start">
@@ -58,7 +57,6 @@ export default function Campgrounds() {
         <Button
           variant="secondary mt-4"
           disabled={isFetchingNextPage}
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={async () => await fetchNextPage()}>
           Load more
         </Button>

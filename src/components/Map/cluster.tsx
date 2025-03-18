@@ -19,16 +19,12 @@ import {
 
 import "mapbox-gl/dist/mapbox-gl.css"
 
-const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN
-
 type Feature = MapGeoJSONFeature & {
-  properties?: {
-    cluster_id: number
-  }
-  geometry: {
-    coordinates: [number, number]
-  }
+  properties?: { cluster_id: number }
+  geometry: { coordinates: [number, number] }
 }
+
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN
 
 export default function ClusterMap({
   campgrounds,
@@ -63,11 +59,7 @@ export default function ClusterMap({
 
   return (
     <ReactMapGlCluster
-      initialViewState={{
-        latitude: 52.67,
-        longitude: -93.59,
-        zoom: 3,
-      }}
+      initialViewState={{ latitude: 52.67, longitude: -93.59, zoom: 3 }}
       mapStyle="mapbox://styles/mapbox/dark-v9"
       mapboxAccessToken={MAPBOX_TOKEN}
       interactiveLayerIds={[clusterLayer.id as unknown as string]}
