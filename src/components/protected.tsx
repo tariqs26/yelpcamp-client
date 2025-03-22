@@ -7,6 +7,7 @@ export default function Protected({ element, message }: Props) {
   const { user } = useAuth()
 
   if (user) return element
+
   return (
     <Navigate
       to="/login"

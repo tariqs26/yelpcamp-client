@@ -10,6 +10,7 @@ type Props = Readonly<{
 
 export default function MapComponent({ coordinates, title, location }: Props) {
   const [showPopup, setShowPopup] = useState(true)
+
   return (
     <ReactMapGL
       initialViewState={{
