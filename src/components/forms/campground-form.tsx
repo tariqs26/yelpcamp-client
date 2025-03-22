@@ -26,7 +26,7 @@ export default function CampgroundForm(props: CampgroundFormProps) {
         wrapper={(children) => (
           <Card className="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 border shadow p-3">
             <Card.Body>
-              <div className="mb-3 card-title h3">{`${action} Campground`}</div>
+              <div className="mb-3 card-title h3">{action} Campground</div>
               {children}
             </Card.Body>
           </Card>
@@ -115,7 +115,7 @@ export default function CampgroundForm(props: CampgroundFormProps) {
               </Button>
             )}
             <SubmitButton disabled={isPending}>
-              {`${action} campground`}
+              {action} campground
             </SubmitButton>
           </div>
         </Form>
