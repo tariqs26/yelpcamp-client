@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast"
 import { useLocation, useNavigate } from "react-router-dom"
 import { createReview } from "~/api/reviews"
 import { dataFromInput, handleValidation } from "~/lib/utils"
+import type { Campground } from "~/types"
 
 export default function useCreateReview(
   campgroundId: string,
@@ -25,13 +26,9 @@ export default function useCreateReview(
       close()
       queryClient.setQueryData(
         ["campgrounds", campgroundId],
-        (oldData: Campground | undefined) => {
-          if (oldData !== undefined) {
-            return {
-              ...oldData,
-              reviews: [...oldData.reviews, data],
-            }
-          }
+        (oldData?: Campground) => {
+          if (!oldData) return
+          return { ...oldData, reviews: [...oldData.reviews, data] }
         }
       )
       toast.success("Review created successfully")

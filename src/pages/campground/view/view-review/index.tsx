@@ -3,6 +3,7 @@ import { useAuth } from "~/components/providers/auth"
 import { Rating } from "~/components/rating"
 import Button from "~/components/submit-button"
 import useDeleteReview from "./useDeleteReview"
+import type { Review } from "~/types"
 
 type ReviewCardProps = Readonly<{ campgroundId: string; review: Review }>
 

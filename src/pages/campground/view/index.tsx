@@ -27,7 +27,7 @@ export default function Campground() {
 
   if (isFetching) return <Fallback />
 
-  if (campground === undefined) return <div>Not found</div>
+  if (!campground) return <div>Not found</div>
 
   if (isAppError(campground))
     return (
@@ -108,7 +108,7 @@ export default function Campground() {
         />
         <h4 className="mt-3">Reviews</h4>
         <ReviewForm campgroundId={campgroundId} />
-        {campground.reviews.map((review: Review) => (
+        {campground.reviews.map((review) => (
           <ReviewCard
             key={review._id}
             campgroundId={campgroundId}

@@ -3,6 +3,7 @@ import type { FormEvent } from "react"
 import { toast } from "react-hot-toast"
 import { updateCampground } from "~/api/campgrounds"
 import { dataFromInput, handleValidation } from "~/lib/utils"
+import type { Campground, CampgroundsData, MutationError } from "~/types"
 
 export default function useUpdateCampground(
   campground: Campground,
@@ -22,7 +23,7 @@ export default function useUpdateCampground(
       queryClient.invalidateQueries({
         queryKey: ["campgrounds", id],
       })
-      queryClient.setQueryData(["campgrounds"], (old: CampgroundsData) => ({
+      queryClient.setQueryData(["campgrounds"], (old?: CampgroundsData) => ({
         ...old,
         pages: old?.pages?.map((page) => ({
           ...page,

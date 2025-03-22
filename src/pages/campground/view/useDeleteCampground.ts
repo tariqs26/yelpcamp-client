@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import { deleteCampground } from "~/api/campgrounds"
+import type { CampgroundsData, MutationError } from "~/types"
 
 export default function useDeleteCampground() {
   const queryClient = useQueryClient()
@@ -15,7 +16,7 @@ export default function useDeleteCampground() {
       )
     },
     onSuccess: (_, campgroundId) => {
-      queryClient.setQueryData(["campgrounds"], (old: CampgroundsData) => ({
+      queryClient.setQueryData(["campgrounds"], (old?: CampgroundsData) => ({
         ...old,
         pages: old?.pages?.map((page) => ({
           ...page,

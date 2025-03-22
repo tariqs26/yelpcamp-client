@@ -1,4 +1,5 @@
 import { axios } from "~/lib/axios"
+import type { Review, ReviewInput } from "~/types"
 
 const reviewsApi = axios("/campgrounds")
 

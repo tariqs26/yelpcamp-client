@@ -1,6 +1,7 @@
 import Modal from "react-bootstrap/Modal"
 import Form from "~/components/forms/campground-form"
 import useUpdateCampground from "./useUpdateCampground"
+import type { Campground } from "~/types"
 import "./index.css"
 
 type Props = Readonly<{

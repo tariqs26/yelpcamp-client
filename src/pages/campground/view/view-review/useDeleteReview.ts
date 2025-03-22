@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "react-hot-toast"
 import { deleteReview } from "~/api/reviews"
+import type { Campground } from "~/types"
 
 export default function useDeleteCampground(campgroundId: string) {
   const queryClient = useQueryClient()
@@ -12,12 +13,11 @@ export default function useDeleteCampground(campgroundId: string) {
     onSuccess: (_, { reviewId }) => {
       queryClient.setQueryData(
         ["campgrounds", campgroundId],
-        (oldData: Campground | undefined) => {
-          if (oldData !== undefined) {
-            return {
-              ...oldData,
-              reviews: oldData.reviews.filter(({ _id }) => _id !== reviewId),
-            }
+        (oldData?: Campground) => {
+          if (!oldData) return
+          return {
+            ...oldData,
+            reviews: oldData.reviews.filter(({ _id }) => _id !== reviewId),
           }
         }
       )

@@ -19,7 +19,7 @@ export default function ErrorAlert({ title, message, link }: Props) {
           <Alert.Heading>{title}</Alert.Heading>
           <hr />
           <p>{message}</p>
-          {link !== undefined && (
+          {link && (
             <div className="d-flex">
               <Link to={link.url} replace className="alert-link">
                 {link.text}

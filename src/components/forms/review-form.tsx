@@ -2,7 +2,12 @@ import Form from "react-bootstrap/Form"
 import { RatingInput } from "../rating"
 import Button from "../submit-button"
 
-export default function ReviewForm(props: Readonly<FormProps>) {
+type ReviewFormProps = Readonly<{
+  handleSubmit: React.FormEventHandler
+  isPending: boolean
+}>
+
+export default function ReviewForm(props: ReviewFormProps) {
   return (
     <Form
       onSubmit={props.handleSubmit}

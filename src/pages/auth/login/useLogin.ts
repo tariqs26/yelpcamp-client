@@ -28,7 +28,7 @@ export default function useLogin() {
     onSuccess: (data) => {
       if (typeof data === "string") return toast.error(data)
       setUser(data)
-      if (state?.from !== undefined) navigate(state.from, { replace: true })
+      if (state?.from) navigate(state.from, { replace: true })
       else navigate("/campgrounds", { replace: true })
       toast.success("Successfully signed in!")
     },

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
-import ClusterMap from "~/components/map/cluster"
 import ErrorAlert from "~/components/error-alert"
 import LoadingCard, { CardComponent } from "~/components/loading-card"
+import ClusterMap from "~/components/map/cluster"
 import Button from "~/components/submit-button"
 import { ERROR_DETAILS } from "~/lib/constants"
-import Card from "./Card"
+import CampgroundCard from "./CampgroundCard"
 import useGetCampgrounds from "./useGetCampgrounds"
 
 export default function Campgrounds() {
@@ -20,7 +20,7 @@ export default function Campgrounds() {
 
   if (status === "pending" || isRefetching) return <LoadingCard />
 
-  if (status === "error" || data === undefined) {
+  if (status === "error" || !data) {
     return (
       <ErrorAlert title={error.message} message={ERROR_DETAILS.SERVER_ERROR} />
     )
@@ -49,7 +49,9 @@ export default function Campgrounds() {
       ) : (
         data.pages
           .flatMap(({ campgrounds }) => campgrounds)
-          .map((props: Campground) => <Card key={props._id} {...props} />)
+          .map((campground) => (
+            <CampgroundCard key={campground._id} {...campground} />
+          ))
       )}
       {isFetchingNextPage &&
         Array(5)

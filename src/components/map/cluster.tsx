@@ -32,7 +32,7 @@ export default function ClusterMap({
   const mapRef = useRef<MapRef>(null)
 
   const onClick = (e: MapLayerMouseEvent) => {
-    if (e.features === undefined) return
+    if (!e.features) return
     const feature = e.features[0] as Feature
     const clusterId = feature.properties.cluster_id
     if (mapRef.current === null) return

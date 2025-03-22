@@ -1,8 +1,9 @@
 import { Card, Col, Image, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { fromDate } from "~/lib/utils"
+import type { Campground } from "~/types"
 
-export default function CardComponent(props: Readonly<Campground>) {
+export default function CampgroundCard(props: Readonly<Campground>) {
   const { _id, title, image, location, description } = props
 
   return (

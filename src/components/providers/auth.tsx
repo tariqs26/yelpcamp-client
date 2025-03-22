@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react"
 import { getUser } from "~/api/auth"
+import type { User } from "~/types"
 import Fallback from "../fallback"
 
-type AuthUser = AppUser | null | undefined
+type AuthUser = User | null | undefined
 
 type AuthContextType = Readonly<{
   user: AuthUser

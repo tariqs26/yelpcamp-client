@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
 import { createCampground } from "~/api/campgrounds"
 import { dataFromInput, handleValidation } from "~/lib/utils"
+import type { MutationError } from "~/types"
 
 export default function useCreateCampground() {
   const queryClient = useQueryClient()

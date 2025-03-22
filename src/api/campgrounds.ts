@@ -1,6 +1,7 @@
 import { isAxiosError } from "axios"
 import { axios } from "~/lib/axios"
 import { ERROR_DETAILS } from "~/lib/constants"
+import type { AppError, Campground, CampgroundInput } from "~/types"
 
 const campgroundsApi = axios("/campgrounds")
 

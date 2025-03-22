@@ -1,14 +1,17 @@
 import { useState } from "react"
 import { Button, Card, Form, InputGroup, Row } from "react-bootstrap"
+import type { Campground } from "~/types"
 import ConditionalWrapper from "../conditional-wrapper"
 import SubmitButton from "../submit-button"
 
 type CampgroundFormProps = Readonly<
-  FormProps &
-    (
-      | { initialData: Campground; leaveHandler: () => void }
-      | { initialData?: undefined; leaveHandler?: undefined }
-    )
+  {
+    handleSubmit: React.FormEventHandler
+    isPending: boolean
+  } & (
+    | { initialData: Campground; leaveHandler: () => void }
+    | { initialData?: never; leaveHandler?: never }
+  )
 >
 
 export default function CampgroundForm(props: CampgroundFormProps) {
@@ -17,7 +20,7 @@ export default function CampgroundForm(props: CampgroundFormProps) {
     initialData?.description.length ?? 0
   )
 
-  const action = initialData === undefined ? "Create" : "Update"
+  const action = initialData ? "Create" : "Update"
 
   return (
     <Row>

@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
 import day from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
+import type { AppError } from "~/types"
 
 export const dataFromInput = <T>(form: HTMLFormElement): T => {
   const numberFields: NodeListOf<HTMLInputElement> =
