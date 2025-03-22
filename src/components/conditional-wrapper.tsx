@@ -9,5 +9,5 @@ export default function ConditionalWrapper({
   wrapper,
   children,
 }: Props) {
-  return condition ? wrapper(children) : <>{children}</>
+  return condition ? wrapper(children) : children
 }
