@@ -2,20 +2,20 @@ import { isAxiosError } from "axios"
 import { axios } from "~/lib/axios"
 import { ERROR_DETAILS } from "~/lib/constants"
 
-const campgroundsAPI = axios("/campgrounds")
+const campgroundsApi = axios("/campgrounds")
 
 export const getCampgrounds = async ({
   pageParam: page = 1,
 }): Promise<{
   campgrounds: Campground[]
   totalPages: number
-}> => (await campgroundsAPI.get("/", { params: { page } })).data
+}> => (await campgroundsApi.get("/", { params: { page } })).data
 
 export const getCampgroundById = async (
   id: string
 ): Promise<Campground | AppError> => {
   try {
-    return (await campgroundsAPI.get(`/${id}`)).data
+    return (await campgroundsApi.get(`/${id}`)).data
   } catch (err) {
     return isAxiosError(err) && err.code === "SERVER_ERROR"
       ? {
@@ -25,16 +25,13 @@ export const getCampgroundById = async (
       : {
           message: "Campground not Found",
           details: ERROR_DETAILS.NOT_FOUND("campground"),
-          link: {
-            url: "/campgrounds",
-            text: "Go to Campgrounds",
-          },
+          link: { url: "/campgrounds", text: "Go to Campgrounds" },
         }
   }
 }
 export const createCampground = async (
   campground: CampgroundInput
-): Promise<Campground> => (await campgroundsAPI.post("/", campground)).data
+): Promise<Campground> => (await campgroundsApi.post("/", campground)).data
 
 export const updateCampground = async ({
   id,
@@ -42,9 +39,7 @@ export const updateCampground = async ({
 }: {
   id: string
   campground: CampgroundInput
-}) => await campgroundsAPI.put(`/${id}`, campground)
+}) => await campgroundsApi.put(`/${id}`, campground)
 
 export const deleteCampground = async (id: string) =>
-  await campgroundsAPI.delete(`/${id}`)
-
-export default campgroundsAPI
+  await campgroundsApi.delete(`/${id}`)
