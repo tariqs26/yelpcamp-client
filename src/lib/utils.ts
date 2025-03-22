@@ -2,7 +2,7 @@ import { clsx, type ClassValue } from "clsx"
 import day from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 
-const dataFromInput = <T>(form: HTMLFormElement): T => {
+export const dataFromInput = <T>(form: HTMLFormElement): T => {
   const numberFields: NodeListOf<HTMLInputElement> =
     form.querySelectorAll("input[type=number]")
 
@@ -14,27 +14,27 @@ const dataFromInput = <T>(form: HTMLFormElement): T => {
   } as T
 }
 
-const handleValidation = (e: React.FormEvent<HTMLFormElement>): boolean => {
+export const handleValidation = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault()
   e.stopPropagation()
+
   if (!e.currentTarget.checkValidity()) {
     e.currentTarget.classList.add("was-validated")
     return false
   }
+
   return true
 }
 
-const isAppError = (data: unknown): data is AppError =>
+export const isAppError = (data: unknown): data is AppError =>
   typeof data === "object" &&
   data !== null &&
   "message" in data &&
   "details" in data
 
-const fromDate = (date: string) => {
+export const fromDate = (date: string) => {
   day.extend(relativeTime)
   return day(date).fromNow()
 }
 
-const cn = (...inputs: ClassValue[]) => clsx(inputs)
-
-export { cn, dataFromInput, fromDate, handleValidation, isAppError }
+export const cn = (...inputs: ClassValue[]) => clsx(inputs)
