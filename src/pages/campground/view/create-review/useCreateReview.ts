@@ -1,11 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { toast } from "react-hot-toast"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { createReview } from "~/api/reviews"
 import { dataFromInput, handleValidation } from "~/lib/utils"
 
-export default function useCreateReview(cId: string, close: () => void) {
+export default function useCreateReview(
+  campgroundId: string,
+  close: () => void
+) {
   const queryClient = useQueryClient()
+  const location = useLocation()
   const navigate = useNavigate()
 
   const { mutate, isPending } = useMutation({
@@ -14,17 +18,13 @@ export default function useCreateReview(cId: string, close: () => void) {
       if (!message.endsWith("401"))
         toast.error(`${message}: Failed to create review`)
       else {
-        navigate("/login", {
-          state: {
-            from: window.location.pathname,
-          },
-        })
+        navigate("/login", { state: { from: location.pathname } })
       }
     },
     onSuccess: (data) => {
       close()
       queryClient.setQueryData(
-        ["campgrounds", cId],
+        ["campgrounds", campgroundId],
         (oldData: Campground | undefined) => {
           if (oldData !== undefined) {
             return {
@@ -40,7 +40,7 @@ export default function useCreateReview(cId: string, close: () => void) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (!handleValidation(e)) return
-    mutate({ cId, review: dataFromInput(e.currentTarget) })
+    mutate({ campgroundId, review: dataFromInput(e.currentTarget) })
     e.currentTarget.classList.remove("was-validated")
     e.currentTarget.reset()
   }

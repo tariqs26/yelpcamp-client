@@ -1,16 +1,16 @@
 import { Accordion } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import ReviewForm from "~/components/forms/review-form"
+import { useAuth } from "~/components/providers/auth"
 import useCreateReview from "./useCreateReview"
 import "./index.css"
 
-type Props = Readonly<{
-  cId: string
-  user?: AppUser | null
-}>
+type CreateReviewProps = Readonly<{ campgroundId: string }>
 
-export default function CreateReview({ cId, user }: Props) {
-  const formProps = useCreateReview(cId, () => {
+export default function CreateReview({ campgroundId }: CreateReviewProps) {
+  const { user } = useAuth()
+
+  const formProps = useCreateReview(campgroundId, () => {
     const accordionBtn: HTMLButtonElement | null =
       document.querySelector(".accordion-button")
     if (accordionBtn !== null) {

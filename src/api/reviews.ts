@@ -1,27 +1,25 @@
 import { axios } from "~/lib/axios"
 
-const reviewsAPI = axios("/campgrounds")
+const reviewsApi = axios("/campgrounds")
 
 export const createReview = async ({
-  cId,
+  campgroundId,
   review,
 }: {
-  cId: string
+  campgroundId: string
   review: ReviewInput
 }): Promise<Review> =>
   (
-    await reviewsAPI.post(`/${cId}/reviews`, {
+    await reviewsApi.post(`/${campgroundId}/reviews`, {
       ...review,
       rating: Number(review.rating),
     })
   ).data
 
 export const deleteReview = async ({
-  id,
+  campgroundId,
   reviewId,
 }: {
-  id: string
+  campgroundId: string
   reviewId: string
-}) => await reviewsAPI.delete(`/${id}/reviews/${reviewId}`)
-
-export default reviewsAPI
+}) => await reviewsApi.delete(`/${campgroundId}/reviews/${reviewId}`)
