@@ -1,33 +1,26 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react"
-import { getUser } from "~/api/users"
+import { getUser } from "~/api/auth"
 import Fallback from "../fallback"
 
 type AuthUser = AppUser | null | undefined
 
 type AuthContextType = Readonly<{
   user: AuthUser
-  setUser: (user: AuthUser) => void
+  setUser: React.Dispatch<React.SetStateAction<AuthUser>>
 }>
 
 const AuthContext = createContext<AuthContextType | null>(null)
 
 export default function AuthProvider({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<React.PropsWithChildren>) {
   const [user, setUser] = useState<AuthUser>(null)
   const [loadingInitial, setLoadingInitial] = useState(true)
 
   useEffect(() => {
-    const fetchUserFromServer = async () => {
-      try {
-        setUser(await getUser())
-      } finally {
-        setLoadingInitial(false)
-      }
-    }
-    fetchUserFromServer()
+    getUser()
+      .then(setUser)
+      .finally(() => setLoadingInitial(false))
   }, [])
 
   const memoizedValue = useMemo(() => ({ user, setUser }), [user])
@@ -43,7 +36,7 @@ export const useAuth = () => {
   const context = useContext(AuthContext)
 
   if (context === null)
-    throw new Error("useAuth must be used within AuthProvider")
+    throw new Error("useAuth must be used within an AuthProvider")
 
   return context
 }

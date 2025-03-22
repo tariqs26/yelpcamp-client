@@ -1,7 +1,9 @@
 import { useMutation } from "@tanstack/react-query"
+import { isAxiosError } from "axios"
 import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
-import { register } from "~/api/users"
+import { register } from "~/api/auth"
+import { ERROR_DETAILS } from "~/lib/constants"
 import { dataFromInput, handleValidation } from "~/lib/utils"
 
 export default function useRegister() {
@@ -9,13 +11,16 @@ export default function useRegister() {
 
   const { isPending, mutate } = useMutation({
     mutationFn: register,
+    onError: (error) => {
+      toast.error(
+        isAxiosError(error) && error.code !== "ERR_NETWORK"
+          ? error.response?.data
+          : ERROR_DETAILS.SERVER_ERROR
+      )
+    },
     onSuccess: (data) => {
-      if (typeof data === "string") return toast.error(data)
       navigate("/login", { replace: true })
       toast.success(`Welcome to YelpCamp ${data.username}!`)
-    },
-    onError: (error: Error) => {
-      toast.error(`${error.message}: Failed to register user`)
     },
   })
 

@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios"
 import { axios } from "~/lib/axios"
-import ErrorDetails from "~/types/errors"
+import { ERROR_DETAILS } from "~/lib/constants"
 
 const campgroundsAPI = axios("/campgrounds")
 
@@ -20,11 +20,11 @@ export const getCampgroundById = async (
     return isAxiosError(err) && err.code === "SERVER_ERROR"
       ? {
           message: err.message,
-          details: ErrorDetails.SERVER_ERROR,
+          details: ERROR_DETAILS.SERVER_ERROR,
         }
       : {
           message: "Campground not Found",
-          details: ErrorDetails.NOT_FOUND,
+          details: ERROR_DETAILS.NOT_FOUND("campground"),
           link: {
             url: "/campgrounds",
             text: "Go to Campgrounds",

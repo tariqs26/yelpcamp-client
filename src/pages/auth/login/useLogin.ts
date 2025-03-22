@@ -1,8 +1,10 @@
 import { useMutation } from "@tanstack/react-query"
+import { isAxiosError } from "axios"
 import { toast } from "react-hot-toast"
 import { useLocation, useNavigate } from "react-router-dom"
-import { login } from "~/api/users"
+import { login } from "~/api/auth"
 import { useAuth } from "~/components/providers/auth"
+import { ERROR_DETAILS } from "~/lib/constants"
 import { dataFromInput, handleValidation } from "~/lib/utils"
 
 export default function useLogin() {
@@ -16,6 +18,13 @@ export default function useLogin() {
 
   const mutation = useMutation({
     mutationFn: login,
+    onError: (error) => {
+      toast.error(
+        isAxiosError(error) && error.code !== "ERR_NETWORK"
+          ? ERROR_DETAILS.INVALID_CREDENTIALS
+          : ERROR_DETAILS.SERVER_ERROR
+      )
+    },
     onSuccess: (data) => {
       if (typeof data === "string") return toast.error(data)
       setUser(data)

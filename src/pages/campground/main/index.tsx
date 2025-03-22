@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
-import ClusterMap from "~/components/Map/cluster"
+import ClusterMap from "~/components/map/cluster"
 import ErrorAlert from "~/components/error-alert"
 import LoadingCard, { CardComponent } from "~/components/loading-card"
 import Button from "~/components/submit-button"
-import ErrorDetails from "~/types/errors"
+import { ERROR_DETAILS } from "~/lib/constants"
 import Card from "./Card"
 import useGetCampgrounds from "./useGetCampgrounds"
 
@@ -19,11 +19,13 @@ export default function Campgrounds() {
   } = useGetCampgrounds()
 
   if (status === "pending" || isRefetching) return <LoadingCard />
+
   if (status === "error" || data === undefined) {
     return (
-      <ErrorAlert title={error.message} message={ErrorDetails.SERVER_ERROR} />
+      <ErrorAlert title={error.message} message={ERROR_DETAILS.SERVER_ERROR} />
     )
   }
+
   return (
     <>
       <ClusterMap
