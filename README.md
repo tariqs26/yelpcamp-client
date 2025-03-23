@@ -22,20 +22,20 @@ Full-stack application, where users can share and review campground locations bu
 
 ## Setup
 
-### Clone the repository
+**1. Clone the repo**
 
 ```bash
 git clone https://github.com/tariqs26/yelpcamp-client.git
 cd yelpcamp-client
 ```
 
-### Install dependencies
+**2. Install dependencies**
 
 ```bash
 npm i
 ```
 
-### Configure environment variables
+**3. Configure environment variables**
 
 Create a `.env` file in the root directory and add the following environment variables:
 
@@ -44,12 +44,20 @@ VITE_API_URL=      # Backend API URL
 VITE_MAPBOX_TOKEN= # Mapbox API token
 ```
 
+**4. Start the development server**
+
+```bash
+npm run dev
+```
+
+Open <http://localhost:3001> to view the app in the browser.
+
 ## Available Scripts
 
 | Script            | Description                                                   |
 | ----------------- | ------------------------------------------------------------- |
-| `npm run dev`     | Run the app in the development mode (<http://localhost:3001>) |
-| `npm run lint`    | Lint the app                                                  |
-| `npm run format`  | Format the app                                                |
 | `npm run build`   | Build the app for production                                  |
 | `npm run preview` | Preview the production build                                  |
+| `npm run dev`     | Run the app in the development mode (<http://localhost:3001>) |
+| `npm run format`  | Format using Prettier                                         |
+| `npm run lint`    | Lint using Biome                                              |
