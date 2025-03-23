@@ -16,26 +16,9 @@ Full-stack application, where users can share and review campground locations bu
 
 ## Technologies Used
 
-### Frontend
+**Frontend:** [React.js](https://reactjs.org/), [React Router](https://reactrouter.com/), [React Query](https://react-query.tanstack.com/), [React-Bootstrap](https://react-bootstrap.github.io/), [Mapbox](https://www.mapbox.com/), [Vite](https://vitejs.dev/)
 
-| Technology                                            | Purpose                   |
-| ----------------------------------------------------- | ------------------------- |
-| [React](https://reactjs.org/)                         | Frontend framework        |
-| [React Router](https://reactrouter.com/)              | Routing                   |
-| [React Query](https://react-query.tanstack.com/)      | Data fetching and caching |
-| [React-Bootstrap](https://react-bootstrap.github.io/) | UI components and styling |
-| [Mapbox](https://www.mapbox.com/)                     | Map API                   |
-| [Vite](https://vitejs.dev/)                           | Frontend build tool       |
-
-### [Backend](https://github.com/tariqs26/yelpcamp-server)
-
-| Technology                          | Purpose           |
-| ----------------------------------- | ----------------- |
-| [Express](http://expressjs.com/)    | Web framework     |
-| [MongoDB](https://mongodb.com/)     | Database          |
-| [Mongoose](https://mongoosejs.com/) | ODM               |
-| [Passport](http://passportjs.org/)  | Authentication    |
-| [Swagger](https://swagger.io/)      | API documentation |
+**[Backend](https://github.com/tariqs26/yelpcamp-server):** [Node.js](https://nodejs.org/), [Express.js](http://expressjs.com/), [Mongoose](https://mongoosejs.com/), [Passport](http://passportjs.org/), [MongoDB](https://mongodb.com/), [Swagger](https://swagger.io/)
 
 ## Setup
 
