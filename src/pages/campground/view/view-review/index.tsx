@@ -1,13 +1,13 @@
 import Card from "react-bootstrap/Card"
+import type { Review } from "~/types"
+import { useDeleteReview } from "./useDeleteReview"
 import { useAuth } from "~/components/providers/auth"
 import { Rating } from "~/components/rating"
-import Button from "~/components/submit-button"
-import useDeleteReview from "./useDeleteReview"
-import type { Review } from "~/types"
+import { SubmitButton } from "~/components/submit-button"
 
 type ReviewCardProps = Readonly<{ campgroundId: string; review: Review }>
 
-export default function ReviewCard({ campgroundId, review }: ReviewCardProps) {
+export const ReviewCard = ({ campgroundId, review }: ReviewCardProps) => {
   const { user } = useAuth()
   const { mutate, isPending } = useDeleteReview(campgroundId)
 
@@ -20,7 +20,7 @@ export default function ReviewCard({ campgroundId, review }: ReviewCardProps) {
         </div>
         <Card.Text>{review.body}</Card.Text>
         {user?._id === review.author._id && (
-          <Button
+          <SubmitButton
             variant="danger"
             size="sm"
             disabled={isPending}
@@ -28,7 +28,7 @@ export default function ReviewCard({ campgroundId, review }: ReviewCardProps) {
               mutate({ campgroundId, reviewId: review._id })
             }}>
             Delete
-          </Button>
+          </SubmitButton>
         )}
       </Card.Body>
     </Card>

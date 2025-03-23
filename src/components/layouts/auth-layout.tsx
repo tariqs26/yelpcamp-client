@@ -1,9 +1,9 @@
-import { Card } from "react-bootstrap"
 import { Navigate, Outlet } from "react-router-dom"
+import { Card } from "react-bootstrap"
 import authImage from "~/assets/images/auth-image.webp"
 import { useAuth } from "../providers/auth"
 
-export default function AuthLayout() {
+export const AuthLayout = () => {
   const { user } = useAuth()
 
   if (user) return <Navigate to="/campgrounds" replace />

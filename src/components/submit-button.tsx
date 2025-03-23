@@ -2,11 +2,11 @@ import Button, { type ButtonProps } from "react-bootstrap/Button"
 import Spinner from "react-bootstrap/Spinner"
 import { cn } from "~/lib/utils"
 
-export default function SubmitButton({
+export const SubmitButton = ({
   className,
   children,
   ...props
-}: Readonly<ButtonProps>) {
+}: Readonly<ButtonProps>) => {
   return (
     <Button
       type="submit"

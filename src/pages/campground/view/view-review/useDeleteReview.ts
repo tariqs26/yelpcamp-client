@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast"
 import { deleteReview } from "~/api/reviews"
 import type { Campground } from "~/types"
 
-export default function useDeleteCampground(campgroundId: string) {
+export const useDeleteReview = (campgroundId: string) => {
   const queryClient = useQueryClient()
 
   return useMutation({

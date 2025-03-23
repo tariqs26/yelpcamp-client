@@ -1,10 +1,11 @@
-import { Container, Nav, Navbar } from "react-bootstrap"
 import { NavLink } from "react-router-dom"
+import { Navbar as BsNavbar, Container, Nav } from "react-bootstrap"
 import { useAuth } from "../providers/auth"
-import useLogoutUser from "./useLogout"
+import { useLogoutUser } from "./useLogout"
+
 import "./index.css"
 
-export default function NavbarComponent() {
+export const Navbar = () => {
   const { user } = useAuth()
   const { mutate, isPending } = useLogoutUser()
 
@@ -17,7 +18,7 @@ export default function NavbarComponent() {
   }
 
   return (
-    <Navbar
+    <BsNavbar
       bg="dark"
       variant="dark"
       expand="lg"
@@ -27,8 +28,8 @@ export default function NavbarComponent() {
         <NavLink to="/" className="navbar-brand" onClick={handleNavClick}>
           YelpCamp
         </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <BsNavbar.Toggle aria-controls="basic-navbar-nav" />
+        <BsNavbar.Collapse id="basic-navbar-nav">
           <Nav>
             <NavLink to="/" className="nav-link" onClick={handleNavClick}>
               Home
@@ -75,8 +76,8 @@ export default function NavbarComponent() {
               </>
             )}
           </div>
-        </Navbar.Collapse>
+        </BsNavbar.Collapse>
       </Container>
-    </Navbar>
+    </BsNavbar>
   )
 }

@@ -1,13 +1,14 @@
-import { Accordion } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import ReviewForm from "~/components/forms/review-form"
+import { Accordion } from "react-bootstrap"
+import { ReviewForm } from "~/components/forms/review-form"
 import { useAuth } from "~/components/providers/auth"
-import useCreateReview from "./useCreateReview"
+import { useCreateReview } from "./useCreateReview"
+
 import "./index.css"
 
 type CreateReviewProps = Readonly<{ campgroundId: string }>
 
-export default function CreateReview({ campgroundId }: CreateReviewProps) {
+export const CreateReview = ({ campgroundId }: CreateReviewProps) => {
   const { user } = useAuth()
 
   const formProps = useCreateReview(campgroundId, () => {

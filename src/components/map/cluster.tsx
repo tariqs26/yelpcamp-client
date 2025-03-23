@@ -7,8 +7,8 @@ import type {
 } from "react-map-gl"
 import {
   Layer,
-  Map as ReactMapGlCluster,
   NavigationControl,
+  Map as ReactMapGlCluster,
   Source,
 } from "react-map-gl"
 import {
@@ -26,9 +26,7 @@ type Feature = MapGeoJSONFeature & {
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN
 
-export default function ClusterMap({
-  campgrounds,
-}: Readonly<{ campgrounds: any }>) {
+export const ClusterMap = ({ campgrounds }: Readonly<{ campgrounds: any }>) => {
   const mapRef = useRef<MapRef>(null)
 
   const onClick = (e: MapLayerMouseEvent) => {

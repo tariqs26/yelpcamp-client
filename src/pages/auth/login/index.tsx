@@ -1,9 +1,9 @@
-import Form from "react-bootstrap/Form"
 import { Link } from "react-router-dom"
-import Button from "~/components/submit-button"
-import useLogin from "./useLogin"
+import Form from "react-bootstrap/Form"
+import { SubmitButton } from "~/components/submit-button"
+import { useLogin } from "./useLogin"
 
-export default function Login() {
+export default function LoginPage() {
   const { handleSubmit, isPending } = useLogin()
 
   return (
@@ -31,9 +31,9 @@ export default function Login() {
             type="password"
           />
         </Form.Group>
-        <Button disabled={isPending} className="w-100">
+        <SubmitButton disabled={isPending} className="w-100">
           Sign in
-        </Button>
+        </SubmitButton>
         <div className="d-flex justify-content-center gap-1 align-items-center mt-3">
           <span>Don&apos;t have an account?</span>{" "}
           <Link to="/register" className="text-decoration-none">

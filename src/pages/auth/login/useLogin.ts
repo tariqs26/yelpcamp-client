@@ -1,13 +1,14 @@
 import { useMutation } from "@tanstack/react-query"
 import { isAxiosError } from "axios"
-import { toast } from "react-hot-toast"
 import { useLocation, useNavigate } from "react-router-dom"
+import { toast } from "react-hot-toast"
+
 import { login } from "~/api/auth"
-import { useAuth } from "~/components/providers/auth"
 import { ERROR_DETAILS } from "~/lib/constants"
 import { dataFromInput, handleValidation } from "~/lib/utils"
+import { useAuth } from "~/components/providers/auth"
 
-export default function useLogin() {
+export const useLogin = () => {
   const navigate = useNavigate()
   const { setUser } = useAuth()
   const {

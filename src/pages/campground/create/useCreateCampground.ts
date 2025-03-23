@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-hot-toast"
 import { createCampground } from "~/api/campgrounds"
 import { dataFromInput, handleValidation } from "~/lib/utils"
 import type { MutationError } from "~/types"
 
-export default function useCreateCampground() {
+export const useCreateCampground = () => {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
 

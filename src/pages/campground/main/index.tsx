@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom"
-import ErrorAlert from "~/components/error-alert"
-import LoadingCard, { CardComponent } from "~/components/loading-card"
-import ClusterMap from "~/components/map/cluster"
-import Button from "~/components/submit-button"
-import { ERROR_DETAILS } from "~/lib/constants"
-import CampgroundCard from "./CampgroundCard"
-import useGetCampgrounds from "./useGetCampgrounds"
 
-export default function Campgrounds() {
+import { ERROR_DETAILS } from "~/lib/constants"
+import { useGetCampgrounds } from "./useGetCampgrounds"
+
+import { ErrorAlert } from "~/components/error-alert"
+import { CardComponent, LoadingCard } from "~/components/loading-card"
+import { ClusterMap } from "~/components/map/cluster"
+import { SubmitButton } from "~/components/submit-button"
+import { CampgroundCard } from "./CampgroundCard"
+
+export default function CampgroundsPage() {
   const {
     data,
     status,
@@ -58,12 +60,13 @@ export default function Campgrounds() {
           .fill(0)
           .map((_, i) => <CardComponent key={i} />)}
       {hasNextPage && (
-        <Button
+        <SubmitButton
+          type="button"
           variant="secondary mt-4"
           disabled={isFetchingNextPage}
           onClick={async () => await fetchNextPage()}>
           Load more
-        </Button>
+        </SubmitButton>
       )}
     </>
   )

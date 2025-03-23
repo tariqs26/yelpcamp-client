@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { getCampgrounds } from "~/api/campgrounds"
 
-export default function useGetCampgrounds() {
+export const useGetCampgrounds = () => {
   return useInfiniteQuery({
     queryKey: ["campgrounds"],
     queryFn: getCampgrounds,

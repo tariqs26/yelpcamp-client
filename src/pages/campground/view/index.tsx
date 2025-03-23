@@ -1,24 +1,25 @@
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
-import { Button, Card, ListGroup, Row } from "react-bootstrap"
 import { useParams } from "react-router-dom"
+import { Button, Card, ListGroup, Row } from "react-bootstrap"
+
+import { fromDate, isAppError } from "~/lib/utils"
+import { useDeleteCampground } from "./useDeleteCampground"
 
 import { getCampgroundById } from "~/api/campgrounds"
-import ErrorAlert from "~/components/error-alert"
-import Fallback from "~/components/fallback"
-import MapComponent from "~/components/map"
+import { ErrorAlert } from "~/components/error-alert"
+import { Fallback } from "~/components/fallback"
+import { MapComponent } from "~/components/map"
 import { useAuth } from "~/components/providers/auth"
-import SubmitButton from "~/components/submit-button"
-import { fromDate, isAppError } from "~/lib/utils"
-import EditCampground from "../edit"
-import ReviewForm from "./create-review"
-import useDeleteCampground from "./useDeleteCampground"
-import ReviewCard from "./view-review"
+import { SubmitButton } from "~/components/submit-button"
+import { CreateReview } from "./create-review"
+import { EditCampgroundModal } from "./edit-campground"
+import { ReviewCard } from "./view-review"
 
-export default function Campground() {
+export default function CampgroundPage() {
   const { id: campgroundId } = useParams() as { id: string }
   const { user } = useAuth()
-  const [modalShow, setModalShow] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const { data: campground, isFetching } = useQuery({
     queryKey: ["campgrounds", campgroundId],
     queryFn: () => getCampgroundById(campgroundId),
@@ -71,7 +72,7 @@ export default function Campground() {
               <Button
                 variant="warning"
                 onClick={() => {
-                  setModalShow(true)
+                  setShowModal(true)
                 }}>
                 Edit
               </Button>
@@ -89,11 +90,11 @@ export default function Campground() {
             Updated {fromDate(campground.updatedAt)}
           </Card.Footer>
         </Card>
-        <EditCampground
-          showModal={modalShow}
+        <EditCampgroundModal
+          showModal={showModal}
           campground={campground}
           closeModal={() => {
-            setModalShow(false)
+            setShowModal(false)
           }}
         />
       </div>
@@ -107,7 +108,7 @@ export default function Campground() {
           location={campground.location}
         />
         <h4 className="mt-3">Reviews</h4>
-        <ReviewForm campgroundId={campgroundId} />
+        <CreateReview campgroundId={campgroundId} />
         {campground.reviews.map((review) => (
           <ReviewCard
             key={review._id}

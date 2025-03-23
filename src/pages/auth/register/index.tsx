@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 import Form from "react-bootstrap/Form"
-import Button from "~/components/submit-button"
-import useRegister from "./useRegister"
+import { SubmitButton } from "~/components/submit-button"
+import { useRegister } from "./useRegister"
 
-export default function Register() {
+export default function RegisterPage() {
   const { handleSubmit, isPending } = useRegister()
   return (
     <>
@@ -48,9 +48,9 @@ export default function Register() {
             Password must be at least 8 characters.
           </Form.Control.Feedback>
         </Form.Group>
-        <Button disabled={isPending} variant="success" className="w-100">
+        <SubmitButton disabled={isPending} variant="success" className="w-100">
           Sign up
-        </Button>
+        </SubmitButton>
         <div className="d-flex justify-content-center gap-1 align-items-center mt-3">
           <span>Have an account?</span>{" "}
           <Link to="/login" className="text-decoration-none">

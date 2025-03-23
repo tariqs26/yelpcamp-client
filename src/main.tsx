@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client"
 import { Toaster } from "react-hot-toast"
 import { BrowserRouter } from "react-router-dom"
 
-import App from "./app"
-import AuthProvider from "~/components/providers/auth"
-import ReactQueryProvider from "~/components/providers/react-query"
+import { AuthProvider } from "~/components/providers/auth"
+import { ReactQueryProvider } from "~/components/providers/react-query"
+import { App } from "./app"
 
 // biome-ignore lint/style/noNonNullAssertion: root is always present
 const root = ReactDOM.createRoot(document.getElementById("root")!)

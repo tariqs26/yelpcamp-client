@@ -1,6 +1,6 @@
-import Form from "~/components/forms/campground-form"
-import useCreateCampground from "./useCreateCampground"
+import { CampgroundForm } from "~/components/forms/campground-form"
+import { useCreateCampground } from "./useCreateCampground"
 
-export default function CreateCampground() {
-  return <Form {...useCreateCampground()} />
+export default function CreateCampgroundPage() {
+  return <CampgroundForm {...useCreateCampground()} />
 }

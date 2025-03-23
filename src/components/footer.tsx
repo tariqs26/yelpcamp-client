@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom"
 
-export default function Footer() {
+export const Footer = () => {
   const { pathname } = useLocation()
 
   if (pathname.endsWith("campgrounds")) {

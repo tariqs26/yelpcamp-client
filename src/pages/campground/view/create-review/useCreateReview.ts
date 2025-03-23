@@ -1,14 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { toast } from "react-hot-toast"
 import { useLocation, useNavigate } from "react-router-dom"
+import { toast } from "react-hot-toast"
 import { createReview } from "~/api/reviews"
 import { dataFromInput, handleValidation } from "~/lib/utils"
 import type { Campground } from "~/types"
 
-export default function useCreateReview(
-  campgroundId: string,
-  close: () => void
-) {
+export const useCreateReview = (campgroundId: string, close: () => void) => {
   const queryClient = useQueryClient()
   const location = useLocation()
   const navigate = useNavigate()

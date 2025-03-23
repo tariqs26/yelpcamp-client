@@ -5,10 +5,10 @@ import { updateCampground } from "~/api/campgrounds"
 import { dataFromInput, handleValidation } from "~/lib/utils"
 import type { Campground, CampgroundsData, MutationError } from "~/types"
 
-export default function useUpdateCampground(
+export const useUpdateCampground = (
   campground: Campground,
   close: () => void
-) {
+) => {
   const queryClient = useQueryClient()
 
   const { mutate, isPending } = useMutation({

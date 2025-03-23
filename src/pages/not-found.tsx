@@ -1,7 +1,7 @@
-import Container from "react-bootstrap/Container"
 import { Link } from "react-router-dom"
+import Container from "react-bootstrap/Container"
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
     <Container style={{ paddingTop: "72px", paddingBottom: "20px" }}>
       <h1>

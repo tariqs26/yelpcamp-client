@@ -1,18 +1,20 @@
 import Modal from "react-bootstrap/Modal"
-import Form from "~/components/forms/campground-form"
-import useUpdateCampground from "./useUpdateCampground"
 import type { Campground } from "~/types"
+import { useUpdateCampground } from "./useUpdateCampground"
+import { CampgroundForm } from "~/components/forms/campground-form"
+
 import "./index.css"
 
-type Props = Readonly<{
+type EditCampgroundModalProps = Readonly<{
   campground: Campground
   showModal: boolean
   closeModal: () => void
 }>
 
-function CampgroundEdit(props: Props) {
+export const EditCampgroundModal = (props: EditCampgroundModalProps) => {
   const { campground, showModal, closeModal } = props
   const formProps = useUpdateCampground(campground, closeModal)
+
   return (
     <Modal
       show={showModal}
@@ -26,7 +28,7 @@ function CampgroundEdit(props: Props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form
+        <CampgroundForm
           {...formProps}
           leaveHandler={closeModal}
           initialData={campground}
@@ -35,5 +37,3 @@ function CampgroundEdit(props: Props) {
     </Modal>
   )
 }
-
-export default CampgroundEdit

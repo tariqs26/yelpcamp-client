@@ -1,10 +1,10 @@
-import { Card, Col, Image, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import { Card, Col, Image, Row } from "react-bootstrap"
 import { fromDate } from "~/lib/utils"
 import type { Campground } from "~/types"
 
-export default function CampgroundCard(props: Readonly<Campground>) {
-  const { _id, title, image, location, description } = props
+export const CampgroundCard = (campground: Readonly<Campground>) => {
+  const { _id, title, image, location, description } = campground
 
   return (
     <Card className="mt-4 overflow-hidden">
@@ -35,7 +35,7 @@ export default function CampgroundCard(props: Readonly<Campground>) {
               View {title}
             </Link>
             <Card.Subtitle className="mt-auto text-muted">
-              Posted {fromDate(props.createdAt)}
+              Posted {fromDate(campground.createdAt)}
             </Card.Subtitle>
           </Card.Body>
         </Col>

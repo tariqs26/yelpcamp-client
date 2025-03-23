@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { logout } from "~/api/auth"
 import { useAuth } from "../providers/auth"
 
-export default function useLogoutUser() {
+export const useLogoutUser = () => {
   const navigate = useNavigate()
   const { setUser } = useAuth()
 

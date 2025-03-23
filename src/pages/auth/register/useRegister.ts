@@ -1,12 +1,13 @@
 import { useMutation } from "@tanstack/react-query"
 import { isAxiosError } from "axios"
-import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-hot-toast"
+
 import { register } from "~/api/auth"
 import { ERROR_DETAILS } from "~/lib/constants"
 import { dataFromInput, handleValidation } from "~/lib/utils"
 
-export default function useRegister() {
+export const useRegister = () => {
   const navigate = useNavigate()
 
   const { isPending, mutate } = useMutation({

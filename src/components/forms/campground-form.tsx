@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Button, Card, Form, InputGroup, Row } from "react-bootstrap"
 import type { Campground } from "~/types"
-import ConditionalWrapper from "../conditional-wrapper"
-import SubmitButton from "../submit-button"
+import { ConditionalWrapper } from "../conditional-wrapper"
+import { SubmitButton } from "../submit-button"
 
 type CampgroundFormProps = Readonly<
   {
@@ -14,7 +14,7 @@ type CampgroundFormProps = Readonly<
   )
 >
 
-export default function CampgroundForm(props: CampgroundFormProps) {
+export const CampgroundForm = (props: CampgroundFormProps) => {
   const { handleSubmit, initialData, isPending, leaveHandler } = props
   const [descChars, setDescChars] = useState(
     initialData?.description.length ?? 0

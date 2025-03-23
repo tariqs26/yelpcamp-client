@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react"
 import { getUser } from "~/api/auth"
 import type { User } from "~/types"
-import Fallback from "../fallback"
+import { Fallback } from "../fallback"
 
 type AuthUser = User | null | undefined
 
@@ -12,9 +12,9 @@ type AuthContextType = Readonly<{
 
 const AuthContext = createContext<AuthContextType | null>(null)
 
-export default function AuthProvider({
+export const AuthProvider = ({
   children,
-}: Readonly<React.PropsWithChildren>) {
+}: Readonly<React.PropsWithChildren>) => {
   const [user, setUser] = useState<AuthUser>(null)
   const [loadingInitial, setLoadingInitial] = useState(true)
 
