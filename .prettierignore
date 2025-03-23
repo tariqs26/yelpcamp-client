@@ -1,5 +1,3 @@
-node_modules
 dist
 public
-package-lock.json
 src/**/*.min.css
