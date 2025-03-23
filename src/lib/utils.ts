@@ -33,9 +33,7 @@ export const isAppError = (data: unknown): data is AppError =>
   "message" in data &&
   "details" in data
 
-export const fromDate = (date: string) => {
-  day.extend(relativeTime)
-  return day(date).fromNow()
-}
+day.extend(relativeTime)
+export const fromDate = (date: string) => day(date).fromNow()
 
 export const cn = (...inputs: ClassValue[]) => clsx(inputs)
