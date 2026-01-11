@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react"
+import { createContext, use, useEffect, useMemo, useState } from "react"
 import { getUser } from "~/api/auth"
 import type { User } from "~/types"
-import { Fallback } from "../fallback"
 
 type AuthUser = User | null | undefined
 
@@ -16,25 +15,18 @@ export const AuthProvider = ({
   children,
 }: Readonly<React.PropsWithChildren>) => {
   const [user, setUser] = useState<AuthUser>(null)
-  const [loadingInitial, setLoadingInitial] = useState(true)
 
   useEffect(() => {
-    getUser()
-      .then(setUser)
-      .finally(() => setLoadingInitial(false))
+    getUser().then(setUser)
   }, [])
 
   const memoizedValue = useMemo(() => ({ user, setUser }), [user])
 
-  return (
-    <AuthContext.Provider value={memoizedValue}>
-      {loadingInitial ? <Fallback /> : children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext value={memoizedValue}>{children}</AuthContext>
 }
 
 export const useAuth = () => {
-  const context = useContext(AuthContext)
+  const context = use(AuthContext)
 
   if (context === null)
     throw new Error("useAuth must be used within an AuthProvider")
