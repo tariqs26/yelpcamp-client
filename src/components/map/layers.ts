@@ -1,6 +1,6 @@
-import type { LayerProps } from "react-map-gl"
+import type { LayerProps } from "react-map-gl/mapbox"
 
-export const clusterLayer: LayerProps = {
+export const clusterLayer = {
   id: "clusters",
   type: "circle",
   source: "campgrounds",
@@ -17,9 +17,9 @@ export const clusterLayer: LayerProps = {
     ],
     "circle-radius": ["step", ["get", "point_count"], 15, 10, 20, 30, 40],
   },
-}
+} satisfies LayerProps
 
-export const clusterCountLayer: LayerProps = {
+export const clusterCountLayer = {
   id: "cluster-count",
   type: "symbol",
   source: "campgrounds",
@@ -29,9 +29,9 @@ export const clusterCountLayer: LayerProps = {
     "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
     "text-size": 12,
   },
-}
+} satisfies LayerProps
 
-export const unclusteredPointLayer: LayerProps = {
+export const unclusteredPointLayer = {
   id: "unclustered-point",
   type: "circle",
   source: "campgrounds",
@@ -42,4 +42,4 @@ export const unclusteredPointLayer: LayerProps = {
     "circle-stroke-width": 1,
     "circle-stroke-color": "#fff",
   },
-}
+} satisfies LayerProps

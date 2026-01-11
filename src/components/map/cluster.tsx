@@ -1,16 +1,15 @@
 import { useRef } from "react"
 import type {
-  GeoJSONSource,
   MapGeoJSONFeature,
-  MapLayerMouseEvent,
+  MapMouseEvent,
   MapRef,
-} from "react-map-gl"
-import {
+} from "react-map-gl/mapbox"
+import ReactMapGl, {
   Layer,
   NavigationControl,
-  Map as ReactMapGlCluster,
   Source,
-} from "react-map-gl"
+} from "react-map-gl/mapbox"
+import type { GeoJSONSource } from "mapbox-gl"
 import {
   clusterCountLayer,
   clusterLayer,
@@ -24,48 +23,50 @@ type Feature = MapGeoJSONFeature & {
   geometry: { coordinates: [number, number] }
 }
 
-const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN
+type ClusterMapProps = Readonly<{
+  campgrounds: {
+    type: "FeatureCollection"
+    features: {
+      type: "Feature"
+      properties: { id: string }
+      geometry: {
+        type: "Point"
+        coordinates: [number, number]
+      }
+    }[]
+  }
+}>
 
-export const ClusterMap = ({ campgrounds }: Readonly<{ campgrounds: any }>) => {
+export const ClusterMap = ({ campgrounds }: ClusterMapProps) => {
   const mapRef = useRef<MapRef>(null)
 
-  const onClick = (e: MapLayerMouseEvent) => {
-    if (!e.features) return
-    const feature = e.features[0] as Feature
-    const clusterId = feature.properties.cluster_id
-    if (mapRef.current === null) return
-    const mapboxSource = mapRef.current.getSource(
-      "campgrounds"
-    ) as unknown as GeoJSONSource & {
-      getClusterExpansionZoom: (
-        clusterId: number,
-        callback: (err: any, zoom: number) => void
-      ) => void
-    }
-    mapboxSource.getClusterExpansionZoom(
-      clusterId,
-      (err: any, zoom: number) => {
+  const onClick = (e: MapMouseEvent) => {
+    const features = mapRef.current?.queryRenderedFeatures(e.point, {
+      layers: ["clusters"],
+    }) as Feature[]
+    const clusterId = features[0]?.properties.cluster_id
+    if (!clusterId) return
+    mapRef.current
+      ?.getSource<GeoJSONSource>("campgrounds")
+      ?.getClusterExpansionZoom(clusterId, (err, zoom) => {
         if (err || mapRef.current === null) return
         mapRef.current.easeTo({
-          center: feature.geometry.coordinates,
-          zoom,
-          duration: 500,
+          center: features[0].geometry.coordinates,
+          zoom: zoom ?? undefined,
         })
-      }
-    )
+      })
   }
 
   return (
-    <ReactMapGlCluster
+    <ReactMapGl
       initialViewState={{ latitude: 52.67, longitude: -93.59, zoom: 3 }}
       mapStyle="mapbox://styles/mapbox/dark-v9"
-      mapboxAccessToken={MAPBOX_TOKEN}
-      interactiveLayerIds={[clusterLayer.id as unknown as string]}
+      mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
+      interactiveLayerIds={[clusterLayer.id]}
       onClick={onClick}
       ref={mapRef}
       style={{
         height: "min(50vh, 400px)",
-        width: "100%",
         marginBottom: "1rem",
         borderRadius: "calc(0.375rem - 1px)",
       }}>
@@ -81,6 +82,6 @@ export const ClusterMap = ({ campgrounds }: Readonly<{ campgrounds: any }>) => {
         <Layer {...clusterCountLayer} />
         <Layer {...unclusteredPointLayer} />
       </Source>
-    </ReactMapGlCluster>
+    </ReactMapGl>
   )
 }

@@ -1,5 +1,9 @@
 import { useState } from "react"
-import ReactMapGL, { Marker, NavigationControl, Popup } from "react-map-gl"
+import ReactMapGL, {
+  Marker,
+  NavigationControl,
+  Popup,
+} from "react-map-gl/mapbox"
 
 import "mapbox-gl/dist/mapbox-gl.css"
 

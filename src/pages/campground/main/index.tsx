@@ -32,9 +32,14 @@ export default function CampgroundsPage() {
     <>
       <ClusterMap
         campgrounds={{
+          type: "FeatureCollection",
           features: data.pages
             .flatMap(({ campgrounds }) => campgrounds)
-            .map(({ geometry }) => ({ type: "Feature", geometry })),
+            .map(({ geometry, _id }) => ({
+              type: "Feature",
+              geometry,
+              properties: { id: _id },
+            })),
         }}
       />
       <header className="d-flex justify-content-between flex-column gap-3 align-items-sm-center flex-sm-row align-items-start">
