@@ -25,9 +25,7 @@ export const useDeleteCampground = () => {
           ),
         })),
       }))
-      navigate("/campgrounds", {
-        replace: true,
-      })
+      navigate("/campgrounds", { replace: true })
       toast.success("Campground deleted successfully")
     },
   })
